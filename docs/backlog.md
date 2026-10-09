@@ -30,10 +30,11 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] Probar login/signup/verificación en dispositivo (checklist en
       `auth-review.md`).
 - [ ] Login/signup: diseño y textos pendientes (`auth-review.md`).
-- [ ] **Activar la password policy** en Settings → General: mín. 8, número,
-      mayúscula y carácter no alfanumérico (igual que la lista del signup).
-- [ ] Arreglar `resetPassword` (texto "passwords don't match" y política en
-      el input equivocado) y requisitos en `settingsPrivacySecurity`.
+- [x] Password policy activada en Settings → General (8, número, mayúscula,
+      no alfanumérico).
+- [x] Arreglar `resetPassword` y requisitos en `settingsPrivacySecurity`.
+- [ ] Probar en dispositivo: requisitos y ojito (signup, login), reset y cambio
+      de contraseña en Settings.
 - [ ] Notificaciones: título con remitente, marcar como leída, abrir la reserva.
 - [ ] Habilitar `petboss24.com` en *Allowed domains* del entorno cloud para
       poder probar con navegador desde las sesiones.

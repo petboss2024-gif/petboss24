@@ -74,6 +74,18 @@ editor, o `restore_savepoint` con el timestamp).
   `login.showPassword`. Elemento renombrado: "Text Lenght" → "Text Length".
 - Bubble: sin issues nuevos (9 pre-existentes). Detalle en `auth-review.md`.
 
+### resetPassword y settingsPrivacySecurity
+- Savepoint: **"Antes de arreglar resetPassword y settingsPrivacySecurity"** — `1791551230519`
+- Requisitos de contraseña y bloqueo igual que el signup en ambas pantallas.
+- `resetPassword`: arreglado "The passwords don't match" (comparaba contra un
+  texto fijo); política movida al campo de contraseña nueva.
+- `settingsPrivacySecurity`: campos obligatorios, ID duplicado corregido,
+  lista de requisitos y aviso de no coincidencia nuevos, limpieza de campos al
+  guardar.
+- Confirmado: la *password policy* de Bubble está activada (8, número,
+  mayúscula, no alfanumérico).
+- Bubble: sin issues nuevos (9 pre-existentes).
+
 ### Revisiones sin cambios
 - Auditoría del modelo de datos → `database.md` / `backlog.md`.
 - Política de plugins → `plugins.md`.

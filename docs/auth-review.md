@@ -49,8 +49,8 @@ tras tocar *Sign up*):
   para que la lista aparezca aunque Bubble bloquee el workflow principal por un
   campo obligatorio vacío.
 - **Esto es solo del lado del cliente.** La validación real es la *password
-  policy* de Settings → General (mín. 8, número, mayúscula, no alfanumérico),
-  que hay que activar a mano para que coincida.
+  policy* de Settings → General → Privacy & Security. **Está activada** (mín. 8,
+  número, mayúscula, carácter no alfanumérico) y coincide con la lista.
 - Limitaciones conocidas: `Á`, `Ñ` no cuentan como mayúscula (el texto dice
   A-Z); `ñ`, `é` o un emoji sí cuentan como carácter especial (probablemente
   igual que la policy de Bubble; confirmarlo con un registro de prueba).
@@ -64,6 +64,26 @@ ojo vuelve a ocultarla. Al tocar *Sign up* / *Log in* se vuelve a ocultar.
 - En iOS, al volver a escribir en un campo de contraseña que perdió el foco, el
   sistema borra todo lo escrito con la primera tecla. Es comportamiento normal
   de iOS.
+
+### resetPassword y settingsPrivacySecurity (cambiar contraseña)
+
+Savepoint: "Antes de arreglar resetPassword y settingsPrivacySecurity"
+(`1791551230519`).
+
+- Misma lista de requisitos que el signup (`•` / `✓` verde / rojo tras
+  intentar) y el mismo bloqueo: no se guarda si falta un requisito o si las
+  contraseñas no coinciden.
+- "The passwords don't match" ahora compara de verdad los dos campos y solo
+  aparece si la confirmación tiene algo escrito. Si se intenta enviar con la
+  confirmación vacía muestra "Please confirm your password".
+- `resetPassword`: la validación de la política pasó al campo de contraseña
+  nueva (estaba en el de confirmación); borde rojo si es inválida y ya tiene
+  texto; borde de foco también en el campo de confirmación.
+- `settingsPrivacySecurity`: los tres campos son obligatorios; IDs distintos
+  (`reset_password_new` / `reset_password_confirm`); autocompletado "saved" en
+  la actual y "new" en la nueva; después de cambiarla se limpian los campos.
+- Si la contraseña actual es incorrecta, se muestra el error estándar de Bubble
+  (igual que en el resto de la app).
 
 ## verificationCheck (reusable)
 
@@ -131,13 +151,9 @@ solo se puede leer desde el email.
 - Desde profile, al verificar, ahora navega a navHome (antes navAccount).
 - Diseño y textos sin tocar: sombra azul del input del código, texto legal sin
   checkbox, links a la versión live.
-- Contraseña: activar la *password policy* en Settings → General; probar en
-  dispositivo el ojito (que el input oculto conserve el valor y que el ícono
-  de 44 px se vea del tamaño correcto).
-- Otras pantallas con contraseña sin estos cambios: `resetPassword` (el texto
-  "The passwords don't match" compara contra un texto fijo y se muestra casi
-  siempre; la política está en el input de confirmación) y
-  `settingsPrivacySecurity` (sin requisitos; dos inputs con el mismo ID).
+- Contraseña: probar en dispositivo el ojito (que el input oculto conserve el
+  valor y que el ícono de 44 px se vea del tamaño correcto).
+- `resetPassword` y `settingsPrivacySecurity` no tienen ojito (no se pidió).
 - Datos: en test los 3 usuarios tienen `emailConfirmation = yes`. En Live el
   signup antiguo siempre lo ponía en yes, así que nadie debería quedar fuera;
   confirmar en *Data → App data (Live)* antes de desplegar.
