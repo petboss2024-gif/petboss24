@@ -63,6 +63,17 @@ editor, o `restore_savepoint` con el timestamp).
 - Texto "or" de Google/Apple oculto en login y signup.
 - Bubble: sin issues nuevos (9 pre-existentes). Detalle en `auth-review.md`.
 
+### Contraseña: requisitos y mostrar/ocultar
+- Savepoint: **"Antes de requisitos de contraseña y mostrar/ocultar contraseña"** — `1791547780917`
+- signup: el botón *Sign up* ya no crea la cuenta si la contraseña no cumple
+  los 4 requisitos; la lista marca ✓ verde / rojo tras intentar; el espacio ya
+  no cuenta como carácter especial; texto "(A-Z)" en mayúscula.
+- signup y login: ícono de ojo para mostrar/ocultar la contraseña (texto de
+  solo lectura); se vuelve a ocultar al enviar.
+- Estados nuevos: `signup.showPassword`, `signup.submitAttempted`,
+  `login.showPassword`. Elemento renombrado: "Text Lenght" → "Text Length".
+- Bubble: sin issues nuevos (9 pre-existentes). Detalle en `auth-review.md`.
+
 ### Revisiones sin cambios
 - Auditoría del modelo de datos → `database.md` / `backlog.md`.
 - Política de plugins → `plugins.md`.

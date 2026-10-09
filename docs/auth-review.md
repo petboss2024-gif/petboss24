@@ -27,6 +27,44 @@
 - **forgotPassword:** si el email está vacío, muestra el aviso y **termina** el
   workflow; si no, envía el email de reset de Bubble → `checkYourEmail`.
 
+## Contraseña (signup y login)
+
+Savepoint: "Antes de requisitos de contraseña y mostrar/ocultar contraseña"
+(`1791547780917`).
+
+**Requisitos en signup** (lista bajo el input, visible al enfocar, al escribir o
+tras tocar *Sign up*):
+
+| Regla | Regex / condición |
+|---|---|
+| 1 mayúscula (A-Z) | `[A-Z]` |
+| 1 número | `[0-9]` |
+| 1 carácter especial | `[^A-Za-z0-9\s]` (el espacio no cuenta) |
+| 8 caracteres mínimo | `number of characters ≥ 8` |
+
+- Cada regla muestra `•` gris → `✓` verde al cumplirse; si se tocó *Sign up* y
+  no se cumple, se pone **roja**.
+- El workflow de *Sign up* termina (no crea la cuenta) si falta cualquier regla.
+- Un workflow aparte en el mismo botón marca `submitAttempted` sin leer inputs,
+  para que la lista aparezca aunque Bubble bloquee el workflow principal por un
+  campo obligatorio vacío.
+- **Esto es solo del lado del cliente.** La validación real es la *password
+  policy* de Settings → General (mín. 8, número, mayúscula, no alfanumérico),
+  que hay que activar a mano para que coincida.
+- Limitaciones conocidas: `Á`, `Ñ` no cuentan como mayúscula (el texto dice
+  A-Z); `ñ`, `é` o un emoji sí cuentan como carácter especial (probablemente
+  igual que la policy de Bubble; confirmarlo con un registro de prueba).
+
+**Mostrar/ocultar contraseña** (signup y login): ícono de ojo a la derecha del
+input. Al tocarlo, el input seguro se oculta y se muestra un texto de solo
+lectura con la contraseña; el ícono cambia a ojo tachado. Tocar el texto o el
+ojo vuelve a ocultarla. Al tocar *Sign up* / *Log in* se vuelve a ocultar.
+- Se eligió texto de solo lectura (no un input de texto) para conservar el
+  autocompletado de iOS/Android y evitar mayúscula automática y autocorrector.
+- En iOS, al volver a escribir en un campo de contraseña que perdió el foco, el
+  sistema borra todo lo escrito con la primera tecla. Es comportamiento normal
+  de iOS.
+
 ## verificationCheck (reusable)
 
 - **Verify** (solo corre si el input tiene 6 dígitos): estado "verificando" →
@@ -91,9 +129,15 @@ solo se puede leer desde el email.
   privacy rules. Hoy no es un problema porque "verificado" no da acceso extra.
   Si algún día lo da, agregar `emailConfirmation is yes` a las reglas.
 - Desde profile, al verificar, ahora navega a navHome (antes navAccount).
-- Diseño y textos sin tocar: sombra azul del input, requisitos de contraseña
-  visibles antes de escribir, elemento "Lenght", sin mostrar/ocultar
-  contraseña, texto legal sin checkbox, links a la versión live.
+- Diseño y textos sin tocar: sombra azul del input del código, texto legal sin
+  checkbox, links a la versión live.
+- Contraseña: activar la *password policy* en Settings → General; probar en
+  dispositivo el ojito (que el input oculto conserve el valor y que el ícono
+  de 44 px se vea del tamaño correcto).
+- Otras pantallas con contraseña sin estos cambios: `resetPassword` (el texto
+  "The passwords don't match" compara contra un texto fijo y se muestra casi
+  siempre; la política está en el input de confirmación) y
+  `settingsPrivacySecurity` (sin requisitos; dos inputs con el mismo ID).
 - Datos: en test los 3 usuarios tienen `emailConfirmation = yes`. En Live el
   signup antiguo siempre lo ponía en yes, así que nadie debería quedar fuera;
   confirmar en *Data → App data (Live)* antes de desplegar.
