@@ -86,6 +86,15 @@ editor, o `restore_savepoint` con el timestamp).
   mayúscula, no alfanumérico).
 - Bubble: sin issues nuevos (9 pre-existentes).
 
+### Renombrado de páginas web y vistas móviles
+- Savepoint: **"Antes de renombrar páginas web y vistas móviles"** — `1791565293480`
+- 34 vistas y 10 páginas web renombradas según la convención nueva (tabla en
+  `conventions.md`). `index`, `404`, `reset_pw`, `updateApp` y las vistas que
+  ya cumplían quedaron igual.
+- Las URL escritas como texto quedaron con el nombre viejo a propósito (se
+  arreglan después): lista en `backlog.md`.
+- Bubble: sin issues nuevos (9 pre-existentes).
+
 ### Revisiones sin cambios
 - Auditoría del modelo de datos → `database.md` / `backlog.md`.
 - Política de plugins → `plugins.md`.

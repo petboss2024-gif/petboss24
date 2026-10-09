@@ -12,7 +12,7 @@
 | Slider Input (Mobile), Star Rating (Mobile), Toggle Switch (Mobile), GS Native Mobile Progress Bar | Interfaz. Son los que más se rompen con actualizaciones móviles |
 | Gemini IA | Notas de mascota con IA. Confirmar que la clave vive en el servidor |
 | Make | **Revisar si se usa.** Si no, desinstalar (salida de datos innecesaria) |
-| Toolbox (JS↔Bubble) | Sus eventos (id `1488796042609…`) se usan en `tracking-petsitter`, pero **no aparece** en la lista de plugins del outline. Verificar que siga instalado |
+| Toolbox (JS↔Bubble) | Sus eventos (id `1488796042609…`) se usan en `walk-tracking-petsitter`, pero **no aparece** en la lista de plugins del outline. Verificar que siga instalado |
 
 > Pendiente: auditar qué plugins se usan realmente y quitar los que no.
 

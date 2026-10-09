@@ -9,23 +9,23 @@
 
 ## Flujo actual
 
-- **onbLoginStep1:** si el usuario está logueado **y verificado** → navHome
-  (Customer) o navBookings (Petsitter). Si está logueado pero **no verificado**
+- **welcomeStep1:** si el usuario está logueado **y verificado** → tabHome
+  (Customer) o tabBookings (Petsitter). Si está logueado pero **no verificado**
   → Log out (vuelve a entrar por login y verifica).
 - **signup:** Sign the user up (rol Customer, `emailConfirmation = no`, sin
   token) → crea `profile` → backend `sendVerificationCode` → abre el sheet
   `verificationCheck` con el email del usuario y estado limpio.
 - **login:** Log the user in. Si no está verificado: backend
   `sendVerificationCode` → abre `verificationCheck` → termina el workflow (no
-  navega). Si está verificado: navBookings (Petsitter) o navHome (resto).
+  navega). Si está verificado: tabBookings (Petsitter) o tabHome (resto).
   El input de password ya **no** valida la política de contraseña.
-- **profile → Verify email:** usa el mismo backend `sendVerificationCode` y el
+- **accountProfileEdit → Verify email:** usa el mismo backend `sendVerificationCode` y el
   mismo sheet.
-- **resetPassword (vista nativa):** mismo control de verificación y navegación
+- **authResetPassword (vista nativa):** mismo control de verificación y navegación
   por rol que el login. (Según la revisión, el reset real usa la página web
   `reset_pw`; esta vista parece no alcanzable, pero quedó protegida igual.)
-- **forgotPassword:** si el email está vacío, muestra el aviso y **termina** el
-  workflow; si no, envía el email de reset de Bubble → `checkYourEmail`.
+- **authForgotPassword:** si el email está vacío, muestra el aviso y **termina** el
+  workflow; si no, envía el email de reset de Bubble → `authForgotPasswordSent`.
 
 ## Contraseña (signup y login)
 
@@ -65,7 +65,7 @@ ojo vuelve a ocultarla. Al tocar *Sign up* / *Log in* se vuelve a ocultar.
   sistema borra todo lo escrito con la primera tecla. Es comportamiento normal
   de iOS.
 
-### resetPassword y settingsPrivacySecurity (cambiar contraseña)
+### authResetPassword y settingsPrivacySecurity (cambiar contraseña)
 
 Savepoint: "Antes de arreglar resetPassword y settingsPrivacySecurity"
 (`1791551230519`).
@@ -76,7 +76,7 @@ Savepoint: "Antes de arreglar resetPassword y settingsPrivacySecurity"
 - "The passwords don't match" ahora compara de verdad los dos campos y solo
   aparece si la confirmación tiene algo escrito. Si se intenta enviar con la
   confirmación vacía muestra "Please confirm your password".
-- `resetPassword`: la validación de la política pasó al campo de contraseña
+- `authResetPassword`: la validación de la política pasó al campo de contraseña
   nueva (estaba en el de confirmación); borde rojo si es inválida y ya tiene
   texto; borde de foco también en el campo de confirmación.
 - `settingsPrivacySecurity`: los tres campos son obligatorios; IDs distintos
@@ -115,7 +115,7 @@ solo se puede leer desde el email.
 |---|---|---|
 | 1 | Verificación decorativa (signup ponía `emailConfirmation = yes`) | ✅ Arreglado |
 | 2 | Login validaba la política de contraseña | ✅ Arreglado |
-| 3 | Admin / sin rol atascados tras login | ✅ Van a navHome |
+| 3 | Admin / sin rol atascados tras login | ✅ Van a tabHome |
 | 4 | Forgot password seguía con email vacío | ✅ Arreglado |
 | 5 | Google/Apple sin workflow | ✅ Botones ya ocultos; se ocultó también el texto "or" huérfano |
 | — | Código comparado en el cliente | ✅ Movido a backend |
@@ -124,7 +124,7 @@ solo se puede leer desde el email.
 
 ## Encontrado en la revisión y corregido
 
-- 🔴 La página web antigua `email_confirmation` ponía
+- 🔴 La página web antigua `email_confirmation` (hoy `auth-email-confirmation`) ponía
   `emailConfirmation = yes` al cargar, sin código. Borrado en test.
   **Sigue activo en Live hasta el próximo deploy.**
 - Profile tenía un evento cliente "Verify email code" que verificaba sin
@@ -140,7 +140,7 @@ solo se puede leer desde el email.
 - **Probar en dispositivo** (TestFlight / preview): signup, login sin
   verificar, código incorrecto ×5, código expirado, resend, cerrar la app en el
   sheet y volver, forgot password.
-- **Desplegar a Live** para cerrar el bypass de `email_confirmation`.
+- **Desplegar a Live** para cerrar el bypass de `email_confirmation` (nombre en Live).
 - Con red lenta, un código correcto puede mostrar el error un instante antes
   de navegar (la detección usa una pausa de 2,5 s).
 - `verificationAttempts` vuelve a 0 con cada código nuevo: no hay bloqueo
@@ -148,12 +148,12 @@ solo se puede leer desde el email.
 - La verificación se aplica en la interfaz (login, onboarding), no en las
   privacy rules. Hoy no es un problema porque "verificado" no da acceso extra.
   Si algún día lo da, agregar `emailConfirmation is yes` a las reglas.
-- Desde profile, al verificar, ahora navega a navHome (antes navAccount).
+- Desde accountProfileEdit, al verificar, ahora navega a tabHome (antes tabAccount).
 - Diseño y textos sin tocar: sombra azul del input del código, texto legal sin
   checkbox, links a la versión live.
 - Contraseña: probar en dispositivo el ojito (que el input oculto conserve el
   valor y que el ícono de 44 px se vea del tamaño correcto).
-- `resetPassword` y `settingsPrivacySecurity` no tienen ojito (no se pidió).
+- `authResetPassword` y `settingsPrivacySecurity` no tienen ojito (no se pidió).
 - Datos: en test los 3 usuarios tienen `emailConfirmation = yes`. En Live el
   signup antiguo siempre lo ponía en yes, así que nadie debería quedar fuera;
   confirmar en *Data → App data (Live)* antes de desplegar.

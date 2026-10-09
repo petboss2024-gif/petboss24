@@ -21,7 +21,7 @@ registra aquí.
 | [docs/database.md](docs/database.md) | Modelo de datos: tipos, campos, option sets y problemas conocidos |
 | [docs/privacy-rules.md](docs/privacy-rules.md) | Privacy rules por tipo de dato (quién ve qué) |
 | [docs/workflows.md](docs/workflows.md) | Flujos clave: reserva, pago, tracking, backend workflows |
-| [docs/screens.md](docs/screens.md) | Pantallas trabajadas: wallet, walletHistory, notifications |
+| [docs/screens.md](docs/screens.md) | Pantallas trabajadas: walletOverview, walletTransactionList, notificationList |
 | [docs/auth-review.md](docs/auth-review.md) | Login, signup, verificación de email y forgot password: flujo actual y pendientes |
 | [docs/plugins.md](docs/plugins.md) | Inventario de plugins y criterios para usarlos o crearlos |
 | [docs/conventions.md](docs/conventions.md) | Convenciones de nombres (camelCase) y estado del renombrado |

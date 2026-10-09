@@ -9,8 +9,8 @@ referencian un option set; `nav` para navegación.
 Ejemplos: `osRole`, `navStatusRequest`, `listOfPets`, `seenCustomer`.
 
 Solo se cambian **nombres visibles** (Bubble mantiene la clave interna, así que
-workflows y datos no se rompen). Las **páginas web** no siguen esta regla: su
-nombre es la URL y Bubble solo admite minúsculas.
+workflows y datos no se rompen). Las **páginas web** usan kebab-case porque su
+nombre es la URL (ver "Páginas web y vistas móviles").
 
 ## Estado del renombrado
 
@@ -70,6 +70,96 @@ Atributos (ejemplos): `Description` → `description`, `Image` → `image`,
 `time/min` → `timeMin`, `Coming soon` → `comingSoon`, `Img Active` →
 `imgActive`, `Sub text` → `subText`, `TYPE` → `type`, `URL` → `url`,
 `CTA` → `cta`, `ID` → `id`.
+
+## Páginas web y vistas móviles
+
+Aplicado el 2026-10-09 en Main (test). Savepoint: **"Antes de renombrar páginas
+web y vistas móviles"** (`1791565293480`).
+
+### Páginas web (son la URL)
+
+- **kebab-case en minúsculas**, en inglés: solo `a-z`, `0-9` y guiones entre
+  palabras. Sin guiones bajos ni sufijos técnicos (`_web`, `_url`).
+  Bubble solo admite minúsculas y Google recomienda guiones en las URL.
+- Forma `[módulo-]tema[-rol][-resultado]`. Una página que se muestra dentro de
+  una vista usa **las mismas palabras** que esa vista (`bookingPayment` ↔
+  `booking-payment`).
+- Páginas públicas: una palabra corta (`privacy`, `terms`).
+- Páginas de Bubble que no se tocan: `index`, `404`, `reset_pw`.
+
+### Vistas móviles
+
+- **lowerCamelCase** en inglés, solo letras y números.
+- Forma **módulo + Tema + Tipo + Rol**, con el módulo primero para que cada
+  familia quede junta en el editor.
+- Módulos: `auth`, `welcome`, `tab`, `booking`, `walk`, `chat`, `account`,
+  `settings`, `notification`, `pet`, `address`, `wallet`, `petsitter`,
+  `customer`.
+- Tipos: `Step1..N` (pantallas numeradas: pasos de un formulario o slides),
+  `List`, `Details`, `Edit`, `Menu`, `Overview`, `Profile`.
+- Resultados: `Sent`, `Submitted`, `Pending`, `Success`, `Canceled`
+  (inglés de EE. UU.).
+- Rol al final (`…Customer` / `…Petsitter`) cuando la pantalla existe para los
+  dos roles. Rol al inicio (`petsitter…`, `customer…`) cuando la pantalla trata
+  de esa persona o es la configuración propia de ese rol.
+- Pestañas: `tab` + nombre de la pestaña.
+- Palabras completas, sin abreviaturas (`onb`, `nav`, `dg`). Nombres únicos y
+  distintos de tipos de datos, option sets y reusables.
+- `updateApp` se deja igual (vista de actualización obligatoria de Bubble).
+
+### Tabla de cambios
+
+| Antes | Ahora | Qué es |
+|---|---|---|
+| login | `authLogin` | Iniciar sesión |
+| signup | `authSignup` | Crear cuenta (siempre Customer) |
+| forgotPassword | `authForgotPassword` | Pedir enlace de recuperación |
+| checkYourEmail | `authForgotPasswordSent` | "Revisa tu correo" tras pedir el enlace |
+| resetPassword | `authResetPassword` | Poner contraseña nueva |
+| onbLoginStep1/2/3 | `welcomeStep1/2/3` | Slides de bienvenida (sin sesión) |
+| onbPetsitter | `petsitterOnboarding` | Solicitud para ser petsitter + pagos Stripe |
+| onbConfirmationPetsitter | `petsitterOnboardingSubmitted` | "Estamos confirmando tus datos" |
+| onbPendingPetsitter | `petsitterOnboardingPending` | "Estamos revisando tus datos" |
+| navHome | `tabHome` | Pestaña Inicio |
+| navBookings | `tabBookings` | Pestaña Reservas (ambos roles) |
+| navChat | `tabChats` | Pestaña Chats |
+| navAccount | `tabAccount` | Pestaña Cuenta |
+| profile | `accountProfileEdit` | Editar mi perfil |
+| settings | `settingsMenu` | Menú de ajustes |
+| settingsHelpSupport, settingsNotifications, settingsPrivacySecurity, settingsFeedback | sin cambio | Ya cumplían |
+| notifications | `notificationList` | Bandeja de notificaciones |
+| requestWalkStep1/2/3 | `bookingStep1/2/3` | Pasos para reservar un paseo |
+| customerBookingDetails | `bookingDetailsCustomer` | Una reserva vista por el customer |
+| dgPetsitterAccept | `bookingDetailsPetsitter` | Una solicitud vista por el petsitter (postularse) |
+| confirmPayment | `bookingPayment` | Resumen antes de pagar (muestra `booking-payment`) |
+| chatMessages | sin cambio | Mensajes de una conversación |
+| trackingPetsitter | `walkTrackingPetsitter` | Paseo del petsitter (muestra `walk-tracking-petsitter`) |
+| trackingCustomer | `walkTrackingCustomer` | Mapa en vivo del customer (muestra `walk-tracking-customer`) |
+| pets | `petList` | Mis mascotas |
+| aboutPet | `petDetails` | Detalle de una mascota |
+| address | `addressList` | Mis direcciones |
+| aboutPetsitter | `petsitterProfile` | Perfil de un petsitter (visto por customers) |
+| aboutCustomer | `customerProfile` | Perfil de un customer (visto por el petsitter) |
+| services | `petsitterServiceList` | Servicios que ofrece el petsitter |
+| service | `petsitterServiceEdit` | Precios y radio de un servicio |
+| wallet | `walletOverview` | Billetera |
+| walletHistory | `walletTransactionList` | Historial de transacciones |
+| updateApp | sin cambio | Actualización obligatoria (Bubble) |
+| tracking-petsitter (web) | `walk-tracking-petsitter` | GPS del paseo (dentro de la vista) |
+| tracking-customer (web) | `walk-tracking-customer` | Mapa del customer (dentro de la vista) |
+| email_confirmation (web) | `auth-email-confirmation` | Página antigua "Confirmed account!" (sin uso) |
+| confirm_payment_web (web) | `booking-payment` | Resumen antes de Stripe (dentro de la vista) |
+| onboarding_petsitter_web (web) | `petsitter-onboarding` | Alta de pagos Stripe Connect (dentro de la vista) |
+| welcome_petboss_web (web) | `petsitter-onboarding-complete` | "Ready to Get Paid!" (sin uso) |
+| payment_success (web) | `booking-payment-success` | Regreso de Stripe tras pagar |
+| cancel_url (web) | `booking-payment-canceled` | Regreso al cancelar (sin uso: hoy se usa deep link) |
+| policy_privacy (web) | `privacy` | Política de privacidad |
+| terms_conditions (web) | `terms` | Términos y condiciones |
+| index, 404, reset_pw (web) | sin cambio | Páginas de Bubble |
+
+Las referencias por ID (WebViews, "Go to view", "Go to page", pestañas) se
+actualizan solas. Las URL escritas como texto **no**: ver "URLs por
+actualizar" en `backlog.md`.
 
 ## Colores y tipografía
 

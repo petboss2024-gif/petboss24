@@ -55,9 +55,9 @@ Todas las condiciones de Admin son `Current User's osRole is Admin`.
 
 | Campo | Se llena en | Se vacía en |
 |---|---|---|
-| `address.authorizedPetsitters` (lista User) | Backend `checkout_session_completed`: se agrega el `petsitter` de la transaction a la `address` de la reserva (solo si la reserva tiene address) | Página `tracking-petsitter`, workflow de fin de paseo: se quitan los `listOfPetsitters` de la reserva |
-| `trackingNew.customer` | Vista `trackingPetsitter`, al crear el trackingNew: `dgRequest's customer` | — |
-| `updateLocation.customer` | Página `tracking-petsitter`, al crear cada punto: `Current page's dgRequest's customer` | — |
+| `address.authorizedPetsitters` (lista User) | Backend `checkout_session_completed`: se agrega el `petsitter` de la transaction a la `address` de la reserva (solo si la reserva tiene address) | Página `walk-tracking-petsitter`, workflow de fin de paseo: se quitan los `listOfPetsitters` de la reserva |
+| `trackingNew.customer` | Vista `walkTrackingPetsitter`, al crear el trackingNew: `dgRequest's customer` | — |
+| `updateLocation.customer` | Página `walk-tracking-petsitter`, al crear cada punto: `Current page's dgRequest's customer` | — |
 
 > Las reservas pagadas **antes** de este cambio tienen `authorizedPetsitters`
 > vacío: su petsitter no verá los códigos de acceso hasta rellenarlo.

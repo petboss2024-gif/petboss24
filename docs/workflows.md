@@ -9,7 +9,7 @@
    - **Cambio 2026-10-09:** ahora requiere autenticación y solo corre si el
      parámetro `customer` es el Current User. (No estaba expuesto como API
      pública, así que el riesgo previo era bajo.)
-2. **Petsitters se postulan** → vista `dgPetsitterAccept`, botón Accept
+2. **Petsitters se postulan** → vista `bookingDetailsPetsitter`, botón Accept
    - Alterna al petsitter en `listOfPetsitters` (add / remove).
 3. **Customer elige y paga** → reusable `customerPayment`
    - Crea un deep link de vuelta y agenda `create-transaction`
@@ -18,7 +18,7 @@
      **Stripe - Create Checkout Session** con `application_fee_amount` y
      `transfer_data[destination]` = **Petsitter's stripeAccountId** (cambio
      2026-10-09), guarda `url`, `id`, `payment_status`, etc.
-   - La vista `confirmPayment` abre la página `confirm_payment_web` en un
+   - La vista `bookingPayment` abre la página `booking-payment` en un
      WebView.
 4. **Stripe confirma el pago** → backend `checkout_session_completed` (webhook)
    - Actualiza la transaction (`paymentStatus`, `paymentIntentId`).
@@ -27,7 +27,7 @@
      `petsitterConfirmed = yes`, `active = no`, status Booked / Upcoming.
    - **Nuevo:** agrega ese petsitter a `address.authorizedPetsitters`.
    - Envía notificaciones.
-5. **Paseo** → vista `trackingPetsitter` + página web `tracking-petsitter`
+5. **Paseo** → vista `walkTrackingPetsitter` + página web `walk-tracking-petsitter`
    (dentro de un WebView)
    - Al empezar: crea `trackingNew` (**nuevo:** con `customer`) y lo liga a la reserva.
    - Al iniciar el tracking: status Booked / In Progress, `trackingNew.active`,
@@ -55,7 +55,7 @@ Diseño acordado; **pendiente de inicializar las llamadas**:
 2. **Stripe - Create Setup Session** (`POST /v1/checkout/sessions`,
    `mode=setup`, `currency=usd` como parámetros privados, `customer`,
    `success_url`, `cancel_url`).
-3. Deep link de vuelta a `wallet` como success/cancel URL (este paso ya está
+3. Deep link de vuelta a `walletOverview` como success/cancel URL (este paso ya está
    en el workflow del botón).
 4. Open external website con la `url` de la sesión.
 
@@ -75,7 +75,7 @@ cambiar eso.
 
 ## Issues que Bubble ya reportaba (pre-existentes)
 
-- `tracking-petsitter`: textos con expresiones no imprimibles; "Make changes to
+- `walk-tracking-petsitter`: textos con expresiones no imprimibles; "Make changes to
   trackingNew: Value should be number but is empty".
 - `create-request`: "Search for profiles: value should be User but is empty".
 - `create-ai-response`: "Value should be number but is empty".

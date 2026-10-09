@@ -1,8 +1,8 @@
 # Pantallas trabajadas
 
-## wallet (vista móvil)
+## walletOverview (vista móvil)
 
-**Navegación:** `navAccount` → "Wallet & Payments" → `wallet`.
+**Navegación:** `tabAccount` → "Wallet & Payments" → `walletOverview`.
 
 | Parte | Comportamiento |
 |---|---|
@@ -10,13 +10,13 @@
 | Recent Activity | Últimas **5** transacciones, **más recientes primero**. Customer: donde es `customer`. Petsitter (conditional): donde es `petsitter` |
 | Tarjeta "This Month" | Total y conteo de transacciones `paid` **del mes actual** (`Created Date > Current date/time rounded down to month`) |
 | Total (petsitter) | Etiqueta "Earnings"; valor = suma de `amount` − suma de `platformFee` del mes |
-| View All | Navega a `walletHistory` |
+| View All | Navega a `walletTransactionList` |
 | Add Payment Method | Paso 1 (deep link a wallet) creado; resto pendiente — ver workflows.md |
 
 Montos en **centavos**: se muestran `/ 100` con formato `$1,028.58`.
 Se borró el workflow vacío "Test 65".
 
-## walletHistory (vista móvil, nueva)
+## walletTransactionList (vista móvil, nueva)
 
 - App bar "Transaction History" (estilo `AppBar_mobile_`, con back) + banner
   `offlineBanner`.
@@ -26,7 +26,7 @@ Se borró el workflow vacío "Test 65".
   a la izquierda; monto y estado a la derecha.
 - Texto "No transactions yet" cuando la lista está vacía.
 
-## notifications (vista móvil, rediseño)
+## notificationList (vista móvil, rediseño)
 
 Solo diseño; búsquedas, condiciones y workflows intactos.
 
