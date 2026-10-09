@@ -158,8 +158,7 @@ web y vistas móviles"** (`1791565293480`).
 | index, 404, reset_pw (web) | sin cambio | Páginas de Bubble |
 
 Las referencias por ID (WebViews, "Go to view", "Go to page", pestañas) se
-actualizan solas. Las URL escritas como texto **no**: ver "URLs por
-actualizar" en `backlog.md`.
+actualizan solas. Las URL escritas como texto se actualizaron a mano (ver `backlog.md`).
 
 ## Colores y tipografía
 

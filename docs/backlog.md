@@ -16,37 +16,33 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       `email_confirmation` en Live todavía marca el email como verificado sin
       código.
 
-## 🔴 URLs por actualizar tras el renombrado (2026-10-09)
+## 🔴 URLs tras el renombrado (2026-10-09)
 
-Las páginas web cambiaron de nombre; estas URL están escritas como texto y
-siguen apuntando al nombre viejo (darán 404). Las referencias por ID no se
-rompen.
+Actualizadas en test para apuntar a los nombres nuevos (sin cambiar nada más):
 
-- [ ] **Pago de reservas:** reusable `customerPayment`, acción `cmzBm`
-      (Schedule `create-transaction`), `success_url` =
-      `https://petboss24.com/version-test/payment_success/…` →
-      `booking-payment-success`. Además está fija a `version-test`: en Live
-      regresaría a test. Construirla con la URL base dinámica.
-- [ ] **Stripe Connect:** página `petsitter-onboarding`, acciones `cmrTb` y
-      `cmtvo` (Create Onboarding Link), `refresh_url` / `return_url` =
-      `https://petboss24.com/onboarding_petsitter_web` → `petsitter-onboarding`.
-- [ ] **Términos y privacidad:** vista `authSignup` (`cmxtg0`, `cmxuL0`), vista
-      `petsitterOnboarding` (`cmyHT`, `cmyHd`), HTML de la página `terms`
-      (`cmxns`, sección 16) y HTML oculto de `index` (`cmxrJ`) →
-      `https://petboss24.com/terms` y `/privacy`.
-- [ ] **Valores por defecto del API Connector** (Stripe): *Create Checkout
-      Session* (`success_url` con `payment_success`, `cancel_url` con
-      `transaction_mobile`, que no existe) y *Create Onboarding Link*
-      (`refresh_url` con `onboarding_petsitter_web`). Solo se usan al
-      inicializar, pero conviene corregirlos.
-- [ ] **Flujo antiguo oculto** en `petsitterProfile` (acción `cmlqa`): usa
-      `success_url` y `cancel_url` de páginas que no existen. Borrar o
-      reconectar.
-- [ ] **Fuera de Bubble** (al desplegar a Live): URLs de privacidad y términos
-      en App Store Connect, Google Play Console y Stripe.
-- [ ] Opcional: en la página `404`, redirigir los nombres viejos
-      (`policy_privacy`, `terms_conditions`, `payment_success`…) a los nuevos,
-      para links ya publicados.
+- [x] `customerPayment` `cmzBm`: `success_url` → `…/version-test/booking-payment-success/<id>`.
+- [x] `petsitter-onboarding` `cmrTb` y `cmtvo`: `refresh_url` / `return_url` →
+      `https://petboss24.com/petsitter-onboarding`.
+- [x] Términos y privacidad: `authSignup` (`cmxtg0`, `cmxuL0`),
+      `petsitterOnboarding` (`cmyHT`, `cmyHd`), HTML de `terms` (`cmxns`) y de
+      `index` (`cmxrJ`) → `/terms` y `/privacy`.
+- [x] Flujo antiguo oculto en `petsitterProfile` (`cmlqa`): `cancel_url` →
+      `booking-payment-canceled` (su `success_url` apunta a una página que nunca
+      existió; se dejó igual).
+
+Pendiente (no se tocó a propósito):
+
+- [ ] `success_url` de `cmzBm` sigue fija a `version-test`: en Live regresaría a
+      test. Construirla con la URL base dinámica.
+- [ ] Stripe Connect (`cmrTb`, `cmtvo`) usa el dominio Live sin
+      `version-test`.
+- [ ] Valores por defecto del API Connector (Stripe *Create Checkout Session* y
+      *Create Onboarding Link*) aún con nombres viejos (`payment_success`,
+      `transaction_mobile`, `onboarding_petsitter_web`). Solo se usan al
+      inicializar.
+- [ ] Fuera de Bubble (al desplegar a Live): URLs de privacidad y términos en
+      App Store Connect, Google Play Console y Stripe.
+- [ ] Opcional: en `404`, redirigir los nombres viejos a los nuevos.
 
 ## 🟠 Funcionalidad
 

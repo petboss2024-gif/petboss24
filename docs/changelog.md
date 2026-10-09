@@ -91,8 +91,9 @@ editor, o `restore_savepoint` con el timestamp).
 - 34 vistas y 10 páginas web renombradas según la convención nueva (tabla en
   `conventions.md`). `index`, `404`, `reset_pw`, `updateApp` y las vistas que
   ya cumplían quedaron igual.
-- Las URL escritas como texto quedaron con el nombre viejo a propósito (se
-  arreglan después): lista en `backlog.md`.
+- URLs escritas como texto actualizadas a los nombres nuevos (pago de
+  reservas, Stripe Connect, términos y privacidad); detalle y pendientes en
+  `backlog.md`.
 - Bubble: sin issues nuevos (9 pre-existentes).
 
 ### Revisiones sin cambios
