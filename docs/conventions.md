@@ -32,7 +32,7 @@ Campos de tipos de datos:
 | support | type_support → `typeSupport` |
 | transaction | paymenStatus → `paymentStatus` |
 
-Reusables y vistas: `header`, `footer`, `offlineBanner`, `updateApp`.
+Reusables y vistas: ver "Páginas web y vistas móviles" → Reusables.
 
 ### No posible por herramienta
 
@@ -106,6 +106,32 @@ web y vistas móviles"** (`1791565293480`).
 - Palabras completas, sin abreviaturas (`onb`, `nav`, `dg`). Nombres únicos y
   distintos de tipos de datos, option sets y reusables.
 - `updateApp` se deja igual (vista de actualización obligatoria de Bubble).
+
+### Reusables
+
+Misma forma que las vistas (**módulo + Tema + Pieza**). Módulos extra: `web`
+(piezas de las páginas web) y `app` (piezas genéricas). Piezas: `Sheet` (hoja
+que sube desde abajo), `Card`, `Banner`, `Callout`, `Overlay`, `Header`,
+`Footer`. Savepoint: **"Antes de renombrar reusables"** (`1791566694459`).
+
+| Antes | Ahora | Qué es |
+|---|---|---|
+| header | `webHeader` | Encabezado de la web |
+| footer | `webFooter` | Pie de la web |
+| offlineBanner | `appOfflineBanner` | Aviso "sin conexión" |
+| customerPayment | `bookingPaymentCard` | Bloque de pago/confirmación de una reserva |
+| info | `appInfoCallout` | Recuadro informativo |
+| aboutUser | `petsitterProfileCard` | Tarjeta de perfil del petsitter |
+| addressAddEdit | `addressEditSheet` | Crear/editar dirección |
+| addressDetail | `addressDetailsSheet` | Detalle de una dirección |
+| dgRequestDetails | `bookingDetailsSheet` | Detalle de una reserva (editar/cancelar) |
+| dgRequestEdit | `bookingEditSheet` | Editar una reserva |
+| petAddEdit | `petEditSheet` | Crear/editar mascota |
+| photo | `appPhotoPickerSheet` | Tomar o elegir foto |
+| review | `bookingReviewSheet` | Calificar después del paseo |
+| verificationCheck | `authVerificationSheet` | Código de verificación de email |
+| deleteConfirmation | `addressDeleteSheet` | Confirmar borrado de dirección |
+| charge | `appLoadingOverlay` | Pantalla de carga |
 
 ### Tabla de cambios
 

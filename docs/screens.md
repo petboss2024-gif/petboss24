@@ -19,7 +19,7 @@ Se borró el workflow vacío "Test 65".
 ## walletTransactionList (vista móvil, nueva)
 
 - App bar "Transaction History" (estilo `AppBar_mobile_`, con back) + banner
-  `offlineBanner`.
+  `appOfflineBanner`.
 - Lista completa (SelectableList, deshabilitada para selección) con la misma
   lógica customer/petsitter, sin límite, más recientes primero.
 - Cada fila: tarjeta con borde `rgba(59,59,59,1)`, radio 12 — servicio y fecha
@@ -50,11 +50,11 @@ Solo diseño; búsquedas, condiciones y workflows intactos.
 ## Renombres de interfaz
 
 - Reusables: `Header` → `header`, `Footer` → `footer`,
-  `offline_banner` → `offlineBanner`.
+  `offline_banner` → `appOfflineBanner`.
 - Vista móvil: `update_app` → `updateApp`.
 - Páginas web **no** renombradas: su nombre es la URL (Stripe return URLs,
   WebViews de tracking, links de correo) y Bubble no admite mayúsculas.
 
 > Ojo: la plantilla de "nueva vista móvil" de Bubble inserta un
 > `offline_banner` que ya no existe; al crear vistas nuevas hay que
-> reemplazarlo por `offlineBanner`.
+> reemplazarlo por `appOfflineBanner`.

@@ -14,9 +14,9 @@
   → Log out (vuelve a entrar por login y verifica).
 - **signup:** Sign the user up (rol Customer, `emailConfirmation = no`, sin
   token) → crea `profile` → backend `sendVerificationCode` → abre el sheet
-  `verificationCheck` con el email del usuario y estado limpio.
+  `authVerificationSheet` con el email del usuario y estado limpio.
 - **login:** Log the user in. Si no está verificado: backend
-  `sendVerificationCode` → abre `verificationCheck` → termina el workflow (no
+  `sendVerificationCode` → abre `authVerificationSheet` → termina el workflow (no
   navega). Si está verificado: tabBookings (Petsitter) o tabHome (resto).
   El input de password ya **no** valida la política de contraseña.
 - **accountProfileEdit → Verify email:** usa el mismo backend `sendVerificationCode` y el
@@ -85,7 +85,7 @@ Savepoint: "Antes de arreglar resetPassword y settingsPrivacySecurity"
 - Si la contraseña actual es incorrecta, se muestra el error estándar de Bubble
   (igual que en el resto de la app).
 
-## verificationCheck (reusable)
+## authVerificationSheet (reusable)
 
 - **Verify** (solo corre si el input tiene 6 dígitos): estado "verificando" →
   guarda el código en `pendingVerificationCode` → backend `verifyEmailCode` →

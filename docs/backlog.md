@@ -20,7 +20,7 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 
 Actualizadas en test para apuntar a los nombres nuevos (sin cambiar nada más):
 
-- [x] `customerPayment` `cmzBm`: `success_url` → `…/version-test/booking-payment-success/<id>`.
+- [x] `bookingPaymentCard` `cmzBm`: `success_url` → `…/version-test/booking-payment-success/<id>`.
 - [x] `petsitter-onboarding` `cmrTb` y `cmtvo`: `refresh_url` / `return_url` →
       `https://petboss24.com/petsitter-onboarding`.
 - [x] Términos y privacidad: `authSignup` (`cmxtg0`, `cmxuL0`),
@@ -80,8 +80,8 @@ Pendiente (no se tocó a propósito):
 - [ ] Títulos visibles de vistas copiados o mal escritos (p. ej. "Date &
       Duration" en `bookingStep2`/`bookingStep3`, "Forgot Password" en
       `authForgotPasswordSent`, "reset_password").
-- [ ] Reusables con nombres poco claros: `dgRequestDetails`, `dgRequestEdit`,
-      `addressDetail`, `info`, `photo`, `charge`.
+- [ ] Reusables con nombres poco claros: `bookingDetailsSheet`, `bookingEditSheet`,
+      `addressDetailsSheet`, `info`, `photo`, `charge`.
 
 - [ ] Renombrar option sets a camelCase (checklist en `conventions.md`).
 - [ ] Campo `petsitter` en `dgRequest`; un solo `bookingStatus`.

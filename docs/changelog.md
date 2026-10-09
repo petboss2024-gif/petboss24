@@ -96,6 +96,10 @@ editor, o `restore_savepoint` con el timestamp).
   `backlog.md`.
 - Bubble: sin issues nuevos (9 pre-existentes).
 
+### Renombrado de reusables
+- Savepoint: **"Antes de renombrar reusables"** — `1791566694459`
+- 16 reusables renombrados (tabla en `conventions.md`). Bubble: sin issues nuevos.
+
 ### Revisiones sin cambios
 - Auditoría del modelo de datos → `database.md` / `backlog.md`.
 - Política de plugins → `plugins.md`.

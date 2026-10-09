@@ -11,7 +11,7 @@
      pública, así que el riesgo previo era bajo.)
 2. **Petsitters se postulan** → vista `bookingDetailsPetsitter`, botón Accept
    - Alterna al petsitter en `listOfPetsitters` (add / remove).
-3. **Customer elige y paga** → reusable `customerPayment`
+3. **Customer elige y paga** → reusable `bookingPaymentCard`
    - Crea un deep link de vuelta y agenda `create-transaction`
      (ignorando privacy rules).
    - `create-transaction`: crea `transaction` (status "Created"), llama a
