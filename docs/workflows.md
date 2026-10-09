@@ -69,6 +69,7 @@ cambiar eso.
 | Workflow | Notas |
 |---|---|
 | `add a list range of dates`, `remove a list range of dates`, `update credentials` | Bubble avisa: nombres con espacios no recomendados para Workflow API |
+| `sendVerificationCode`, `verifyEmailCode` | Custom events de verificación de email (nuevos) — ver `auth-review.md` |
 | `create-chat`, `create-message`, `notifications`, `create-review`, `create-address`, `create-ai-response`, `create-request-date` | Sin revisión detallada |
 | `webhook_account_enabled`, `webhook_account_restricted` | Webhooks de Stripe Connect — revisar la misma vulnerabilidad que `checkout_session_completed` |
 

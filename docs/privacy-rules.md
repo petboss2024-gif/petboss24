@@ -21,7 +21,7 @@ Todas las condiciones de Admin son `Current User's osRole is Admin`.
 
 | Tipo | Ve todo | Ve parcial | Nadie más |
 |---|---|---|---|
-| **User** | Self (`This User is Current User`), Admin | Logged in users: solo `osRole`, `osStatusVerificationPetsitter`, Created Date | ✔ |
+| **User** | Self (`This User is Current User`; **sin** `tokenConfirmation` ni `pendingVerificationCode`), Admin | Logged in users: solo `osRole`, `osStatusVerificationPetsitter`, Created Date | ✔ |
 | **profile** | Owner (`Creator is Current User`), Admin | Logged in users: firstName, lastName, profilePicture, about, experienceInMonths, osGender, details, country, Created Date, Creator. **Sin teléfono ni birthdate** | ✔ |
 | **address** | Owner (`user` o Creator = me), **Authorized petsitter** (`authorizedPetsitters contains me`), Admin | — | ✔ |
 | **dgRequest** | Customer (`customer = me`), Applied or assigned petsitter (`listOfPetsitters contains me`), Admin | **Open requests for petsitters**: rol Petsitter **y** status = Pending → servicio, tipo, fechas, horas, duración, geographicAddress, mascotas, instrucciones, statuses, tip, customer. **Sin** address, conversation, trackingNew, reviews, requestAddTime | ✔ |

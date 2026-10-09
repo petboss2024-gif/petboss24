@@ -35,7 +35,8 @@ User ──< pets
 `email` · `osRole` (Admin/Customer/Petsitter) · `osStatusVerificationPetsitter` ·
 `stripeAccountId` · `sellerAccountId` · `stripeCustomerId` *(nuevo, para Stripe
 setup mode)* · `playerId` · `googleAccount` · `googleId` · `emailConfirmation` ·
-`tokenConfirmation`
+`tokenConfirmation` · `tokenExpiresAt` · `verificationAttempts` ·
+`pendingVerificationCode` *(nuevos — ver auth-review.md)*
 
 **profile** — `firstName`, `lastName`, `birthdate`, `about`, `details`,
 `profilePicture`, `osGender`, `country`, `countryCode`, `dialCode`,

@@ -11,7 +11,10 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       (checklist en `privacy-rules.md`).
 - [ ] Rellenar `address.authorizedPetsitters` en reservas ya pagadas, si hay
       reservas activas.
-- [ ] Login/signup: verificación real de email (ver `auth-review.md`).
+- [x] Login/signup: verificación real de email (ver `auth-review.md`).
+- [ ] **Desplegar a Live** el arreglo de verificación: la página
+      `email_confirmation` en Live todavía marca el email como verificado sin
+      código.
 
 ## 🟠 Funcionalidad
 
@@ -23,7 +26,10 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
   Luego: terminar el workflow del botón "Add Payment Method".
 - [ ] Hacer que Create Checkout Session envíe `customer` para usar la tarjeta
       guardada.
-- [ ] Login/signup: bugs y plan de `auth-review.md`.
+- [x] Login/signup: bugs y plan de `auth-review.md`.
+- [ ] Probar login/signup/verificación en dispositivo (checklist en
+      `auth-review.md`).
+- [ ] Login/signup: diseño y textos pendientes (`auth-review.md`).
 - [ ] Notificaciones: título con remitente, marcar como leída, abrir la reserva.
 - [ ] Habilitar `petboss24.com` en *Allowed domains* del entorno cloud para
       poder probar con navegador desde las sesiones.

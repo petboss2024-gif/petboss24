@@ -40,7 +40,29 @@ editor, o `restore_savepoint` con el timestamp).
 - Privacy rules reescritas para 19 tipos (detalle en `privacy-rules.md`).
 - Bubble: sin issues nuevos (9 pre-existentes).
 
+### Login, signup y verificación de email
+- Savepoints: **"Antes de arreglar login y signup"** — `1791511125227`;
+  **"Antes de correcciones de la revisión de login/signup"** — `1791513607632`
+- Campos User: `tokenExpiresAt`, `verificationAttempts`,
+  `pendingVerificationCode`.
+- Backend nuevos: `sendVerificationCode` (cooldown 60 s, expira 15 min) y
+  `verifyEmailCode` (máx. 5 intentos).
+- signup: `emailConfirmation = no`; envía el código por backend.
+- login: sin política de contraseña en el input; si no está verificado abre
+  `verificationCheck` y no navega.
+- onbLoginStep1: solo entra si está verificado; si no, Log out.
+- forgotPassword: termina si el email está vacío.
+- verificationCheck: verificación por backend, éxito con *Do when condition is
+  true*, resend por backend, estado limpio al abrir.
+- profile y resetPassword: usan el mismo flujo.
+- Borrados: workflow de carga de la página `email_confirmation` (verificaba sin
+  código), eventos "Verify/Incorrect email code" de profile, eventos duplicados
+  de signup y del reusable.
+- Privacy rule *Self* de User: ya no muestra `tokenConfirmation` ni
+  `pendingVerificationCode`.
+- Texto "or" de Google/Apple oculto en login y signup.
+- Bubble: sin issues nuevos (9 pre-existentes). Detalle en `auth-review.md`.
+
 ### Revisiones sin cambios
 - Auditoría del modelo de datos → `database.md` / `backlog.md`.
-- Auditoría de login/signup → `auth-review.md`.
 - Política de plugins → `plugins.md`.
