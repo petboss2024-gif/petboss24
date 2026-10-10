@@ -25,7 +25,7 @@ Todas las condiciones de Admin son `Current User's osRole is Admin`.
 | **profile** | Owner (`Creator is Current User`), Admin | Logged in users: firstName, lastName, profilePicture, about, experienceInMonths, osGender, details, country, Created Date, Creator. **Sin teléfono ni birthdate** | ✔ |
 | **address** | Owner (`user` o Creator = me), **Authorized petsitter** (`authorizedPetsitters contains me`), Admin | — | ✔ |
 | **dgRequest** | Customer (`customer = me`), Applied or assigned petsitter (`listOfPetsitters contains me`), Admin | **Open requests for petsitters**: rol Petsitter **y** status = Pending → servicio, tipo, fechas, horas, duración, geographicAddress, mascotas, instrucciones, statuses, tip, customer. **Sin** address, conversation, trackingNew, reviews, requestAddTime | ✔ |
-| **pets** | Owner (`user` o Creator = me), Admin | Petsitters (read only): todos los campos, sin auto-binding | ✔ |
+| **pets** | Owner (`user` o Creator = me), **Authorized petsitter** (`authorizedPetsitters contains me`: todo menos estado IA), Admin | Petsitters (basic info): name, photo, breed, size, gender, birthdate, spayedNeutered, personality, user, delete; búsqueda solo por user/delete | ✔ (2026-10-10) |
 | **transaction** | Customer, Petsitter (del registro), Admin | — | ✔ |
 | **requestAddTime** | Customer, Petsitter (del registro) | — | ✔ |
 | **notifications** | Recipient or sender, Admin | Broadcast for my role: `all = yes` y `typeUser = my osRole` | ✔ |
@@ -55,7 +55,8 @@ Todas las condiciones de Admin son `Current User's osRole is Admin`.
 
 | Campo | Se llena en | Se vacía en |
 |---|---|---|
-| `address.authorizedPetsitters` (lista User) | Backend `checkout_session_completed`: se agrega el `petsitter` de la transaction a la `address` de la reserva (solo si la reserva tiene address) | Página `walk-tracking-petsitter`, workflow de fin de paseo: se quitan los `listOfPetsitters` de la reserva |
+| `address.authorizedPetsitters` (lista User) | Backend `checkout_session_completed`: se agrega el `petsitter` de la transaction a la `address` de la reserva (solo si la reserva tiene address) | Backend `place-revoke-petsitter-access`, programado al terminar el paseo y al cancelar desde el chat (desde 2026-10-10; antes se hacía en el cliente) |
+| `pets.authorizedPetsitters` (lista User) | Backend `checkout_session_completed`, solo con `payment_status = paid` | Backend `place-revoke-petsitter-access` (igual que la address) |
 | `trackingNew.customer` | Vista `walkTrackingPetsitter`, al crear el trackingNew: `dgRequest's customer` | — |
 | `updateLocation.customer` | Página `walk-tracking-petsitter`, al crear cada punto: `Current page's dgRequest's customer` | — |
 

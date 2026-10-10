@@ -4,6 +4,28 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-10
+
+### Pets y Places: refactor (seguridad, backend, validaciones)
+- Savepoint antes: **"Antes de refactor Pets y Places"** — `1791637355005`
+- Savepoint después: **"Después de refactor Pets y Places (fases 1-4)"** — `1791639308907`
+- Backend nuevo (no expuesto, respeta privacy rules): `pet-generate-ai-data`,
+  `pet-delete`, `place-delete`, `place-set-default`,
+  `place-revoke-petsitter-access`.
+- `checkout_session_completed`: autoriza también las mascotas; acceso solo con
+  `payment_status = paid`. `create-address`: sin ignore privacy, `user` debe
+  ser Current User.
+- Pets: validación, IA asíncrona con estado, una sola edición, Cancel
+  arreglado, Edit/Delete solo para el dueño, lista de mascotas de
+  customerProfile corregida.
+- Places: detalle con datos, error visible sin dirección, ciudad/estado/ZIP
+  conservados al editar, ZIP como texto (`zipCodeText`), códigos incompatibles
+  vaciados, soft delete unificado.
+- Reservas: selectores sin registros borrados.
+- Privacy rules: petsitters solo ven datos básicos de mascotas; datos completos
+  solo con reserva pagada; auto-binding desactivado en pets y address.
+- Bubble: sin issues nuevos (9 pre-existentes). Detalle en `pets-places.md`.
+
 ## 2026-10-09
 
 ### Renombrado a camelCase

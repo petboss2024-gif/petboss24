@@ -16,6 +16,33 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       `email_confirmation` en Live todavía marca el email como verificado sin
       código.
 
+## 🔴 Pets y Places (2026-10-10, ver `pets-places.md`)
+
+- [ ] **Probar en test** con un customer y un petsitter:
+  - crear y editar una mascota (IA en segundo plano, Cancel, sin género);
+  - crear y editar una dirección (ZIP con 0 inicial, cambio de método de acceso, sin elegir dirección);
+  - pagar una reserva, terminar el paseo y cancelar desde el chat (acceso del petsitter).
+- [ ] **Confirmar** que los API workflows programados desde la app corren con
+      Current User = quien los programó. Si no, ninguna acción se aplica (falla
+      segura).
+- [ ] **Decidir:** plazo de expiración del acceso del petsitter si el paseo no
+      se cierra (no-show). Hoy no expira solo.
+- [ ] **Decidir:** consentimiento para enviar datos de salud de la mascota a
+      Gemini. Hoy se envían alergias, medicación, dieta y comportamiento.
+- [ ] **Decidir:** qué pasa con la dirección por defecto al borrarla. Hoy queda
+      sin default; no se asigna otra.
+- [ ] **Autorizar** la migración de ZIP (procedimiento en `pets-places.md`).
+      En test, 1 de 8 direcciones tiene el ZIP dañado.
+- [ ] Rellenar `pets.authorizedPetsitters` en reservas ya pagadas y activas.
+- [ ] Validar en backend que las mascotas y la dirección de una reserva sean
+      del customer (la reserva se crea en el cliente).
+- [ ] `bookingDetailsSheet`: el botón Cancel dispara dos workflows a la vez
+      (`cnAAf` y `cnAAr`). El segundo hace refund.
+- [ ] Probar con red lenta: los workflows de borrado y "default" son
+      asíncronos, así que la lista puede tardar un instante en actualizarse.
+- [ ] Data API: la regla *Owner* de address tiene `create/modify via API`
+      activado. Revisar si el Data API está expuesto para address.
+
 ## 🔴 URLs tras el renombrado (2026-10-09)
 
 Actualizadas en test para apuntar a los nombres nuevos (sin cambiar nada más):
@@ -91,7 +118,7 @@ Pendiente (no se tocó a propósito):
 - [ ] `seenBy` en notificaciones broadcast.
 - [ ] `User.profile`.
 - [ ] Congelar `price`, `tipAmount`, `platformFee` en la reserva.
-- [ ] Corregir tipos (teléfono, zipCode, phoneValid, experienceInMonths).
+- [ ] Corregir tipos (teléfono, zipCode → `zipCodeText` creado, falta migrar, phoneValid, experienceInMonths).
 - [ ] Borrar `tracking` (legacy), `myTables`, option set `myTable`.
 - [ ] Corregir firstName/lastName invertidos en `trustedContact`.
 - [ ] Auditar uso real de plugins; desinstalar `Make` si no se usa.
