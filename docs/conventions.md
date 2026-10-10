@@ -192,3 +192,48 @@ actualizan solas. Las URL escritas como texto se actualizaron a mano (ver `backl
 - Texto secundario `#8A8A8A` / `#B3B3B3`.
 - Poppins para UI, DM Mono para números.
 - Layout mobile-first, máx. 430px de ancho.
+
+## Workflows de backend (2026-10-10)
+
+**Nombre:** `area-accion[-objeto]` en kebab-case, sin espacios, tanto en API
+workflows como en custom events de backend. Ejemplos: `pet-delete`,
+`chat-send-message`. Las llamadas internas apuntan por ID, así que renombrar un
+workflow **no expuesto** no rompe nada. Un workflow **expuesto** no se renombra:
+su nombre es la URL que usa el servicio externo.
+
+**Carpetas:** la herramienta de Bubble no puede crearlas, así que se crean a mano
+en el editor (Backend workflows → panel izquierdo → *New folder*, y arrastrar
+cada workflow).
+
+| Carpeta | Workflows |
+|---|---|
+| **Auth** | `auth-send-verification-code`, `auth-verify-email-code`, `auth-update-credentials` ⚪ |
+| **Bookings** | `booking-create` ⚪, `booking-create-with-dates` ⚪ |
+| **Availability** | `availability-add-dates` ⚪, `availability-remove-dates` ⚪ |
+| **Payments (Stripe)** | `payment-create-checkout`, `checkout_session_completed` 🌐, `webhook_account_enabled` 🌐, `webhook_account_restricted` 🌐 |
+| **Pets** | `pet-generate-ai-data`, `pet-delete` |
+| **Places** | `place-create` ⚪, `place-delete`, `place-set-default`, `place-revoke-petsitter-access` |
+| **Chat** | `chat-create`, `chat-send-message` |
+| **Notifications** | `notification-send` |
+| **Reviews** | `review-create` |
+| **AI** | `ai-create-response` ⚪ |
+
+🌐 = expuesto (webhook de Stripe): nombre sin cambiar. ⚪ = sin llamadores en la
+app y no expuesto. Candidato a borrar, pendiente de confirmación.
+
+| Nombre anterior | Nombre nuevo |
+|---|---|
+| Add a list range of dates | `availability-add-dates` |
+| Remove a list range of dates_copy | `availability-remove-dates` |
+| Update credentials | `auth-update-credentials` |
+| create-request-date | `booking-create-with-dates` |
+| create-request | `booking-create` |
+| create-transaction | `payment-create-checkout` |
+| create-chat | `chat-create` |
+| create-message | `chat-send-message` |
+| notifications | `notification-send` |
+| create-ai-response | `ai-create-response` |
+| create-review | `review-create` |
+| create-address | `place-create` |
+| sendVerificationCode | `auth-send-verification-code` |
+| verifyEmailCode | `auth-verify-email-code` |

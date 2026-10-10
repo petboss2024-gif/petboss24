@@ -43,6 +43,11 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] Data API: la regla *Owner* de address tiene `create/modify via API`
       activado. Revisar si el Data API está expuesto para address.
 
+- [ ] Crear las carpetas de backend en el editor y mover los workflows (tabla
+      en `conventions.md`).
+- [ ] Decidir si se borran los 7 workflows de backend sin uso (marcados ⚪ en
+      `conventions.md`).
+
 ## 🔴 URLs tras el renombrado (2026-10-09)
 
 Actualizadas en test para apuntar a los nombres nuevos (sin cambiar nada más):

@@ -26,6 +26,14 @@ editor, o `restore_savepoint` con el timestamp).
   solo con reserva pagada; auto-binding desactivado en pets y address.
 - Bubble: sin issues nuevos (9 pre-existentes). Detalle en `pets-places.md`.
 
+### Backend: nombres y carpetas
+- Savepoint: **"Antes de renombrar workflows de backend"** — `1791640111509`
+- 14 workflows renombrados a `area-accion` (tabla en `conventions.md`). Los 3
+  webhooks de Stripe quedan igual porque su nombre es su URL.
+- Carpetas propuestas en `conventions.md`. Hay que crearlas a mano: la
+  herramienta no lo permite.
+- Bubble: 6 issues (antes 9). Desaparecieron los 3 avisos de nombres con espacios.
+
 ## 2026-10-09
 
 ### Renombrado a camelCase
