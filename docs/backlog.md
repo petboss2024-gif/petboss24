@@ -58,8 +58,11 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] Bookings cliente → Pending vacío → "Book a walk" abre `bookingStep1`.
 - [ ] Revisar el parpadeo del estado vacío mientras cargan las ShortList /
       SelectableList (no exponen *is loading*).
-- [ ] Decidir si se recupera el espacio superior de Notifications (antes
-      120 px) y Places (antes 32 px); la instancia no admite márgenes.
+- [x] Espacio superior de Notifications (120 px) y Places (32 px) recuperado
+      con grupos slot (2026-10-11).
+- [ ] Revisar el refinamiento visual en dispositivo a 320, 360, 375, 393 y
+      430 px: círculo de 64 px, ritmo 16/8/16, variante compacta en los
+      selectores y botón "Book a walk".
 - [ ] Comprobar en dispositivo los iconos `phosphor bold calendar-blank`
       (usado para calendar-check) y `phosphor bold bell`.
 

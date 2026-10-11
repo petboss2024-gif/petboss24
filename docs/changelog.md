@@ -6,6 +6,19 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-11
 
+### Refinamiento visual de `appEmptyState`
+- Savepoint antes: **"Antes de refinamiento visual de appEmptyState"** — `1791728105039`
+- Savepoint después: `1791728286836`
+- Corregido el layout del reusable (raíz y contenido estaban en fila, un grupo
+  interno superponía los hijos, textos con ancho fijo de 100 px, icono sin
+  espacio para el glifo).
+- Tipografía y ritmo: mobileH5 / mobileSH5 14 px, interlineado 1.3 / 1.5,
+  círculo de 64 px, espaciado 16/8/16.
+- Variante compacta automática en los selectores (sin icono, padding 12).
+- Places y Notifications recuperan su espacio superior con grupos slot.
+- Sin cambios en textos, option set, condiciones, workflows ni navegación.
+  Bubble: sin issues nuevos (6 pre-existentes). Detalle: `empty-states.md`.
+
 ### Sistema de estados vacíos (`appEmptyState`)
 - Savepoint antes: **"Antes de appEmptyState (sistema de estados vacíos)"** — `1791727229224`
 - Savepoint después: **"Después de appEmptyState: sistema de estados vacíos en 13 ubicaciones (Main/test)"** — `1791727809392`
