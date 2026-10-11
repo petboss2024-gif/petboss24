@@ -6,6 +6,21 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-11
 
+### Sistema de estados vacíos (`appEmptyState`)
+- Savepoint antes: **"Antes de appEmptyState (sistema de estados vacíos)"** — `1791727229224`
+- Savepoint después: **"Después de appEmptyState: sistema de estados vacíos en 13 ubicaciones (Main/test)"** — `1791727809392`
+- Option set nuevo `emptyStateContext` (15 opciones) y reusable `appEmptyState`
+  con acción opcional vía estado `actionRequested`.
+- Migrados al reusable: My Pets, My Places, Chats, Notifications y Wallet
+  history (se borraron los bloques viejos). Nuevos: Bookings cliente y
+  petsitter, Wallet overview, candidatos de la reserva, selectores de mascota y
+  lugar (step 2 y edición), perfil de cliente (privacidad) y ubicaciones del
+  servicio del petsitter.
+- "Book a walk" (Bookings cliente, Pending) abre `bookingStep1` igual que Home.
+- Sin cambios en búsquedas, privacidad, base de datos ni workflows de
+  pago/GPS/auth. Bubble: sin issues nuevos (6 pre-existentes).
+- Detalle: `empty-states.md`.
+
 ### My Pets y My Places: implementación de la auditoría (solo mobile)
 - Savepoint antes: **"Antes de implementar auditoría My Pets y My Places (2026-10-10)"** — `1791642060025`
 - Savepoint después: **"Después de implementar auditoría My Pets y My Places (fases 2-7)"** — `1791725583744`
