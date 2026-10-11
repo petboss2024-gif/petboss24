@@ -4,6 +4,24 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-11
+
+### My Pets y My Places: implementación de la auditoría (solo mobile)
+- Savepoint antes: **"Antes de implementar auditoría My Pets y My Places (2026-10-10)"** — `1791642060025`
+- Savepoint después: **"Después de implementar auditoría My Pets y My Places (fases 2-7)"** — `1791725583744`
+- Reservas: editar guarda exactamente las mascotas elegidas; solo se edita en
+  Pending; no se continúa ni se guarda sin mascota y dirección.
+- Borrado con confirmación y Cancel en todos los caminos (`deleteConfirmSheet`,
+  antes `addressDeleteSheet`); se cierra solo cuando el backend confirma.
+- Estados vacío y de carga fiables en ambas listas; búsqueda por celda eliminada.
+- ZIP con ceros iniciales en tarjeta, detalle y selectores; formato de dirección.
+- Edad en años y meses; fechas de nacimiento futuras bloqueadas; IA no se
+  regenera sin motivo.
+- Quitados "Dog" fijo y plantillas sin datos; imagen de reemplazo; safe area en `petList`.
+- Privacy: pets / Petsitters (basic info) ya no permite buscar.
+- ~120 elementos y workflows renombrados. Bubble: 6 issues (los mismos de antes).
+- Detalle en `pets-places-mobile.md`.
+
 ## 2026-10-10
 
 ### Pets y Places: refactor (seguridad, backend, validaciones)
