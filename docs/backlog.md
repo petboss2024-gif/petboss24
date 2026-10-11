@@ -16,6 +16,20 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       `email_confirmation` en Live todavía marca el email como verificado sin
       código.
 
+## 🔴 My Pets y My Places mobile (2026-10-11, ver `pets-places-mobile.md`)
+
+- [ ] Probar en dispositivo: estados vacío/carga, borrado con Cancel, edad,
+      ZIP con 0 inicial, safe area de `petList`, textos largos a 393 px.
+- [ ] Pruebas por rol de la nueva regla de pets (petsitter no autorizado no
+      puede buscar mascotas; sí ve las de una reserva Pending).
+- [ ] Cambiar a mano la etiqueta "Gigant" → "Giant" (option set OS_Size).
+- [ ] Decidir qué hacer con 6 direcciones y 3 mascotas sin `user` en test
+      (ninguna reserva las usa). Revisar Live antes.
+- [ ] Confirmar HEIC en Android/WebView.
+- [ ] dgRequest: revisar auto-binding de las reglas Customer y Applied petsitter.
+- [ ] Borrado: no hay aviso si el backend falla (Bubble no lo notifica). Valorar
+      un tiempo máximo con mensaje.
+
 ## 🔴 Pets y Places (2026-10-10, ver `pets-places.md`)
 
 - [ ] **Probar en test** con un customer y un petsitter:
@@ -30,7 +44,7 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] **Decidir:** consentimiento para enviar datos de salud de la mascota a
       Gemini. Hoy se envían alergias, medicación, dieta y comportamiento.
 - [ ] **Decidir:** qué pasa con la dirección por defecto al borrarla. Hoy queda
-      sin default; no se asigna otra.
+      sin default; no se asigna otra (sin cambios el 2026-10-11: no hay regla de negocio).
 - [ ] **Autorizar** la migración de ZIP (procedimiento en `pets-places.md`).
       En test, 1 de 8 direcciones tiene el ZIP dañado.
 - [ ] Rellenar `pets.authorizedPetsitters` en reservas ya pagadas y activas.
@@ -38,8 +52,7 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       del customer (la reserva se crea en el cliente).
 - [ ] `bookingDetailsSheet`: el botón Cancel dispara dos workflows a la vez
       (`cnAAf` y `cnAAr`). El segundo hace refund.
-- [ ] Probar con red lenta: los workflows de borrado y "default" son
-      asíncronos, así que la lista puede tardar un instante en actualizarse.
+- [x] Borrado: la hoja espera a que el backend confirme (2026-10-11).
 - [ ] Data API: la regla *Owner* de address tiene `create/modify via API`
       activado. Revisar si el Data API está expuesto para address.
 
