@@ -23,6 +23,7 @@ registra aquí.
 | [docs/workflows.md](docs/workflows.md) | Flujos clave: reserva, pago, tracking, backend workflows |
 | [docs/pets-places.md](docs/pets-places.md) | Refactor de Pets y Places: backend, validaciones, privacidad |
 | [docs/pets-places-mobile.md](docs/pets-places-mobile.md) | My Pets y My Places mobile: auditoría implementada, renombrado y pendientes |
+| [docs/empty-states.md](docs/empty-states.md) | Estados vacíos: option set `emptyStateContext`, reusable `appEmptyState` y dónde se usa |
 | [docs/screens.md](docs/screens.md) | Pantallas trabajadas: walletOverview, walletTransactionList, notificationList |
 | [docs/auth-review.md](docs/auth-review.md) | Login, signup, verificación de email y forgot password: flujo actual y pendientes |
 | [docs/plugins.md](docs/plugins.md) | Inventario de plugins y criterios para usarlos o crearlos |

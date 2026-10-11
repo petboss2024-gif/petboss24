@@ -30,6 +30,18 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] Borrado: no hay aviso si el backend falla (Bubble no lo notifica). Valorar
       un tiempo máximo con mensaje.
 
+## 🟠 Estados vacíos (2026-10-11, ver `empty-states.md`)
+
+- [ ] Probar en dispositivo (393 px) las 13 ubicaciones, con cuenta customer y
+      petsitter: posición, centrado, textos largos, iconos.
+- [ ] Bookings cliente → Pending vacío → "Book a walk" abre `bookingStep1`.
+- [ ] Revisar el parpadeo del estado vacío mientras cargan las ShortList /
+      SelectableList (no exponen *is loading*).
+- [ ] Decidir si se recupera el espacio superior de Notifications (antes
+      120 px) y Places (antes 32 px); la instancia no admite márgenes.
+- [ ] Comprobar en dispositivo los iconos `phosphor bold calendar-blank`
+      (usado para calendar-check) y `phosphor bold bell`.
+
 ## 🔴 Pets y Places (2026-10-10, ver `pets-places.md`)
 
 - [ ] **Probar en test** con un customer y un petsitter:

@@ -132,6 +132,7 @@ que sube desde abajo), `Card`, `Banner`, `Callout`, `Overlay`, `Header`,
 | verificationCheck | `authVerificationSheet` | Código de verificación de email |
 | deleteConfirmation | `addressDeleteSheet` | Confirmar borrado de dirección |
 | charge | `appLoadingOverlay` | Pantalla de carga |
+| — (nuevo 2026-10-11) | `appEmptyState` | Estado vacío de listas (ver `empty-states.md`) |
 
 ### Tabla de cambios
 
