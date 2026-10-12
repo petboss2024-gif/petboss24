@@ -19,6 +19,7 @@ registra aquí.
 | Documento | Contenido |
 |---|---|
 | [brand/](brand/README.md) | **Marca (Design System 2026):** colores, letras, logos y reglas. Manda sobre cualquier nota anterior |
+| [docs/brand-plan.md](docs/brand-plan.md) | Plan de marca: decisiones, dónde vive cada archivo, estado de los 6 pasos y revisión de Bubble |
 | [docs/database.md](docs/database.md) | Modelo de datos: tipos, campos, option sets y problemas conocidos |
 | [docs/privacy-rules.md](docs/privacy-rules.md) | Privacy rules por tipo de dato (quién ve qué) |
 | [docs/workflows.md](docs/workflows.md) | Flujos clave: reserva, pago, tracking, backend workflows |
