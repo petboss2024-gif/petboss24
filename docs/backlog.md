@@ -17,6 +17,11 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] Nombres técnicos con "Petboss" (B minúscula): nombre visible del proyecto de
       Google Cloud ("PetBoss 24" → "Petboss 24", el ID no cambia) y el plugin
       "Petboss Live Walk" cuando se cree.
+- [ ] Página web `walk-tracking-customer`: rediseñar con la marca (hoy usa
+      violeta `#635BFF`, fuente del sistema y fondo blanco) y cambiar el título de
+      la pestaña "Valecans home" → "Petboss 24".
+- [ ] Revisar en Bubble → Styles → Style variables que los colores y fuentes
+      globales coincidan con `brand/tokens.json`.
 
 ## 🔴 Seguridad
 
