@@ -9,23 +9,23 @@ Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
       contrast y Text = `#FFFFFF`, Background = `#161616`, Surface = `#2C2C2C`
       y que la fuente por defecto es Poppins. Anotar el resultado en
       `brand/bubble.md` (hoy figuran "Sin verificar").
-- [ ] `mobilePrimary` → condición "is pressed": los dos colores del degradado a
+- [ ] `sharedButtonPrimary` → condición "is pressed": los dos colores del degradado a
       `Orange - Pressed - 100%` (DS-005).
-- [ ] `Dropdown` y `Autocomplete` → condición "is focused": desactivar la
-      sombra. `Popup Black`: quitar la sombra (DS-004).
-- [ ] Reusable `appEmptyState`: Element type de FloatingGroup a Group (DS-014).
+- [ ] `mobileDropdownDefault` y `mobileAutocompleteDefault` → condición "is focused": desactivar la
+      sombra. `webPopupDark`: quitar la sombra (DS-004).
+- [ ] `mobileButtonSecondary` → condición "is pressed": fondo a
+      `Gray - Surface Pressed - 100%` (hoy azul; DS-008).
 
 Decisiones propuestas, esperan aprobación (detalle en `brand/decisions.md`):
 - [ ] DS-005 texto del botón principal 700 18 px.
 - [ ] DS-007 contraste blanco sobre naranja (2,94:1).
-- [ ] DS-008 botón secundario de azul a gris superficie.
-- [ ] DS-009 títulos en Raleway y escala tipográfica de la app.
-- [ ] DS-010 tarjetas e icono `Empty` de degradado a superficie lisa.
-- [ ] DS-011 radios fuera de la regla.
-- [ ] DS-012 enlaces de azul a naranja.
-- [ ] DS-013 pestañas inactivas a `#B3B3B3`.
 
 Fuera de los estilos globales (fase siguiente):
+- [ ] Pestaña activa del Tab Bar en naranja (`primary`) en las 4 pestañas (DS-013).
+- [ ] 🔴 `walk-tracking-customer`: la clave de Google Maps está escrita en el
+      HTML. Las claves de Maps JS son públicas por diseño, pero hay que
+      confirmar en Google Cloud que esté restringida por dominio (HTTP referrer)
+      y solo a Maps JavaScript API; si no, rotarla.
 - [ ] Título de los anuncios en notificaciones: "PetBoss 24" → "Petboss 24".
 - [ ] Textos con `#8A8A8A` escrito a mano en `notificationList` → `#B3B3B3`.
 - [ ] Números: comprobar si algún elemento usa DM Mono (ningún estilo la usa).

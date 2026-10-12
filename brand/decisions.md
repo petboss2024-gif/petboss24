@@ -35,17 +35,17 @@ decisión tiene todavía verificación visual en la app (ver límites en
 - **Estado:** Implementado en Bubble (`cnBrT`, `cnBrU`, `cnBrS`) · Documentado · Verificado.
 
 ### DS-003 · Texto secundario `#B3B3B3`
-- **Problema:** `mobileSH5` usaba `#959595` escrito a mano.
+- **Problema:** `mobileTextSecondary` usaba `#959595` escrito a mano.
 - **Decisión:** variable `cnBrT` "Gray - Text Secondary - 100%" (`#B3B3B3`) y
-  `mobileSH5` apunta a ella. Contraste 6,7:1 sobre `#2C2C2C` (antes 4,7:1).
-- **Efecto:** todos los textos con `mobileSH5` se ven un poco más claros.
+  `mobileTextSecondary` apunta a ella. Contraste 6,7:1 sobre `#2C2C2C` (antes 4,7:1).
+- **Efecto:** todos los textos con `mobileTextSecondary` se ven un poco más claros.
 - **Estado:** Implementado en Bubble · Documentado · Verificado (valor del estilo leído de vuelta).
 
 ### DS-004 · Sin sombras
-- **Decisión:** se quita la sombra de `mobilePrimary`, `mobileSecondary`,
-  `mobileCancel`, `mobileDelete` y `onboardingSteps`.
+- **Decisión:** se quita la sombra de `sharedButtonPrimary`, `mobileButtonSecondary`,
+  `mobileButtonCancel`, `mobileButtonDelete` y `mobileGroupStep`.
 - **Pendiente:** la sombra que `Dropdown` y `Autocomplete` suman al enfocar, y
-  la de `Popup Black`, están en condiciones del estilo; solo se pueden quitar en
+  la de `webPopupDark`, están en condiciones del estilo; solo se pueden quitar en
   el editor. El foco ya queda marcado con el borde naranja, así que la sombra no
   hace falta.
 - **Estado:** Implementado en parte · Documentado · Pendiente (acción manual).
@@ -60,14 +60,14 @@ decisión tiene todavía verificación visual en la app (ver límites en
 - **Pendiente:**
   - Texto 700 18: puede hacer que botones angostos corten la etiqueta; se
     propone revisarlo junto con la escala tipográfica de la app (DS-009).
-  - Presionado exacto: en el editor, cambiar en `mobilePrimary` la condición
+  - Presionado exacto: en el editor, cambiar en `sharedButtonPrimary` la condición
     "is pressed" a `Orange - Pressed - 100%` en los dos extremos.
-  - `webPrimary` y `web2` siguen con degradado: se tratan con la web.
+  - `webButtonPrimary` y `webButtonPrimaryLarge` siguen con degradado: se tratan con la web.
 - **Estado:** Implementado en parte · Documentado · Pendiente.
 
 ### DS-006 · Estilos que apuntaban a variables borradas
-- **Problema:** `Popup Basic` y `Popup Conflict` (fondo), `Footer Link` y
-  `Label 10 m` (texto) usaban variables marcadas como borradas en Bubble.
+- **Problema:** `webPopupDefault` y `webPopupConflict` (fondo), `webTextFooterLink` y
+  `mobileTextLabelTiny` (texto) usaban variables marcadas como borradas en Bubble.
 - **Decisión:** popups a `surface`; los dos textos a `cnBrT` (texto secundario).
 - **Estado:** Implementado en Bubble · Documentado · Verificado.
 
@@ -84,14 +84,14 @@ decisión tiene todavía verificación visual en la app (ver límites en
 - **Estado:** Propuesto.
 
 ### DS-008 · Botón secundario azul
-- **Problema:** `mobileSecondary` usa de fondo `cmyip` "Blue - Text Link"
+- **Problema:** `mobileButtonSecondary` usa de fondo `cmyip` "Blue - Text Link"
   (`#007AFF`); al presionar, otro azul. El Design System lo define gris
   (`#2C2C2C`, presionado `#272727`) para que el naranja sea el único color fuerte.
 - **Decisión (aprobada 2026-10-12):** fondo `surface`, texto `text`. Variable
   `cnBrY` "Gray - Surface Pressed - 100%" (`#272727`) creada para el presionado.
-  `mobileVerify` también deja el azul: fondo `surface`, texto `text` (el texto
+  `mobileButtonVerify` también deja el azul: fondo `surface`, texto `text` (el texto
   de 12 px no puede ir sobre naranja) y radio 8.
-- **Pendiente (editor):** condición "is pressed" de `mobileSecondary`: hoy pone
+- **Pendiente (editor):** condición "is pressed" de `mobileButtonSecondary`: hoy pone
   el fondo azul `rgba(42,93,174)`; cambiarla a `Gray - Surface Pressed - 100%`.
 - **Estado:** Aprobado · Implementado en Bubble (salvo presionado) · Documentado · Verificado.
 
@@ -110,37 +110,37 @@ decisión tiene todavía verificación visual en la app (ver límites en
 - **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-010 · Tarjetas con degradado
-- **Problema:** `mobileContenedor`, `ShortListItem` y el círculo del icono
-  `Empty` usan grises fuera de la paleta (`#404040` → `#363636` y `#363636`).
+- **Problema:** `mobileGroupCard`, `mobileListItemCard` y el círculo del icono
+  `mobileIconEmptyState` usan grises fuera de la paleta (`#404040` → `#363636` y `#363636`).
 - **Decisión (aprobada 2026-10-12):** superficie lisa (`surface`) en las dos
-  tarjetas y en el círculo del icono `Empty`.
+  tarjetas y en el círculo del icono `mobileIconEmptyState`.
 - **Efecto:** las tarjetas se ven un poco más oscuras. Si un estado vacío cae
   dentro de una tarjeta, el círculo del icono se confunde con el fondo de la
   tarjeta (revisar en dispositivo).
 - **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-011 · Radios fuera de la regla
-- **Problema:** `Popup Basic`/`Conflict` 40, `mobileVerify` 6, botones web 8,
-  `SelectableListItem default` 10, `Message` 20.
+- **Problema:** `webPopupDefault`/`webPopupConflict` 40, `mobileButtonVerify` 6, botones web 8,
+  `mobileListItemSelectable` 10, `mobileFloatingMessage` 20.
 - **Decisión (aprobada 2026-10-12):** 14 en los tres popups, los tres botones
-  web, `SelectableListItem default` y las esquinas de `Message`; 8 en
-  `mobileVerify`. Los círculos quedan como excepción documentada en `bubble.md`.
+  web, `mobileListItemSelectable` y las esquinas de `mobileFloatingMessage`; 8 en
+  `mobileButtonVerify`. Los círculos quedan como excepción documentada en `bubble.md`.
 - **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-012 · Color de los enlaces
-- **Problema:** `link`, `body info` y el icono `blue` usan azul `#007AFF`. El
+- **Problema:** `mobileTextLinkSmall`, `mobileTextInfo` y `mobileIconLink` usan azul `#007AFF`. El
   Design System no define enlaces, pero dice que el naranja es para "todo lo que
   el usuario toca para avanzar".
-- **Decisión (aprobada 2026-10-12):** `link`, `body info` y el icono `blue`
+- **Decisión (aprobada 2026-10-12):** `mobileTextLinkSmall`, `mobileTextInfo` y `mobileIconLink`
   pasan a `primary`. Ningún estilo usa ya la variable azul `cmyip` salvo la
-  condición de presionado de `mobileSecondary` (ver DS-008). No se borra la
+  condición de presionado de `mobileButtonSecondary` (ver DS-008). No se borra la
   variable: algún elemento de página podría usarla directamente.
 - **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-013 · Pestañas inactivas
-- **Problema:** `TabItem` usa `#454545`, contraste 1,9:1 sobre el fondo: casi
+- **Problema:** `mobileTabItem` usa `#454545`, contraste 1,9:1 sobre el fondo: casi
   ilegible.
-- **Decisión (aprobada 2026-10-12):** `TabItem` en `cnBrT` (`#B3B3B3`, 8,6:1).
+- **Decisión (aprobada 2026-10-12):** `mobileTabItem` en `cnBrT` (`#B3B3B3`, 8,6:1).
 - **Efecto:** la pestaña activa se marca en cada pestaña con el color de texto
   (blanco); la diferencia entre activa (blanco) e inactiva (`#B3B3B3`) es
   pequeña. Propuesta para la fase de componentes: activa en naranja `primary`
@@ -157,3 +157,19 @@ decisión tiene todavía verificación visual en la app (ver límites en
   habían perdido los rellenos (24/16) y se restauraron. Bubble pasa de 19 a 6
   errores (los 6 que ya existían antes).
 - **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
+
+### DS-015 · Nombres de estilos por plataforma
+- **Problema:** 76 estilos con nombres mezclados (`mobileH1`, `web2`, `Cards`,
+  `mobileContenedor`, tres distintos llamados `defaultMobile`). El nombre no
+  decía la plataforma: 11 estilos "mobile" se usan también en la web.
+- **Decisión (aprobada 2026-10-12):** `{plataforma}{Elemento}{Variante}`, con
+  plataforma `mobile`, `web` o `shared` según el uso real. El uso en la web se
+  comprobó elemento por elemento (393 elementos de las 13 páginas y 4 reusables
+  web); las páginas Native Mobile cuentan como app.
+- **Efecto:** solo cambia el nombre visible; los ids y los elementos que usan
+  cada estilo no cambian. Bubble: sin errores nuevos.
+- **Límite:** no se recorrieron las vistas mobile elemento por elemento; los
+  estilos sin uso en la web se marcaron `mobile`. Si un estilo `web` aparece en
+  la app, se renombra a `shared`.
+- **Archivos:** `docs/conventions.md` (regla), `brand/bubble.md` (catálogo).
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado (nombres leídos de vuelta).
