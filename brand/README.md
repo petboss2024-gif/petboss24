@@ -62,7 +62,7 @@ Reglas:
 - **Texto sobre naranja:** blanco, en negrita, de 18 px o más. El texto pequeño
   va sobre blanco u oscuro, nunca sobre naranja. (Blanco sobre naranja tiene
   contraste 2,94:1: no llega al mínimo de WCAG ni para texto grande; por eso
-  solo se usa en negrita y a 18 px o más. Decisión abierta en DS-007).
+  solo se usa en negrita y a 18 px o más: excepción aprobada en DS-007).
 - **Texto sobre violeta:** blanco, se lee bien en cualquier tamaño.
 
 ## Tipografía

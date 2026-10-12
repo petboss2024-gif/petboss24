@@ -6,6 +6,13 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-12
 
+### Design System: DS-005 y DS-007
+- Savepoint antes: **"Antes de DS-005 (texto del botón principal 700 18)"** — `1791844915638`
+- `sharedButtonPrimary`: texto 500 16 → 700 18 (también en la web que usa el estilo).
+- DS-007: blanco sobre naranja se mantiene como excepción de marca (siempre
+  negrita, 18 px o más). Sin cambios en Bubble aparte de DS-005.
+- Bubble: sin errores nuevos (6 preexistentes).
+
 ### Design System: decisiones DS-008 a DS-015
 - Savepoint antes: **"Antes de DS-008 a DS-014 y renombrado de estilos"** — `1791843833156`
 - Savepoint después: **"Después de DS-008 a DS-014 y renombrado de 76 estilos (mobile/web/shared)"** — `1791844336429`
