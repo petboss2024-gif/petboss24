@@ -1,0 +1,28 @@
+<!-- @dsCard height=300 -->
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../bundle.css">
+<style>
+body{margin:0;background:var(--bg)}
+.c{position:relative;width:960px;height:300px;overflow:hidden;background:var(--bg)}
+svg{position:absolute;left:0;top:0}
+.o{fill:var(--orange)}.v{fill:var(--violet)}.g{fill:var(--gray-dark)}.l{fill:var(--gray-light)}
+.big{rx:var(--radius-md)}.pill{rx:var(--radius-md)}
+.t{position:absolute;left:48px;bottom:36px;width:420px}
+.n{font:800 68px/.95 var(--font-display);color:var(--text);white-space:nowrap}
+.s{font:400 14px/20px var(--font-sans);color:var(--text);opacity:.7;margin-top:var(--space-2)}
+</style>
+<div class="c">
+<svg width="960" height="300" viewBox="0 0 960 300">
+<!-- blocks: orange 224x234, violet 240x140, gray-dark 96x96, gray-light 112x96 (radius-md). arrangement: orange slab bleeding off the top, violet block bleeding off the right, two satellites under it.
+pattern: row of pills (radius-md on 28px height) because the brand is soft and rounded, a pill rail under the slab. steps: 4, 8, 16, 24. -->
+<rect class="o big" x="496" y="-18" width="224" height="234"/>
+<rect class="v big" x="736" y="-18" width="240" height="158"/>
+<rect class="g big" x="736" y="156" width="96" height="96"/>
+<rect class="l big" x="848" y="156" width="128" height="96"/>
+<rect class="o pill" x="496" y="232" width="96" height="28"/>
+<rect class="v pill" x="608" y="232" width="96" height="28"/>
+<rect class="g pill" x="496" y="268" width="96" height="28"/>
+<rect class="l pill" x="608" y="268" width="96" height="28"/>
+</svg>
+<div class="t"><div class="n">Petboss 24</div><div class="s">Pet-Sitters First, Pets Always.</div></div>
+</div>

@@ -14,7 +14,7 @@ están en [`brand/README.md`](../brand/README.md).
 | PDF para personas | Drive: Petboss 24 › HQM › Design System › `PB24 Resumen de marca 2026.pdf` | Leer, compartir, imprimir |
 | Logos SVG | Drive: Petboss 24 › HQM › Design System › Logos (y `brand/logos/` aquí) | 3 logos completos + 2 caras del perro |
 | LEEME | Drive: Petboss 24 › HQM › Design System › `LEEME - Design System PB24.txt` | Avisa que esa carpeta es la única vigente |
-| Copia para programar | Este repositorio, carpeta `brand/` | Reglas, `tokens.json`, logos, PDF |
+| Copia para programar | Este repositorio, carpeta `brand/` | Reglas completas, `tokens.json`, logos, PDF y `brand/design-system/` (copia íntegra del Design System: tokens con notas, CSS, vistas previas, portada y fuentes) |
 | Material viejo | Drive: Mi unidad › Archivo › `Branding 2024 (histórico - NO USAR)` | Respaldo histórico, fuera de Petboss 24 |
 
 Cuando cambie la marca, se actualizan los cuatro a la vez: artefacto,
@@ -60,7 +60,7 @@ en Main (test).
 - `notificationList`: texto `cmpIs` "PetBoss 24" → "Petboss 24".
 - `notificationList`: "FOR YOU" (`cnBiC`), "ANNOUNCEMENTS" (`cnBiE`) y la hora
   de cada notificación (`cmwXJ` y su par en la lista personal): `#8A8A8A` → `#B3B3B3`.
-- Estilo `mobileSecondary`: al presionar pasa de azul `rgba(42,93,174)` a `#3A3A3A`.
+- Estilo `mobileSecondary`: al presionar pasa de azul `rgba(42,93,174)` a `#272727` (fondo 12 % más oscuro, como en el Design System).
 
 **Parte 2 (todos los botones naranjas):**
 - Estilo `mobilePrimary`: texto 18 px bold, fondo naranja liso en vez de
