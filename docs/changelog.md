@@ -4,6 +4,22 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-12
+
+### Design System: variables y estilos globales (fase 1)
+- Savepoint antes: **"Antes de alinear Style Variables y Global Styles con el Design System (fase 1)"** — `1791841900553`
+- Variables nuevas: `cnBrT` texto secundario `#B3B3B3`, `cnBrU` naranja presionado
+  `#A84400`, fuente `cnBrS` Raleway (sin uso todavía).
+- `mobileSH5` → `#B3B3B3`. `mobilePrimary` liso (sin degradado a `#FF8C00`).
+- Sin sombra: `mobilePrimary`, `mobileSecondary`, `mobileCancel`, `mobileDelete`,
+  `onboardingSteps`.
+- Estilos que apuntaban a variables borradas: `Popup Basic`/`Conflict` → `surface`;
+  `Footer Link`, `Label 10 m` → `cnBrT`.
+- Se corrigió en `brand/README.md` el contraste de blanco sobre naranja (2,94:1).
+- Detalle y pendientes: `brand/bubble.md`, `brand/decisions.md`.
+- Hallazgo fuera de alcance: `appEmptyState` pasó a FloatingGroup en el editor
+  (13 errores en Bubble, DS-014).
+
 ## 2026-10-11
 
 ### Refinamiento visual de `appEmptyState`

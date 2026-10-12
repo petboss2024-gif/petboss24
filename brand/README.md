@@ -11,6 +11,13 @@ dice aquí.** Las notas anteriores se escribieron antes de definir el sistema.
 - Valores para programar: [`tokens.json`](tokens.json)
 - **Copia íntegra del Design System** (sin resumir: tokens con sus notas de uso, estilos de texto completos, CSS de componentes, vistas previas, portada, fuentes): [`design-system/`](design-system/README.md)
 - Logos en SVG: [`logos/`](logos)
+- Cómo vive la marca en Bubble (variables, estilos, límites): [`bubble.md`](bubble.md)
+- Decisiones y su estado: [`decisions.md`](decisions.md)
+
+**Fuentes de verdad:** `tokens.json` define los valores; este archivo, las
+reglas; `bubble.md`, su representación en Bubble; `decisions.md`, los cambios
+y su motivo. `design-system/` es la copia literal del sistema publicado en
+Claude: si difiere, se corrige a partir de estos archivos.
 
 ## Voz
 
@@ -54,7 +61,8 @@ Reglas:
 - **El naranja actúa, el violeta destaca.** Misma regla en claro y oscuro.
 - **Texto sobre naranja:** blanco, en negrita, de 18 px o más. El texto pequeño
   va sobre blanco u oscuro, nunca sobre naranja. (Blanco sobre naranja tiene
-  contraste 3:1: solo alcanza para texto grande o en negrita).
+  contraste 2,94:1: no llega al mínimo de WCAG ni para texto grande; por eso
+  solo se usa en negrita y a 18 px o más. Decisión abierta en DS-007).
 - **Texto sobre violeta:** blanco, se lee bien en cualquier tamaño.
 
 ## Tipografía

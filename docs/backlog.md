@@ -2,26 +2,39 @@
 
 Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 
-## 🟠 Marca: ajustar Bubble al Design System (2026-10-12, ver `brand/`)
+## 🟠 Marca: ajustar Bubble al Design System (ver `brand/bubble.md` y `brand/decisions.md`)
 
+Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
+- [ ] Styles → Style variables: comprobar que Primary = `#FF6600`, Primary
+      contrast y Text = `#FFFFFF`, Background = `#161616`, Surface = `#2C2C2C`
+      y que la fuente por defecto es Poppins. Anotar el resultado en
+      `brand/bubble.md` (hoy figuran "Sin verificar").
+- [ ] `mobilePrimary` → condición "is pressed": los dos colores del degradado a
+      `Orange - Pressed - 100%` (DS-005).
+- [ ] `Dropdown` y `Autocomplete` → condición "is focused": desactivar la
+      sombra. `Popup Black`: quitar la sombra (DS-004).
+- [ ] Reusable `appEmptyState`: Element type de FloatingGroup a Group (DS-014).
+
+Decisiones propuestas, esperan aprobación (detalle en `brand/decisions.md`):
+- [ ] DS-005 texto del botón principal 700 18 px.
+- [ ] DS-007 contraste blanco sobre naranja (2,94:1).
+- [ ] DS-008 botón secundario de azul a gris superficie.
+- [ ] DS-009 títulos en Raleway y escala tipográfica de la app.
+- [ ] DS-010 tarjetas e icono `Empty` de degradado a superficie lisa.
+- [ ] DS-011 radios fuera de la regla.
+- [ ] DS-012 enlaces de azul a naranja.
+- [ ] DS-013 pestañas inactivas a `#B3B3B3`.
+
+Fuera de los estilos globales (fase siguiente):
 - [ ] Título de los anuncios en notificaciones: "PetBoss 24" → "Petboss 24".
-- [ ] Texto secundario: reemplazar `#8A8A8A` por `#B3B3B3` (se lee justo sobre
-      `#2C2C2C`).
-- [ ] Números: DM Mono → Poppins (cifras tabulares).
-- [ ] Botón principal (`mobilePrimary`): texto Poppins bold 18 px, fondo naranja
-      liso; al presionar, naranja más oscuro.
-- [ ] Botón secundario (`mobileSecondary`): al presionar se pone azul
-      (`rgba(42,93,174)`); cambiar a un gris un poco más oscuro.
-- [ ] Pasar los colores y fuentes globales de Bubble a los valores de
-      `brand/tokens.json`.
+- [ ] Textos con `#8A8A8A` escrito a mano en `notificationList` → `#B3B3B3`.
+- [ ] Números: comprobar si algún elemento usa DM Mono (ningún estilo la usa).
 - [ ] Nombres técnicos con "Petboss" (B minúscula): nombre visible del proyecto de
       Google Cloud ("PetBoss 24" → "Petboss 24", el ID no cambia) y el plugin
       "Petboss Live Walk" cuando se cree.
 - [ ] Página web `walk-tracking-customer`: rediseñar con la marca (hoy usa
       violeta `#635BFF`, fuente del sistema y fondo blanco) y cambiar el título de
       la pestaña "Valecans home" → "Petboss 24".
-- [ ] Revisar en Bubble → Styles → Style variables que los colores y fuentes
-      globales coincidan con `brand/tokens.json`.
 
 ## 🔴 Seguridad
 

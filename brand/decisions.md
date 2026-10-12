@@ -1,0 +1,142 @@
+# Registro de decisiones del Design System
+
+Cada decisión que cambia una regla, la forma de implementarla en Bubble o la
+identidad visual. Estados: **Propuesto** (espera aprobación), **Aprobado**,
+**Implementado en Bubble**, **Documentado**, **Verificado**, **Pendiente**
+(falta información, acceso o una acción manual).
+
+"Verificado" significa que el valor se leyó de vuelta en Bubble. Ninguna
+decisión tiene todavía verificación visual en la app (ver límites en
+[`bubble.md`](bubble.md)).
+
+---
+
+### DS-001 · Fuentes de verdad y estructura documental
+- **Problema:** los mismos valores estaban copiados en `brand/README.md`,
+  `brand/tokens.json`, `brand/design-system/`, `docs/conventions.md` y el PDF,
+  y no había un lugar para la relación con Bubble ni para las decisiones.
+- **Decisión:** `tokens.json` es la fuente de los valores; `README.md`, de las
+  reglas; `bubble.md`, de cómo se representa cada token en Bubble; este
+  archivo, de las decisiones. `design-system/` es la copia literal del sistema
+  publicado en Claude (referencia, no se edita a mano) y `docs/conventions.md`
+  solo enlaza a `brand/`.
+- **Archivos:** `brand/README.md`, `brand/bubble.md`, `brand/decisions.md`, `docs/conventions.md`.
+- **Estado:** Documentado.
+
+### DS-002 · Nombres de las variables en Bubble
+- **Problema:** las variables creadas a mano siguen el patrón
+  `Color - Rol - Opacidad` ("Purple - Secondary - 100%"), pero el Design System
+  usa nombres en inglés tipo `text-secondary`.
+- **Decisión:** las variables nuevas siguen el patrón de Bubble (`Color - Rol - 100%`)
+  y llevan en la descripción el nombre del token. No se renombran las
+  existentes en esta fase.
+- **Alternativa descartada:** renombrar todas a los nombres del token: cambia
+  lo que el equipo ya reconoce en el editor sin aportar funcionalidad.
+- **Estado:** Implementado en Bubble (`cnBrT`, `cnBrU`, `cnBrS`) · Documentado · Verificado.
+
+### DS-003 · Texto secundario `#B3B3B3`
+- **Problema:** `mobileSH5` usaba `#959595` escrito a mano.
+- **Decisión:** variable `cnBrT` "Gray - Text Secondary - 100%" (`#B3B3B3`) y
+  `mobileSH5` apunta a ella. Contraste 6,7:1 sobre `#2C2C2C` (antes 4,7:1).
+- **Efecto:** todos los textos con `mobileSH5` se ven un poco más claros.
+- **Estado:** Implementado en Bubble · Documentado · Verificado (valor del estilo leído de vuelta).
+
+### DS-004 · Sin sombras
+- **Decisión:** se quita la sombra de `mobilePrimary`, `mobileSecondary`,
+  `mobileCancel`, `mobileDelete` y `onboardingSteps`.
+- **Pendiente:** la sombra que `Dropdown` y `Autocomplete` suman al enfocar, y
+  la de `Popup Black`, están en condiciones del estilo; solo se pueden quitar en
+  el editor. El foco ya queda marcado con el borde naranja, así que la sombra no
+  hace falta.
+- **Estado:** Implementado en parte · Documentado · Pendiente (acción manual).
+
+### DS-005 · Botón principal liso
+- **Problema:** degradado de `primary` a `#FF8C00`, texto 500 16, sombra.
+- **Decisión:** fondo liso. Bubble no deja editar la condición de presionado
+  desde la conexión, así que se dejó el fondo como degradado con los dos
+  extremos en `primary` (se ve liso y conserva la condición existente).
+- **Compatibilidad:** aproximada en el estado presionado (degradado `#A84400` →
+  `#D45500` en vez de `#A84400` liso).
+- **Pendiente:**
+  - Texto 700 18: puede hacer que botones angostos corten la etiqueta; se
+    propone revisarlo junto con la escala tipográfica de la app (DS-009).
+  - Presionado exacto: en el editor, cambiar en `mobilePrimary` la condición
+    "is pressed" a `Orange - Pressed - 100%` en los dos extremos.
+  - `webPrimary` y `web2` siguen con degradado: se tratan con la web.
+- **Estado:** Implementado en parte · Documentado · Pendiente.
+
+### DS-006 · Estilos que apuntaban a variables borradas
+- **Problema:** `Popup Basic` y `Popup Conflict` (fondo), `Footer Link` y
+  `Label 10 m` (texto) usaban variables marcadas como borradas en Bubble.
+- **Decisión:** popups a `surface`; los dos textos a `cnBrT` (texto secundario).
+- **Estado:** Implementado en Bubble · Documentado · Verificado.
+
+### DS-007 · Contraste del texto blanco sobre naranja
+- **Problema:** `brand/README.md` decía que blanco sobre `#FF6600` tiene
+  contraste 3:1. El valor real es **2,94:1**: no llega al mínimo de WCAG ni para
+  texto grande (3:1).
+- **Corrección de la documentación:** se corrige la cifra (hecho, no decisión).
+- **Opciones para decidir:**
+  1. Mantener la marca (blanco sobre naranja, 18 px o más, negrita) y aceptar
+     la excepción. Recomendada por identidad, porque la diferencia es mínima.
+  2. Oscurecer un poco el naranja solo en botones. Cambia el color de marca.
+  3. Texto oscuro `#161616` sobre naranja (6,2:1). Cambia la identidad del botón.
+- **Estado:** Propuesto.
+
+### DS-008 · Botón secundario azul
+- **Problema:** `mobileSecondary` usa de fondo `cmyip` "Blue - Text Link"
+  (`#007AFF`); al presionar, otro azul. El Design System lo define gris
+  (`#2C2C2C`, presionado `#272727`) para que el naranja sea el único color fuerte.
+- **Propuesta:** fondo `surface`, texto `text`, presionado `#272727` (nueva
+  variable); el presionado se cambia en el editor.
+- **Efecto:** todos los botones secundarios pasan de azul a gris oscuro. Cambio
+  visual grande.
+- **Estado:** Propuesto.
+
+### DS-009 · Títulos en Raleway y escala tipográfica de la app
+- **Problema:** los títulos de la app no tienen fuente propia (usan la fuente
+  por defecto). Además la escala del Design System es de marketing (28 y 20 px
+  para títulos) y la app usa 34, 30, 28, 24 y 18.
+- **Hecho:** variable de fuente `cnBrS` "Display - Raleway" creada (sin uso).
+- **Propuesta:** Raleway en `mobileH1`…`mobileH5` y `Header Web`, conservando
+  sus tamaños; documentar la escala de la app en `tokens.json` como ampliación
+  de la de marketing. El peso 900 de `mobileH1` pasaría a 800, que es el máximo
+  que usa el Design System.
+- **Estado:** Propuesto (variable creada, estilos sin cambiar).
+
+### DS-010 · Tarjetas con degradado
+- **Problema:** `mobileContenedor`, `ShortListItem` y el círculo del icono
+  `Empty` usan grises fuera de la paleta (`#404040` → `#363636` y `#363636`).
+- **Propuesta:** superficie lisa (`surface`, `#2C2C2C`). Las tarjetas se verán
+  un poco más oscuras.
+- **Estado:** Propuesto.
+
+### DS-011 · Radios fuera de la regla
+- **Problema:** `Popup Basic`/`Conflict` 40, `mobileVerify` 6, botones web 8,
+  `SelectableListItem default` 10, `Message` 20.
+- **Propuesta:** 14 en todos, 8 en `mobileVerify` (pieza pequeña dentro de
+  otra). Los círculos quedan como excepción documentada en `bubble.md`.
+- **Estado:** Propuesto.
+
+### DS-012 · Color de los enlaces
+- **Problema:** `link`, `body info` y el icono `blue` usan azul `#007AFF`. El
+  Design System no define enlaces, pero dice que el naranja es para "todo lo que
+  el usuario toca para avanzar".
+- **Propuesta:** enlaces en naranja (`primary`) y retirar el azul de la app.
+- **Estado:** Propuesto.
+
+### DS-013 · Pestañas inactivas
+- **Problema:** `TabItem` usa `#454545`, contraste 1,9:1 sobre el fondo: casi
+  ilegible.
+- **Propuesta:** `cnBrT` (`#B3B3B3`) para pestañas inactivas. Hace falta
+  comprobar en el editor cómo se marca la pestaña activa.
+- **Estado:** Propuesto.
+
+### DS-014 · `appEmptyState` convertido en FloatingGroup (fuera de alcance)
+- **Problema:** el reusable `appEmptyState` pasó de tipo Group a FloatingGroup
+  después del 2026-10-11 (cambio hecho en el editor, no en estas sesiones).
+  Bubble marca 13 errores, uno por cada pantalla que lo usa, y los estados
+  vacíos pueden aparecer flotando fuera de su lugar. `appEmptyState_copy`
+  sigue siendo Group.
+- **Propuesta:** volver a Group en Element type del reusable.
+- **Estado:** Pendiente (componente; decisión del dueño).

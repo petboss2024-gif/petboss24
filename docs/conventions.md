@@ -189,15 +189,9 @@ actualizan solas. Las URL escritas como texto se actualizaron a mano (ver `backl
 
 ## Colores y tipografía
 
-La marca vive en [`brand/`](../brand/README.md) (Design System, octubre 2026) y
-manda sobre cualquier nota anterior. Resumen:
-
-- Naranja `#FF6600` (acciones), violeta `#9C2CF3` (ofertas, nunca botones),
-  fondo `#161616`, superficies `#2C2C2C`.
-- Texto secundario `#B3B3B3` en oscuro y `#6B6B6B` en claro.
-- Raleway para títulos y Poppins para todo lo demás, números incluidos. Ya no
-  se usa DM Mono.
-- Radio 14, sin sombras, espaciado 4/8/16/24. Mobile-first, máx. 430px.
+La marca vive en [`brand/`](../brand/README.md) y no se copia aquí: valores
+en `brand/tokens.json`, reglas en `brand/README.md`, su implementación en
+Bubble en `brand/bubble.md` y las decisiones en `brand/decisions.md`.
 
 ## Workflows de backend (2026-10-10)
 
