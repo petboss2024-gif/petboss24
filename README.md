@@ -1,4 +1,4 @@
-# PetBoss 24
+# Petboss 24
 
 Marketplace mobile-first de cuidado de mascotas: conecta dueños de mascotas con
 petsitters profesionales. Construido en **Bubble.io** (app nativa iOS/Android +
@@ -18,6 +18,7 @@ registra aquí.
 
 | Documento | Contenido |
 |---|---|
+| [brand/](brand/README.md) | **Marca (Design System 2026):** colores, letras, logos y reglas. Manda sobre cualquier nota anterior |
 | [docs/database.md](docs/database.md) | Modelo de datos: tipos, campos, option sets y problemas conocidos |
 | [docs/privacy-rules.md](docs/privacy-rules.md) | Privacy rules por tipo de dato (quién ve qué) |
 | [docs/workflows.md](docs/workflows.md) | Flujos clave: reserva, pago, tracking, backend workflows |
@@ -30,7 +31,7 @@ registra aquí.
 | [docs/conventions.md](docs/conventions.md) | Convenciones de nombres (camelCase) y estado del renombrado |
 | [docs/backlog.md](docs/backlog.md) | Pendientes priorizados |
 | [docs/changelog.md](docs/changelog.md) | Historial de cambios en Bubble, con savepoints para revertir |
-| [documentation.md](documentation.md) | Plugin **PetBoss Live Walk** (tracking GPS) — diseño y fases |
+| [documentation.md](documentation.md) | Plugin **Petboss Live Walk** (tracking GPS) — diseño y fases |
 
 ## Cómo trabajar
 

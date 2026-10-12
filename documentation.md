@@ -1,4 +1,4 @@
-# PetBoss 24 — Live Walk Tracking
+# Petboss 24 — Live Walk Tracking
 
 Documentación viva del sistema de tracking GPS del pet sitter durante un paseo.
 Se actualiza en cada paso. Este archivo es la fuente de verdad del proyecto.
@@ -110,7 +110,7 @@ nativa o un wrapper tipo Capacitor. **Tenerlo presente antes de invertir más.**
 
 ### Plugin
 
-**Nombre:** `PetBoss Live Walk`
+**Nombre:** `Petboss Live Walk`
 **Tipo:** privado (sin publicar al marketplace)
 
 ### Shared keys (Settings → Plugins, por app)
@@ -177,7 +177,7 @@ instance.triggerEvent('location_updated')
 
 | Ítem | Valor | Notas |
 |---|---|---|
-| Google Cloud project | PetBoss 24 | |
+| Google Cloud project | Petboss 24 | Nombre visible pendiente de cambiar en Google Cloud (hoy dice "PetBoss 24"). El ID del proyecto no cambia. |
 | Map ID (light, "iOS") | `8b19bc19c481b43a42b68e89` | Los Map IDs no son secretos |
 | Map ID (dark) | *pendiente de confirmar* | |
 | Google Maps API key | **no se guarda en el repo** | Vive en Settings → Plugins de Bubble |
@@ -191,7 +191,7 @@ instance.triggerEvent('location_updated')
 ### 2026-09-18
 - Se crea este documento.
 - Usuario confirma que la Fase 1 (Google Cloud) ya está completa. Se salta.
-- Se define el nombre del plugin: **PetBoss Live Walk**.
+- Se define el nombre del plugin: **Petboss Live Walk**.
 
 ### 2026-09-16
 - Análisis de factibilidad de migrar el HTML element a un plugin de Bubble.
