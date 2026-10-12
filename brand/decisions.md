@@ -87,50 +87,65 @@ decisión tiene todavía verificación visual en la app (ver límites en
 - **Problema:** `mobileSecondary` usa de fondo `cmyip` "Blue - Text Link"
   (`#007AFF`); al presionar, otro azul. El Design System lo define gris
   (`#2C2C2C`, presionado `#272727`) para que el naranja sea el único color fuerte.
-- **Propuesta:** fondo `surface`, texto `text`, presionado `#272727` (nueva
-  variable); el presionado se cambia en el editor.
-- **Efecto:** todos los botones secundarios pasan de azul a gris oscuro. Cambio
-  visual grande.
-- **Estado:** Propuesto.
+- **Decisión (aprobada 2026-10-12):** fondo `surface`, texto `text`. Variable
+  `cnBrY` "Gray - Surface Pressed - 100%" (`#272727`) creada para el presionado.
+  `mobileVerify` también deja el azul: fondo `surface`, texto `text` (el texto
+  de 12 px no puede ir sobre naranja) y radio 8.
+- **Pendiente (editor):** condición "is pressed" de `mobileSecondary`: hoy pone
+  el fondo azul `rgba(42,93,174)`; cambiarla a `Gray - Surface Pressed - 100%`.
+- **Estado:** Aprobado · Implementado en Bubble (salvo presionado) · Documentado · Verificado.
 
 ### DS-009 · Títulos en Raleway y escala tipográfica de la app
 - **Problema:** los títulos de la app no tienen fuente propia (usan la fuente
   por defecto). Además la escala del Design System es de marketing (28 y 20 px
   para títulos) y la app usa 34, 30, 28, 24 y 18.
 - **Hecho:** variable de fuente `cnBrS` "Display - Raleway" creada (sin uso).
-- **Propuesta:** Raleway en `mobileH1`…`mobileH5` y `Header Web`, conservando
-  sus tamaños; documentar la escala de la app en `tokens.json` como ampliación
-  de la de marketing. El peso 900 de `mobileH1` pasaría a 800, que es el máximo
-  que usa el Design System.
-- **Estado:** Propuesto (variable creada, estilos sin cambiar).
+- **Decisión (aprobada 2026-10-12):** Raleway (`cnBrS`) en los cinco títulos
+  mobile y en el texto del encabezado web, conservando sus tamaños. El título
+  más grande pasa de peso 900 a 800. La escala de la app queda documentada en
+  `tokens.json` (`appTypeScale`) como ampliación de la de marketing.
+- **Nota:** el texto del encabezado web usa peso 500, que no está entre los
+  pesos de Raleway del Design System (700 y 800); Bubble carga la fuente desde
+  Google Fonts con cualquier peso. Revisar cuando se rediseñe la web.
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-010 · Tarjetas con degradado
 - **Problema:** `mobileContenedor`, `ShortListItem` y el círculo del icono
   `Empty` usan grises fuera de la paleta (`#404040` → `#363636` y `#363636`).
-- **Propuesta:** superficie lisa (`surface`, `#2C2C2C`). Las tarjetas se verán
-  un poco más oscuras.
-- **Estado:** Propuesto.
+- **Decisión (aprobada 2026-10-12):** superficie lisa (`surface`) en las dos
+  tarjetas y en el círculo del icono `Empty`.
+- **Efecto:** las tarjetas se ven un poco más oscuras. Si un estado vacío cae
+  dentro de una tarjeta, el círculo del icono se confunde con el fondo de la
+  tarjeta (revisar en dispositivo).
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-011 · Radios fuera de la regla
 - **Problema:** `Popup Basic`/`Conflict` 40, `mobileVerify` 6, botones web 8,
   `SelectableListItem default` 10, `Message` 20.
-- **Propuesta:** 14 en todos, 8 en `mobileVerify` (pieza pequeña dentro de
-  otra). Los círculos quedan como excepción documentada en `bubble.md`.
-- **Estado:** Propuesto.
+- **Decisión (aprobada 2026-10-12):** 14 en los tres popups, los tres botones
+  web, `SelectableListItem default` y las esquinas de `Message`; 8 en
+  `mobileVerify`. Los círculos quedan como excepción documentada en `bubble.md`.
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-012 · Color de los enlaces
 - **Problema:** `link`, `body info` y el icono `blue` usan azul `#007AFF`. El
   Design System no define enlaces, pero dice que el naranja es para "todo lo que
   el usuario toca para avanzar".
-- **Propuesta:** enlaces en naranja (`primary`) y retirar el azul de la app.
-- **Estado:** Propuesto.
+- **Decisión (aprobada 2026-10-12):** `link`, `body info` y el icono `blue`
+  pasan a `primary`. Ningún estilo usa ya la variable azul `cmyip` salvo la
+  condición de presionado de `mobileSecondary` (ver DS-008). No se borra la
+  variable: algún elemento de página podría usarla directamente.
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-013 · Pestañas inactivas
 - **Problema:** `TabItem` usa `#454545`, contraste 1,9:1 sobre el fondo: casi
   ilegible.
-- **Propuesta:** `cnBrT` (`#B3B3B3`) para pestañas inactivas. Hace falta
-  comprobar en el editor cómo se marca la pestaña activa.
-- **Estado:** Propuesto.
+- **Decisión (aprobada 2026-10-12):** `TabItem` en `cnBrT` (`#B3B3B3`, 8,6:1).
+- **Efecto:** la pestaña activa se marca en cada pestaña con el color de texto
+  (blanco); la diferencia entre activa (blanco) e inactiva (`#B3B3B3`) es
+  pequeña. Propuesta para la fase de componentes: activa en naranja `primary`
+  (se cambia en las 4 pestañas del Tab Bar, no en el estilo).
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
 
 ### DS-014 · `appEmptyState` convertido en FloatingGroup (fuera de alcance)
 - **Problema:** el reusable `appEmptyState` pasó de tipo Group a FloatingGroup
@@ -138,5 +153,7 @@ decisión tiene todavía verificación visual en la app (ver límites en
   Bubble marca 13 errores, uno por cada pantalla que lo usa, y los estados
   vacíos pueden aparecer flotando fuera de su lugar. `appEmptyState_copy`
   sigue siendo Group.
-- **Propuesta:** volver a Group en Element type del reusable.
-- **Estado:** Pendiente (componente; decisión del dueño).
+- **Decisión (aprobada 2026-10-12):** volver a Group. Al cambiar de tipo se
+  habían perdido los rellenos (24/16) y se restauraron. Bubble pasa de 19 a 6
+  errores (los 6 que ya existían antes).
+- **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado.
