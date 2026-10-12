@@ -71,11 +71,11 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 
 | Estilo | Token / regla | Estado en Bubble |
 |---|---|---|
-| `sharedButtonPrimary` | Botón principal | `primary` liso, sin sombra, radio 14, relleno 14/24. **Pendiente:** texto 700 18 (hoy 500 16, DS-005) y presionado exacto (hoy degradado `#A84400` → `#D45500`) |
+| `sharedButtonPrimary` | Botón principal | `primary` liso, texto 700 18, sin sombra, radio 14, relleno 14/24 (DS-005, DS-007). **Pendiente (editor):** presionado exacto (hoy degradado `#A84400` → `#D45500`) |
 | `mobileButtonSecondary` | Botón secundario | `surface`, texto `text`, sin sombra. **Pendiente (editor):** presionado azul → `cnBrY` (DS-008) |
 | `mobileButtonVerify` | Pieza pequeña | `surface`, texto `text`, radio 8 (DS-008, DS-011) |
 | `mobileButtonCancel`, `mobileButtonDelete` | Sin sombras | Sin sombra. Texto y fondo propios (fuera del Design System) |
-| `webButtonPrimary`, `webButtonPrimaryLarge`, `webButtonDarkLarge` | Botones web | Radio 14 (DS-011). Siguen con degradado y sombra al pasar el ratón: se tratan con la web (DS-005) |
+| `webButtonPrimary`, `webButtonPrimaryLarge`, `webButtonDarkLarge` | Botones web | Radio 14 (DS-011). Siguen con degradado, sombra al pasar el ratón y texto menor de 18 px sobre naranja: se tratan con la web (DS-005, DS-007) |
 | `sharedTextH1`, `mobileTextH2`, `sharedTextH3`, `sharedTextH4`, `mobileTextH5`, `webTextNav` | Títulos en Raleway | `cnBrS` Raleway; tamaños de `appTypeScale` en `tokens.json` (DS-009) |
 | `mobileTextSecondary`, `webTextFooterLink`, `mobileTextLabelTiny` | `text-secondary` | `cnBrT` (DS-003, DS-006) |
 | `mobileTextLinkSmall`, `mobileTextInfo`, `mobileIconLink` | Enlaces en naranja | `primary` (DS-012) |
@@ -203,6 +203,6 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 
 ## Diferencias pendientes
 
-Ver [`decisions.md`](decisions.md): DS-005, DS-007 a DS-014. Las acciones
+Ver [`decisions.md`](decisions.md): pendientes de DS-004, DS-005, DS-007 y DS-008. Las acciones
 manuales en el editor están en [`../docs/backlog.md`](../docs/backlog.md),
 sección "Marca".

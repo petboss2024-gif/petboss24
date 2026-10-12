@@ -57,13 +57,16 @@ decisión tiene todavía verificación visual en la app (ver límites en
   extremos en `primary` (se ve liso y conserva la condición existente).
 - **Compatibilidad:** aproximada en el estado presionado (degradado `#A84400` →
   `#D45500` en vez de `#A84400` liso).
+- **Texto (aprobado 2026-10-12):** 700 18 px en `sharedButtonPrimary`
+  (antes 500 16). Es un estilo `shared`: también cambia los botones naranjas de
+  la web que lo usan (reset_pw, webHeader, webFooter). Riesgo: botones angostos
+  pueden cortar la etiqueta; revisar en dispositivo.
 - **Pendiente:**
-  - Texto 700 18: puede hacer que botones angostos corten la etiqueta; se
-    propone revisarlo junto con la escala tipográfica de la app (DS-009).
   - Presionado exacto: en el editor, cambiar en `sharedButtonPrimary` la condición
     "is pressed" a `Orange - Pressed - 100%` en los dos extremos.
-  - `webButtonPrimary` y `webButtonPrimaryLarge` siguen con degradado: se tratan con la web.
-- **Estado:** Implementado en parte · Documentado · Pendiente.
+  - `webButtonPrimary` (14/500) y `webButtonPrimaryLarge` (16/600) siguen con
+    degradado y texto más chico que la regla de DS-007: se tratan con la web.
+- **Estado:** Aprobado · Implementado en Bubble (salvo presionado) · Documentado · Verificado.
 
 ### DS-006 · Estilos que apuntaban a variables borradas
 - **Problema:** `webPopupDefault` y `webPopupConflict` (fondo), `webTextFooterLink` y
@@ -76,12 +79,16 @@ decisión tiene todavía verificación visual en la app (ver límites en
   contraste 3:1. El valor real es **2,94:1**: no llega al mínimo de WCAG ni para
   texto grande (3:1).
 - **Corrección de la documentación:** se corrige la cifra (hecho, no decisión).
-- **Opciones para decidir:**
-  1. Mantener la marca (blanco sobre naranja, 18 px o más, negrita) y aceptar
-     la excepción. Recomendada por identidad, porque la diferencia es mínima.
-  2. Oscurecer un poco el naranja solo en botones. Cambia el color de marca.
-  3. Texto oscuro `#161616` sobre naranja (6,2:1). Cambia la identidad del botón.
-- **Estado:** Propuesto.
+- **Decisión (aprobada 2026-10-12):** se mantiene la marca: texto blanco sobre
+  naranja, **siempre en negrita y a 18 px o más**, como excepción documentada a
+  WCAG (2,94:1 frente a 3:1). Texto más chico va sobre blanco u oscuro, nunca
+  sobre naranja.
+- **Alternativas descartadas:** oscurecer el naranja en botones (cambia el color
+  de marca) y texto oscuro sobre naranja (6,2:1; cambia la identidad del botón).
+- **En Bubble:** `sharedButtonPrimary` cumple desde DS-005 (700 18).
+  `mobileButtonVerify` ya no va sobre naranja (DS-008). Pendientes de la web:
+  `webButtonPrimary` (14/500) y `webButtonPrimaryLarge` (16/600).
+- **Estado:** Aprobado · Documentado · Implementado en la app · Pendiente en la web.
 
 ### DS-008 · Botón secundario azul
 - **Problema:** `mobileButtonSecondary` usa de fondo `cmyip` "Blue - Text Link"

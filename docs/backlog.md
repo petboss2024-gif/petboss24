@@ -16,11 +16,12 @@ Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
 - [ ] `mobileButtonSecondary` → condición "is pressed": fondo a
       `Gray - Surface Pressed - 100%` (hoy azul; DS-008).
 
-Decisiones propuestas, esperan aprobación (detalle en `brand/decisions.md`):
-- [ ] DS-005 texto del botón principal 700 18 px.
-- [ ] DS-007 contraste blanco sobre naranja (2,94:1).
+- [ ] Revisar en dispositivo que ningún botón principal corte la etiqueta con
+      el texto nuevo de 700 18 px (DS-005).
 
 Fuera de los estilos globales (fase siguiente):
+- [ ] Botones de la web (`webButtonPrimary`, `webButtonPrimaryLarge`): naranja
+      liso y texto blanco en negrita de 18 px o más (DS-005, DS-007).
 - [ ] Pestaña activa del Tab Bar en naranja (`primary`) en las 4 pestañas (DS-013).
 - [ ] 🔴 `walk-tracking-customer`: la clave de Google Maps está escrita en el
       HTML. Las claves de Maps JS son públicas por diseño, pero hay que
