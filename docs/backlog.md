@@ -2,6 +2,19 @@
 
 Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 
+## 🟠 Marca: ajustar Bubble al Design System (2026-10-12, ver `brand/`)
+
+- [ ] Título de los anuncios en notificaciones: "PetBoss 24" → "Petboss 24".
+- [ ] Texto secundario: reemplazar `#8A8A8A` por `#B3B3B3` (se lee justo sobre
+      `#2C2C2C`).
+- [ ] Números: DM Mono → Poppins (cifras tabulares).
+- [ ] Botón principal (`mobilePrimary`): texto Poppins bold 18 px, fondo naranja
+      liso; al presionar, naranja más oscuro.
+- [ ] Botón secundario (`mobileSecondary`): al presionar se pone azul
+      (`rgba(42,93,174)`); cambiar a un gris un poco más oscuro.
+- [ ] Pasar los colores y fuentes globales de Bubble a los valores de
+      `brand/tokens.json`.
+
 ## 🔴 Seguridad
 
 - [ ] **Verificar el webhook `checkout_session_completed`** contra Stripe

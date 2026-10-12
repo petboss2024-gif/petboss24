@@ -1,4 +1,4 @@
-# PetBoss 24 — Live Walk Tracking
+# Petboss 24 — Live Walk Tracking
 
 Documentación viva del sistema de tracking GPS del pet sitter durante un paseo.
 Se actualiza en cada paso. Este archivo es la fuente de verdad del proyecto.
