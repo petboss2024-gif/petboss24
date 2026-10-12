@@ -4,7 +4,50 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-12
+
+### Design System: decisiones DS-008 a DS-015
+- Savepoint antes: **"Antes de DS-008 a DS-014 y renombrado de estilos"** — `1791843833156`
+- Savepoint después: **"Después de DS-008 a DS-014 y renombrado de 76 estilos (mobile/web/shared)"** — `1791844336429`
+- Botón secundario y `mobileButtonVerify`: de azul a superficie gris. Variable
+  `cnBrY` `#272727` para el presionado.
+- Títulos (H1–H5 y navegación web) en Raleway; el título más grande de 900 a 800.
+- Tarjetas e icono del estado vacío: superficie lisa.
+- Radios a 14 (popups, botones web, ítem seleccionable, mensaje) y 8 en verificar.
+- Enlaces de azul a naranja. Pestañas inactivas a `#B3B3B3`.
+- `appEmptyState` vuelve a Group (había pasado a FloatingGroup en el editor);
+  rellenos restaurados. Bubble: de 19 a 6 errores (los preexistentes).
+- 76 estilos renombrados con prefijo `mobile` / `web` / `shared`
+  (catálogo en `brand/bubble.md`).
+
+### Design System: variables y estilos globales (fase 1)
+- Savepoint antes: **"Antes de alinear Style Variables y Global Styles con el Design System (fase 1)"** — `1791841900553`
+- Variables nuevas: `cnBrT` texto secundario `#B3B3B3`, `cnBrU` naranja presionado
+  `#A84400`, fuente `cnBrS` Raleway (sin uso todavía).
+- `mobileSH5` → `#B3B3B3`. `mobilePrimary` liso (sin degradado a `#FF8C00`).
+- Sin sombra: `mobilePrimary`, `mobileSecondary`, `mobileCancel`, `mobileDelete`,
+  `onboardingSteps`.
+- Estilos que apuntaban a variables borradas: `Popup Basic`/`Conflict` → `surface`;
+  `Footer Link`, `Label 10 m` → `cnBrT`.
+- Se corrigió en `brand/README.md` el contraste de blanco sobre naranja (2,94:1).
+- Detalle y pendientes: `brand/bubble.md`, `brand/decisions.md`.
+- Hallazgo fuera de alcance: `appEmptyState` pasó a FloatingGroup en el editor
+  (13 errores en Bubble, DS-014).
+
 ## 2026-10-11
+
+### Refinamiento visual de `appEmptyState`
+- Savepoint antes: **"Antes de refinamiento visual de appEmptyState"** — `1791728105039`
+- Savepoint después: `1791728286836`
+- Corregido el layout del reusable (raíz y contenido estaban en fila, un grupo
+  interno superponía los hijos, textos con ancho fijo de 100 px, icono sin
+  espacio para el glifo).
+- Tipografía y ritmo: mobileH5 / mobileSH5 14 px, interlineado 1.3 / 1.5,
+  círculo de 64 px, espaciado 16/8/16.
+- Variante compacta automática en los selectores (sin icono, padding 12).
+- Places y Notifications recuperan su espacio superior con grupos slot.
+- Sin cambios en textos, option set, condiciones, workflows ni navegación.
+  Bubble: sin issues nuevos (6 pre-existentes). Detalle: `empty-states.md`.
 
 ### Sistema de estados vacíos (`appEmptyState`)
 - Savepoint antes: **"Antes de appEmptyState (sistema de estados vacíos)"** — `1791727229224`

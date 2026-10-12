@@ -2,26 +2,39 @@
 
 Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 
-## 🟠 Marca: ajustar Bubble al Design System (2026-10-12, ver `brand/`)
+## 🟠 Marca: ajustar Bubble al Design System (ver `brand/bubble.md` y `brand/decisions.md`)
 
+Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
+- [ ] Styles → Style variables: comprobar que Primary = `#FF6600`, Primary
+      contrast y Text = `#FFFFFF`, Background = `#161616`, Surface = `#2C2C2C`
+      y que la fuente por defecto es Poppins. Anotar el resultado en
+      `brand/bubble.md` (hoy figuran "Sin verificar").
+- [ ] `sharedButtonPrimary` → condición "is pressed": los dos colores del degradado a
+      `Orange - Pressed - 100%` (DS-005).
+- [ ] `mobileDropdownDefault` y `mobileAutocompleteDefault` → condición "is focused": desactivar la
+      sombra. `webPopupDark`: quitar la sombra (DS-004).
+- [ ] `mobileButtonSecondary` → condición "is pressed": fondo a
+      `Gray - Surface Pressed - 100%` (hoy azul; DS-008).
+
+Decisiones propuestas, esperan aprobación (detalle en `brand/decisions.md`):
+- [ ] DS-005 texto del botón principal 700 18 px.
+- [ ] DS-007 contraste blanco sobre naranja (2,94:1).
+
+Fuera de los estilos globales (fase siguiente):
+- [ ] Pestaña activa del Tab Bar en naranja (`primary`) en las 4 pestañas (DS-013).
+- [ ] 🔴 `walk-tracking-customer`: la clave de Google Maps está escrita en el
+      HTML. Las claves de Maps JS son públicas por diseño, pero hay que
+      confirmar en Google Cloud que esté restringida por dominio (HTTP referrer)
+      y solo a Maps JavaScript API; si no, rotarla.
 - [ ] Título de los anuncios en notificaciones: "PetBoss 24" → "Petboss 24".
-- [ ] Texto secundario: reemplazar `#8A8A8A` por `#B3B3B3` (se lee justo sobre
-      `#2C2C2C`).
-- [ ] Números: DM Mono → Poppins (cifras tabulares).
-- [ ] Botón principal (`mobilePrimary`): texto Poppins bold 18 px, fondo naranja
-      liso; al presionar, naranja más oscuro.
-- [ ] Botón secundario (`mobileSecondary`): al presionar se pone azul
-      (`rgba(42,93,174)`); cambiar a un gris un poco más oscuro.
-- [ ] Pasar los colores y fuentes globales de Bubble a los valores de
-      `brand/tokens.json`.
+- [ ] Textos con `#8A8A8A` escrito a mano en `notificationList` → `#B3B3B3`.
+- [ ] Números: comprobar si algún elemento usa DM Mono (ningún estilo la usa).
 - [ ] Nombres técnicos con "Petboss" (B minúscula): nombre visible del proyecto de
       Google Cloud ("PetBoss 24" → "Petboss 24", el ID no cambia) y el plugin
       "Petboss Live Walk" cuando se cree.
 - [ ] Página web `walk-tracking-customer`: rediseñar con la marca (hoy usa
       violeta `#635BFF`, fuente del sistema y fondo blanco) y cambiar el título de
       la pestaña "Valecans home" → "Petboss 24".
-- [ ] Revisar en Bubble → Styles → Style variables que los colores y fuentes
-      globales coincidan con `brand/tokens.json`.
 
 ## 🔴 Seguridad
 
@@ -58,8 +71,11 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 - [ ] Bookings cliente → Pending vacío → "Book a walk" abre `bookingStep1`.
 - [ ] Revisar el parpadeo del estado vacío mientras cargan las ShortList /
       SelectableList (no exponen *is loading*).
-- [ ] Decidir si se recupera el espacio superior de Notifications (antes
-      120 px) y Places (antes 32 px); la instancia no admite márgenes.
+- [x] Espacio superior de Notifications (120 px) y Places (32 px) recuperado
+      con grupos slot (2026-10-11).
+- [ ] Revisar el refinamiento visual en dispositivo a 320, 360, 375, 393 y
+      430 px: círculo de 64 px, ritmo 16/8/16, variante compacta en los
+      selectores y botón "Book a walk".
 - [ ] Comprobar en dispositivo los iconos `phosphor bold calendar-blank`
       (usado para calendar-check) y `phosphor bold bell`.
 
