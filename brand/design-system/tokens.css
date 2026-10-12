@@ -1,0 +1,53 @@
+/* Petboss 24 Design System: CSS variables and fonts.
+   Same values as tokens.json. Lets bundle.css and the component previews
+   render on their own (outside the Claude Design System viewer).
+   Dark ("app") is the default; data-theme="light" switches to light. */
+
+@font-face{font-family:"Raleway";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/raleway-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"Raleway";font-style:normal;font-weight:800;font-display:swap;src:url("fonts/raleway-latin-800-normal.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/poppins-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/poppins-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/poppins-latin-600-normal.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/poppins-latin-700-normal.woff2") format("woff2")}
+
+:root,[data-theme="app"]{
+  /* Brand and neutrals */
+  --orange:#FF6600;
+  --violet:#9C2CF3;
+  --gray-dark:#404040;
+  --gray-light:#E5E5E5;
+  --white:#FFFFFF;
+  --app-bg:#161616;
+  --app-surface:#2C2C2C;
+
+  /* Theme roles: dark */
+  --bg:var(--app-bg);
+  --surface:var(--app-surface);
+  --text:var(--white);
+  --text-secondary:#B3B3B3;
+
+  /* Type */
+  --font-display:"Raleway",system-ui,sans-serif;
+  --font-sans:"Poppins",system-ui,sans-serif;
+
+  /* Spacing */
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:16px;
+  --space-4:24px;
+
+  /* Radius */
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-pill:999px;
+
+  /* Shadow: the system is flat */
+  --shadow-none:none;
+}
+
+[data-theme="light"]{
+  --bg:var(--white);
+  --surface:var(--gray-light);
+  --text:var(--gray-dark);
+  --text-secondary:#6B6B6B;
+}

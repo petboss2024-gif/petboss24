@@ -28,3 +28,7 @@ Full logo on orange, on white or on dark. Dog head alone in white or orange, for
 ## Components
 
 Button (primary and secondary) and Chip. Styles in `components/bundle.css`, classes start with `pb-`.
+
+To use them outside the Design System viewer, load [`tokens.css`](tokens.css) first (CSS variables and `@font-face` for the fonts in `fonts/`), then `components/bundle.css`. Dark is the default; `data-theme="light"` switches to light. The component previews already link both files.
+
+Fonts: Poppins and Raleway, SIL Open Font License 1.1 ([`fonts/OFL.txt`](fonts/OFL.txt)).

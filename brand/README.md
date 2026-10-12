@@ -64,7 +64,8 @@ números incluidos (con `font-variant-numeric: tabular-nums` si deben
 alinearse). No se usa ninguna otra fuente. Pilas CSS:
 `"Raleway", system-ui, sans-serif` y `"Poppins", system-ui, sans-serif`.
 Archivos: Raleway 700 y 800; Poppins 400, 500, 600 y 700
-(en [`design-system/fonts/`](design-system/fonts)).
+(en [`design-system/fonts/`](design-system/fonts), licencia SIL OFL 1.1 en
+[`OFL.txt`](design-system/fonts/OFL.txt)).
 
 | Estilo | Fuente | Tamaño / interlineado | Peso | Uso |
 |---|---|---|---|---|
@@ -102,6 +103,8 @@ Archivos: Raleway 700 y 800; Poppins 400, 500, 600 y 700
   pequeño. Uso: elegir una opción de una lista corta (Visits, Walks, Boarding).
 
 El CSS exacto está en [`design-system/components/bundle.css`](design-system/components/bundle.css).
+Para usarlo fuera del visor de Claude, cargar antes [`design-system/tokens.css`](design-system/tokens.css)
+(variables CSS y fuentes; oscuro por defecto, `data-theme="light"` para claro).
 
 ## Logo
 
