@@ -31,7 +31,7 @@ registra aquí.
 | [docs/conventions.md](docs/conventions.md) | Convenciones de nombres (camelCase) y estado del renombrado |
 | [docs/backlog.md](docs/backlog.md) | Pendientes priorizados |
 | [docs/changelog.md](docs/changelog.md) | Historial de cambios en Bubble, con savepoints para revertir |
-| [documentation.md](documentation.md) | Plugin **PetBoss Live Walk** (tracking GPS) — diseño y fases |
+| [documentation.md](documentation.md) | Plugin **Petboss Live Walk** (tracking GPS) — diseño y fases |
 
 ## Cómo trabajar
 

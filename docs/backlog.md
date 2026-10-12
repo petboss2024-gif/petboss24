@@ -14,6 +14,9 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       (`rgba(42,93,174)`); cambiar a un gris un poco más oscuro.
 - [ ] Pasar los colores y fuentes globales de Bubble a los valores de
       `brand/tokens.json`.
+- [ ] Nombres técnicos con "Petboss" (B minúscula): nombre visible del proyecto de
+      Google Cloud ("PetBoss 24" → "Petboss 24", el ID no cambia) y el plugin
+      "Petboss Live Walk" cuando se cree.
 
 ## 🔴 Seguridad
 

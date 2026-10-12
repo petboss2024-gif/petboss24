@@ -39,7 +39,7 @@
 
 | Plugin | Estado | Doc |
 |---|---|---|
-| PetBoss Live Walk (tracking GPS) | Fase 3 | [documentation.md](../documentation.md) |
+| Petboss Live Walk (tracking GPS) | Fase 3 | [documentation.md](../documentation.md) |
 | Tracking en segundo plano (nativo) | Idea — resuelve que `watchPosition` se congela al bloquear el teléfono | — |
 
 ## Qué puede hacer Claude con plugins
