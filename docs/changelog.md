@@ -6,6 +6,81 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Onboarding pre-login: etapa 5 (aviso de email sin verificar)
+- Savepoint antes: el de después de la etapa 4 (`1791905329638`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 5: aviso de email sin verificar en welcomeStep1"** — `1791905525550`
+- `welcomeStep1`: custom state nuevo `showUnverifiedNotice` (sí/no, por defecto
+  no). Es el único modo de saber, después de cerrar la sesión, por qué se
+  cerró; no se guarda nada en la base de datos.
+- "Page is loaded" `cnBjA` (con sesión y email sin confirmar): primero
+  `cnBro` pone `showUnverifiedNotice` = sí y después cierra la sesión
+  (`cnBjC`), como antes.
+- Aviso `calloutUnverifiedEmail` (`cnBrp`, instancia del reusable
+  `appInfoCallout`): "Please verify your email to continue. Sign in again and
+  we'll send you a new code." Oculto y colapsado por defecto; visible cuando
+  `showUnverifiedNotice` es sí. Va entre "Next" y "Already a member? Sign in".
+- El aviso no desaparece solo: dura mientras el usuario siga en el paso 1.
+- Verificado leyendo workflow, estado, elemento y conditional; Bubble: los
+  mismos 6 errores preexistentes. **Sin probar en dispositivo.**
+
+### Onboarding pre-login: etapa 4 (volver desde el login)
+- Savepoint antes: el de después de la etapa 3 (`1791905212707`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 4: enlace Back to welcome en authLogin"** — `1791905329638`
+- `authLogin`: texto `txtBackToWelcome` (`cnBrj`, "Back to welcome", estilo
+  `Mobile Text Action`, ancho y alto al contenido, alto mínimo 44 px) arriba
+  de "Welcome back", alineado a la izquierda. Los tres grupos existentes se
+  reordenaron detrás sin otros cambios.
+- Workflow `loginBackToWelcome` (`cnBrl`) → `cnBrn`: ir a `welcomeStep1`
+  (stack, reinicia la pila). Vuelve siempre al paso 1, venga de donde venga, y
+  no deja el login en la pila.
+- Login, registro y recuperación de contraseña sin cambios.
+- Verificado leyendo elemento, orden y workflow; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
+### Onboarding pre-login: etapa 3 (cierre de sesión)
+- Savepoint antes: el de después de la etapa 2 (`1791904988355`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 3: cierre de sesión siempre a welcomeStep1"** — `1791905212707`
+- "User is logged out" de `tabHome` (`cmyAz` → `cmyBH`) y de `tabBookings`
+  (`cmyBl` → `cmyBr`): destino `authLogin` → **`welcomeStep1`** (stack,
+  reinicia la pila, como antes).
+- `settingsMenu` Sign out (`cmzfy`: cerrar sesión → `cmzgc` a `welcomeStep1`,
+  reinicia la pila): sin cambios de destino; solo se escribe el tipo *stack*.
+- Ya no hay ninguna ruta de cierre de sesión que termine en `authLogin`. Las
+  dos navegaciones (ajustes y pestaña) apuntan al mismo destino; falta ver en
+  dispositivo si se nota una doble transición.
+- Verificado leyendo las 3 acciones; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
+### Onboarding pre-login: etapa 2 (botones Next)
+- Savepoint antes: el de después de la etapa 1 (`1791904628496`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 2: botones Next en welcomeStep1 y welcomeStep2"** — `1791904988355`
+- `btnOnboardingNext` ("Next", estilo `Mobile Button Secondary`) debajo de
+  "Join our community" y encima de "Already a member?":
+  - `welcomeStep1`: elemento `cnBrZ`, workflow `onboardingNext` `cnBrb` → acción
+    `cnBrd`: ir a `welcomeStep2` (stack, reinicia la pila).
+  - `welcomeStep2`: elemento `cnBre`, workflow `onboardingNext` `cnBrg` → acción
+    `cnBri`: ir a `welcomeStep3` (stack, reinicia la pila).
+- Tamaño y alineación: los valores por defecto del editor, los mismos que usa
+  el botón Join (que no tiene ninguno propio). Se reordenó "Already a member?"
+  para que quede al final en los dos pasos.
+- `welcomeStep3` sin cambios (último paso: Join y Sign in).
+- Verificado leyendo elementos, orden y workflows; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
+### Onboarding pre-login: etapas 0 y 1
+- Savepoint antes: **"Antes de onboarding etapa 1 (reinicio de pila entre welcomeStep1-3)"** — `1791904585158`
+- Savepoint después: **"Después de onboarding etapa 1: 6 transiciones entre pasos con reinicio de pila"** — `1791904628496`
+- Las 6 navegaciones entre pasos (círculos del indicador) pasan a *stack* con
+  **Reset navigation stack**: `cmjIr` (1→2), `cmjLf` (1→3), `cmjIz` (2→1),
+  `cmjKp` (2→3), `cmjJv` (3→1), `cmjKT` (3→2). Antes apilaban una vista por
+  toque.
+- Efecto esperado: la pila contiene un solo paso del onboarding; Back desde
+  `authSignup` vuelve al paso de origen. En Android, atrás en un paso cierra la
+  app (no hay paso anterior en la pila).
+- Verificado leyendo las 6 acciones; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+- Vista inicial de la app: la conexión no la expone; comprobar en el editor.
+
 ### Design System: nombres de estilos por función (DS-016)
 - Savepoint antes: **"Antes de la refactorización semántica de nombres de estilos (DS-016)"** — `1791845098353`
 - Savepoint después: **"Después de la refactorización semántica de nombres de estilos (DS-016): 76 estilos renombrados"** — `1791897738738`

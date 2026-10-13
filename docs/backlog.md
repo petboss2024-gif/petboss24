@@ -51,6 +51,38 @@ Fuera de los estilos globales (fase siguiente):
       violeta `#635BFF`, fuente del sistema y fondo blanco) y cambiar el título de
       la pestaña "Valecans home" → "Petboss 24".
 
+## 🟠 Onboarding pre-login (2026-10-13)
+
+Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
+`welcomeStep1`, volver desde el login, aviso de email sin verificar).
+- [x] Etapa 1: reinicio de pila entre pasos (ver changelog).
+- [x] Etapa 2: botón Next en los pasos 1 y 2 (ver changelog).
+- [ ] Probar en dispositivo el botón Next: aspecto y espacio junto a Join (no
+      debe cortarse ni salirse de la pantalla, que no hace scroll), recorrido
+      1 → 2 → 3 solo con Next, doble toque.
+- [x] Etapa 3: cierre de sesión siempre a `welcomeStep1` (ver changelog).
+- [ ] Probar en dispositivo: Sign out desde ajustes (cliente y petsitter)
+      llega a `welcomeStep1` sin doble transición ni paso por el login; atrás
+      después no vuelve a la app con sesión.
+- [ ] Probar en dispositivo (iOS y Android): pasos en cualquier orden sin
+      historial creciente; Back de `authSignup` vuelve al paso de origen;
+      atrás en un paso; animación de la transición; tocar el número "3" del
+      círculo en el paso 1 (workflow vacío `cmrih`).
+- [ ] Comprobar en el editor qué vista abre la app al iniciarse.
+- [x] Etapa 4: enlace "Back to welcome" en `authLogin` (ver changelog).
+- [ ] Probar en dispositivo: aspecto y posición del enlace (zona segura
+      superior); paso → Sign in → Back to welcome → Sign in varias veces sin
+      acumular pantallas; atrás tras volver no regresa al login.
+- [ ] Fuera de alcance: ir y volver entre login y registro sigue apilando
+      pantallas.
+- [x] Etapa 5: aviso de email sin verificar en `welcomeStep1` (ver changelog).
+- [ ] Probar en dispositivo: registrarse, cerrar la app sin verificar y
+      abrirla → se ve el paso 1 con el aviso; el texto se lee bien sobre la
+      imagen; cabe en la pantalla (no hace scroll); Sign in reenvía el código.
+      Si hay una pestaña cargada, su "User is logged out" podría recargar el
+      paso 1 y borrar el aviso: comprobar.
+- [ ] Etapa 6: validación integral en dispositivo (lista en la auditoría).
+
 ## 🔴 Seguridad
 
 - [ ] **Verificar el webhook `checkout_session_completed`** contra Stripe
