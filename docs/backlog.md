@@ -19,16 +19,16 @@ Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
 - [ ] Revisar en dispositivo que ningún botón principal corte la etiqueta con
       el texto nuevo de 700 18 px (DS-005).
 
-Nombres de estilos (DS-016, propuestas pendientes de aprobación):
-- [ ] Borrar `Web Popup Default Duplicate` (idéntico a `Web Popup Default`).
-- [ ] Unificar `Mobile Icon Status` → `Icon Primary`, `Mobile Text Secondary`
-      → `Mobile Text Secondary Centered` (con `#B3B3B3`) y
-      `Mobile Text Title Large` → `Mobile Heading H5`, reasignando sus elementos.
-- [ ] Borrar los 14 estilos sin uso (lista en `brand/bubble.md`).
-- [ ] Etiquetas Age/Gender/Size de `bookingDetailsPetsitter`: de
-      `Mobile Text Link Small` a `Mobile Text Label Secondary`.
-- [ ] Definir un token de error y crear `Mobile Text Error` (hoy los errores
-      usan `Text Body Small`).
+Nombres de estilos (DS-016, consolidación ejecutada 2026-10-13):
+- [x] Duplicados unificados, etiquetas de campo corregidas, `Mobile Text Error`
+      creado y 8 estilos sin uso borrados (ver `brand/bubble.md`).
+- [ ] Revisar en dispositivo: texto secundario en `#B3B3B3` (antes blanco al
+      80 %), nombres en Raleway en `walkTrackingPetsitter`, etiquetas de la
+      ficha de mascota en `bookingDetailsPetsitter`, mensajes de error.
+- [ ] `appEmptyState` usa un estilo de FloatingGroup (`Mobile Floating
+      Header`): asignarle `Container Default` y borrar ese estilo.
+- [ ] Comprobar el valor de la variable Destructive en el editor y añadir el
+      token de error a `tokens.json`.
 - [ ] Revisar el nombre de `Mobile Text Label Strong` (métricas y propinas).
 - [ ] Crear estilos para lo que hoy tiene formato a mano: etiquetas de estado,
       chips de especialidad, insignia de verificado, cajas de propina.

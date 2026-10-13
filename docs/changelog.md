@@ -6,6 +6,30 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Design System: consolidación de estilos (DS-016)
+- Savepoint antes: **"Antes de la consolidación de estilos (DS-016)"** — `1791914436049`
+- Savepoint después: **"Después de la consolidación de estilos (DS-016)"** — `1791915463317`
+- `Mobile Icon Status` → `Icon Primary` (7 iconos; condicionales conservados).
+- `Mobile Text Secondary`: color blanco al 80 % → `#B3B3B3` (`cnBrT`); recibe
+  los 4 textos de `Mobile Text Secondary Centered` (centrado, tamaño e
+  interlineado reaplicados en cada elemento).
+- `Mobile Text Title Large` → `Mobile Heading H5` (3 textos de
+  `walkTrackingPetsitter`).
+- 10 etiquetas de `bookingDetailsPetsitter`: `Mobile Text Link Small` →
+  `Mobile Text Label Secondary` (Gender perdió un color propio, `cmWYy`).
+- Nuevo `Mobile Text Error` (13/500, Destructive) en 8 mensajes de error; dos
+  tenían `#FF4D4F` escrito a mano.
+- Borrados: `Mobile Icon Status`, `Mobile Text Secondary Centered`,
+  `Mobile Text Title Large`, `Web Popup Default Duplicate`, `Web Popup Dark`,
+  `Mobile Text Lead`, `Mobile Text Body`, `Mobile Text Body Large`,
+  `Mobile Text Caption`, `Mobile Floating Footer`, `Mobile Floating Message Bar`.
+- Deshechos al ver que sí se usaban: el borrado de `Web Button Primary Small`
+  (botón del index) y el de `Mobile Floating Header` (lo usa `appEmptyState`;
+  Bubble dio un error nuevo). `Mobile Map Preview` no se borró (mapa de
+  `walkTrackingPetsitter`).
+- Verificado: asignaciones leídas de vuelta; 66 estilos; Bubble con los mismos
+  6 errores preexistentes. **Sin probar en dispositivo.**
+
 ### Onboarding pre-login: etapa 5 (aviso de email sin verificar)
 - Savepoint antes: el de después de la etapa 4 (`1791905329638`; sin cambios entre medias).
 - Savepoint después: **"Después de onboarding etapa 5: aviso de email sin verificar en welcomeStep1"** — `1791905525550`

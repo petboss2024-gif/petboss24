@@ -91,12 +91,13 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 | `Mobile Button Tertiary`, `Mobile Button Destructive` | Sin sombras | Sin sombra. Texto y fondo propios (fuera del Design System) |
 | `Web Button Primary Small`, `Web Button Primary`, `Web Button Secondary` | Botones web | Radio 14 (DS-011). Siguen con degradado, sombra al pasar el ratón y texto menor de 18 px sobre naranja: se tratan con la web (DS-005, DS-007) |
 | `Heading H1`, `Mobile Heading H2`, `Heading H3`, `Heading H4`, `Mobile Heading H5`, `Web Navigation Item` | Títulos en Raleway | `cnBrS` Raleway; tamaños de `appTypeScale` en `tokens.json` (DS-009) |
-| `Mobile Text Secondary Centered`, `Web Footer Link`, `Mobile Text Caption` | `text-secondary` | `cnBrT` (DS-003, DS-006) |
-| `Mobile Text Link Small`, `Mobile Text Accent`, `Mobile Icon Status` | Enlaces en naranja | `primary` (DS-012) |
+| `Mobile Text Secondary`, `Web Footer Link` | `text-secondary` | `cnBrT` (DS-003, DS-006, DS-016) |
+| `Mobile Text Link Small`, `Mobile Text Accent` | Enlaces en naranja | `primary` (DS-012) |
 | `Mobile Tab Bar Item` | Pestaña inactiva | `cnBrT` (DS-013) |
 | `Mobile Card Default`, `Mobile List Item Card`, `Mobile Icon Container Empty State` | Superficie lisa | `surface` (DS-010) |
-| `Web Popup Default`, `Web Popup Default Duplicate`, `Web Popup Dark` | Superficie, radio 14 | `surface` en los dos primeros; radio 14 en los tres (DS-006, DS-011). `Web Popup Dark` aún con sombra (DS-004) |
-| `Mobile Selectable Item Card`, `Mobile Floating Message Bar` | Radio 14 | Radio 14 (DS-011) |
+| `Web Popup Default` | Superficie, radio 14 | `surface`, radio 14 (DS-006, DS-011) |
+| `Mobile Selectable Item Card` | Radio 14 | Radio 14 (DS-011) |
+| `Mobile Text Error` | Error | Variable Destructive (valor sin verificar). Creado en DS-016 |
 | `Mobile Progress Step` | Sin sombras | Sin sombra (DS-004) |
 | `Input Default`, `Mobile Input Multiline`, `Mobile Input Date`, `Mobile Dropdown Default`, `Mobile Autocomplete Default` | Radio 14, foco en naranja | Cumplen. Desplegable y autocompletar aún suman sombra al enfocar (DS-004) |
 
@@ -115,12 +116,13 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 - **Círculos** (radio 100): icono `Mobile Icon Container Empty State`, `AppBarButton`, `Mobile Progress Step`.
   Son avatares, botones de ícono o indicadores de paso, no chips. Se proponen
   como excepción documentada en DS-011.
-- **Estados de error** usan la variable Destructive de Bubble; el Design System
-  todavía no define un color de error.
+- **Estados de error** usan la variable Destructive de Bubble (estilo
+  `Mobile Text Error` y borde de campos inválidos); el Design System todavía no
+  tiene su valor en `tokens.json`.
 
 ## Catálogo de estilos
 
-76 estilos, agrupados por familia. **Antes** es el nombre del 2026-10-12
+66 estilos (76 tras DS-016, 11 borrados y 1 creado en la consolidación), agrupados por familia. **Antes** es el nombre del 2026-10-12
 (DS-015) y **Original**, el que tenía en Bubble antes de cualquier cambio.
 **Usos** = elementos que lo tienen asignado (vistas y reusables mobile; "+web"
 si además aparece en la web). **Confianza**: qué tan seguro es que el nombre
@@ -134,22 +136,17 @@ describe la función (Baja = revisar).
 | `Mobile Heading H2` | `mobileTextH2` | mobileH2 | Mobile | 7 | Alta | Raleway 30/800. Títulos de sección grandes (Services, onboarding) |
 | `Heading H3` | `sharedTextH3` | mobileH3 | Compartido | 6+web | Alta | Raleway 28/700 |
 | `Heading H4` | `sharedTextH4` | mobileH4 | Compartido | 32+web | Alta | Raleway 24/700. Títulos de hoja y de bloque |
-| `Mobile Heading H5` | `mobileTextH5` | mobileH5 | Mobile | 17 | Alta | Raleway 18/600. Títulos de tarjeta y de estado vacío |
-| `Mobile Text Title Large` | `mobileTextLabelLarge` | Label 2 SB | Mobile | 2 | Media | 18/600 en Poppins. Nombres en walkTrackingPetsitter; casi igual que Heading H5 |
+| `Mobile Heading H5` | `mobileTextH5` | mobileH5 | Mobile | 20 | Alta | Raleway 18/600. Títulos de tarjeta y de estado vacío. Absorbió `Mobile Text Title Large` (2026-10-13) |
 | `Mobile Text Title` | `mobileTextTitle` | mobileTitle | Mobile | 116 | Alta | 16/600. Títulos de fila, de campo y de tarjeta |
 | `Mobile Text Subtitle` | `mobileTextSubtitle` | mobileSt1 | Mobile | 6 | Alta | 18/500 centrado. Subtítulo bajo el título de pantalla |
-| `Mobile Text Lead` | `mobileTextSubtitleLarge` | Subtitle | Mobile | 0 | Media | 20/500, interlineado 1,5. Sin uso |
 | `Mobile Text Body Strong` | `mobileTextPretitle` | mobilePretitle | Mobile | 62 | Alta | 600, tamaño por defecto. Texto destacado y descripciones (no es un pretítulo) |
-| `Mobile Text Body` | `mobileTextBody` | Label 2 regular | Mobile | 0 | Media | 15/400. Sin uso; etiqueta HTML h2 heredada |
-| `Mobile Text Body Large` | `mobileTextLabelMedium` | Label Medium | Mobile | 0 | Media | 16/500 color #EBEBF5 fuera de paleta. Sin uso |
-| `Text Body Small` | `sharedTextSmall` | mobileSmallBody | Compartido | 193+web | Alta | 12/500. Texto corrido pequeño; también se usa para errores (no hay estilo de error) |
-| `Mobile Text Secondary` | `mobileTextSubtitleMuted` | Subtitle 14 | Mobile | 17 | Alta | 500, blanco al 80 %. Datos secundarios (email, edad, member since) |
-| `Mobile Text Secondary Centered` | `mobileTextSecondary` | mobileSH5 | Mobile | 4 | Alta | 500 centrado, #B3B3B3. Descripciones de estado vacío. Duplicado parcial de Mobile Text Secondary |
-| `Mobile Text Label Secondary` | `mobileTextLabelMuted` | Profile | Mobile | 15 | Alta | 13/600 blanco al 50 %. Etiquetas de métricas (Distance, Response time) |
+| `Mobile Text Error` | — | — | Mobile | 8 | Alta | 13/500, variable Destructive de Bubble. Mensajes de error y validación (creado 2026-10-13) |
+| `Text Body Small` | `sharedTextSmall` | mobileSmallBody | Compartido | 190+web | Alta | 12/500. Texto corrido pequeño. Los errores pasaron a `Mobile Text Error` (2026-10-13) |
+| `Mobile Text Secondary` | `mobileTextSubtitleMuted` | Subtitle 14 | Mobile | 20 | Alta | 500, `#B3B3B3` (`cnBrT`). Datos secundarios y descripciones. Absorbió `Mobile Text Secondary Centered`; el centrado va en cada elemento (2026-10-13) |
+| `Mobile Text Label Secondary` | `mobileTextLabelMuted` | Profile | Mobile | 25 | Alta | 13/600 blanco al 50 %. Etiquetas de métricas y de campos (Distance, Age, Breed…) |
 | `Mobile Text Label Strong` | `mobileTextInputLabel` | mobileInputLabel | Mobile | 13 | Baja | 15/700. Se usa para métricas (Total Bookings, 0), propinas ($5) y un título; no para etiquetas de formulario. Revisar |
-| `Mobile Text Caption` | `mobileTextLabelTiny` | Label 10 m | Mobile | 0 | Media | 10/500, #B3B3B3. Sin uso |
 | `Mobile Text Link` | `mobileTextLink` | mobileLink | Mobile | 3 | Alta | 13/400 subrayado, naranja. Enlaces legales |
-| `Mobile Text Link Small` | `mobileTextLinkSmall` | link | Mobile | 13 | Media | 12/700 subrayado, naranja. Uso correcto en Resend Code; uso indebido como etiqueta de campo (Age, Gender, Size) en bookingDetailsPetsitter |
+| `Mobile Text Link Small` | `mobileTextLinkSmall` | link | Mobile | 3 | Alta | 12/700 subrayado, naranja. Enlaces de acción (Resend Code). Las etiquetas de campo pasaron a `Mobile Text Label Secondary` (2026-10-13); queda el valor de talla en `bookingDetailsPetsitter` |
 | `Mobile Text Action` | `mobileTextButton` | mobileBtnText | Mobile | 10 | Alta | 700 naranja sin subrayado. Acciones de texto (Forgot password?, Sign up, Cancel) |
 | `Mobile Text Accent` | `mobileTextInfo` | body info | Mobile | 1 | Media | 14 naranja. Texto destacado en authForgotPasswordSent |
 | `Mobile Text Chat Message` | `mobileTextChat` | Chatting 13 m | Mobile | 1 | Alta | 13/500. Texto del mensaje en chatMessages |
@@ -167,7 +164,7 @@ describe la función (Baja = revisar).
 | `Mobile Button Apple Sign In` | `mobileButtonApple` | apple | Mobile | 2 | Alta | Excepción de marca de Apple (blanco con texto oscuro) |
 | `Web Button Primary` | `webButtonPrimaryLarge` | web2 | Web | 3 | Alta | CTA naranja del index |
 | `Web Button Secondary` | `webButtonDarkLarge` | web3 | Web | 2 | Alta | CTA oscuro del index junto al principal |
-| `Web Button Primary Small` | `webButtonPrimary` | webPrimary | Web | 0 | Media | Sin uso en la web ni en la app |
+| `Web Button Primary Small` | `webButtonPrimary` | webPrimary | Web | 1 | Alta | Botón naranja pequeño del index (`cmgpf`). El escaneo anterior lo dio por error sin uso |
 
 ### Formularios
 
@@ -177,8 +174,8 @@ describe la función (Baja = revisar).
 | `Mobile Input Borderless` | `mobileInputPlain` | noBorders | Mobile | 11 | Alta | Sin borde, dentro de un grupo con borde (login, búsqueda) |
 | `Mobile Input Multiline` | `mobileMultilineInputDefault` | mobile | Mobile | 17 | Alta | Texto largo (alergias, notas) |
 | `Mobile Input Date` | `mobileDateInputDefault` | mobile | Mobile | 9 | Alta | Selector de fecha y hora |
-| `Mobile Dropdown Default` | `mobileDropdownDefault` | defaultMobile | Mobile | 0 | Alta | Sin uso |
-| `Mobile Autocomplete Default` | `mobileAutocompleteDefault` | defaultMobile | Mobile | 0 | Alta | Sin uso |
+| `Mobile Dropdown Default` | `mobileDropdownDefault` | defaultMobile | Mobile | 0 | Alta | Sin uso. Se conserva: único estilo de desplegable con la marca (radio 14, foco naranja) |
+| `Mobile Autocomplete Default` | `mobileAutocompleteDefault` | defaultMobile | Mobile | 0 | Alta | Sin uso. Se conserva: único estilo de autocompletar con la marca |
 | `Mobile Toggle Default` | `mobileToggleDefault` | defaultMobile | Mobile | 2 | Alta | Plugin Toggle Switch |
 
 ### Superficies
@@ -212,21 +209,16 @@ describe la función (Baja = revisar).
 | Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
 |---|---|---|---|---|---|---|
 | `Mobile Sheet Default` | `mobileSheetDefault` | mobile | Mobile | 4 | Alta | Hoja inferior |
-| `Web Popup Default` | `webPopupDefault` | Basic | Web | 0 | Alta | Sin uso |
-| `Web Popup Default Duplicate` | `webPopupConflict` | Conflict | Web | 0 | Alta | Idéntico a Web Popup Default; sin uso |
-| `Web Popup Dark` | `webPopupDark` | Black | Web | 0 | Alta | Sin uso |
+| `Web Popup Default` | `webPopupDefault` | Basic | Web | 0 | Alta | Sin uso. Se conserva: único estilo de popup (superficie, radio 14) |
 | `Mobile Floating Action Bar` | `mobileFloatingActions` | containerButtons  | Mobile | 2 | Alta | Barra inferior con botón Add (petList, addressList) |
-| `Mobile Floating Footer` | `mobileFloatingButtons` | Mobile Buttons | Mobile | 0 | Media | Relleno lateral 10. Sin uso |
-| `Mobile Floating Header` | `mobileFloatingTabs` | Tabs | Mobile | 0 | Baja | Solo fondo. Sin uso; función no confirmada |
-| `Mobile Floating Message Bar` | `mobileFloatingMessage` | Message | Mobile | 0 | Media | Esquinas superiores redondeadas. Sin uso; chatMessages no lo usa |
+| `Mobile Floating Header` | `mobileFloatingTabs` | Tabs | Mobile | 1 | Baja | Solo fondo. Lo usa la definición del reusable `appEmptyState` (resto de cuando pasó a FloatingGroup); nombre engañoso, ver Pendiente |
 
 ### Iconografía
 
 | Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
 |---|---|---|---|---|---|---|
-| `Icon Primary` | `sharedIconPrimary` | Cards | Compartido | 60+web | Alta | Naranja sin fondo |
+| `Icon Primary` | `sharedIconPrimary` | Cards | Compartido | 67+web | Alta | Naranja sin fondo. Absorbió `Mobile Icon Status` (2026-10-13) |
 | `Mobile Icon Primary Padded` | `mobileIconPrimaryPadded` | Main | Mobile | 14 | Alta | Naranja con relleno 3 (filas de menú, spinner) |
-| `Mobile Icon Status` | `mobileIconLink` | blue | Mobile | 6 | Media | Iconos de etiquetas de estado. Hoy idéntico a Icon Primary |
 | `Mobile Icon Secondary` | `mobileIconMuted` | Default | Mobile | 64 | Alta | Gris #959595 (flechas, mostrar contraseña) |
 | `Mobile Icon Container Empty State` | `mobileIconEmptyState` | Empty | Mobile | 2 | Alta | Círculo de superficie del estado vacío |
 
@@ -240,50 +232,51 @@ describe la función (Baja = revisar).
 | `Mobile Page Default` | `mobilePageDefault` | defaultMobile | Mobile | vista | Alta | Fondo de página de las vistas |
 | `Mobile Web View` | `mobileWebViewDefault` | mobile | Mobile | 1 | Alta | Pago en bookingPayment |
 | `Mobile Map Default` | `mobileMapDefault` | mobile | Mobile | 2 | Alta | Mapa con borde, estilo blue_gray |
-| `Mobile Map Preview` | `mobileMapPreview` | defaultMobile | Mobile | 0 | Media | Igual que Mobile Map Default con estilo apple. Sin uso |
+| `Mobile Map Preview` | `mobileMapPreview` | defaultMobile | Mobile | 1 | Media | Mapa con estilo apple en `walkTrackingPetsitter` (`cnAsR0`). El escaneo anterior lo dio por error sin uso |
 
-### Duplicados y consolidación propuesta
+### Consolidación (2026-10-13, DS-016)
 
-No se fusionó nada: fusionar exige reasignar elementos y eso es rediseño, no
-renombrado. Propuestas (DS-016, pendientes de aprobación):
+Savepoints: antes `1791914436049`, después `1791915463317`.
 
-| Estilos | Situación | Propuesta |
-|---|---|---|
-| `Web Popup Default` y `Web Popup Default Duplicate` | Idénticos, ninguno se usa | Borrar `Web Popup Default Duplicate` |
-| `Mobile Icon Status` e `Icon Primary` | Idénticos desde DS-012 (los dos naranja) | Pasar los 6 iconos de estado a `Icon Primary` y borrar `Mobile Icon Status`, o darle un color de estado propio |
-| `Mobile Text Secondary` y `Mobile Text Secondary Centered` | Mismo rol; uno usa blanco al 80 % y el otro `#B3B3B3` | Un solo estilo con `#B3B3B3`; el centrado se pone en el elemento |
-| `Mobile Text Title Large` y `Mobile Heading H5` | 18/600 los dos; cambia la fuente (Poppins / Raleway) | Pasar los 2 usos a `Mobile Heading H5` y borrar |
-| `Mobile Map Preview` y `Mobile Map Default` | Iguales salvo el estilo del mapa; el primero no se usa | Borrar `Mobile Map Preview` |
+| Cambio | Elementos |
+|---|---|
+| `Mobile Icon Status` → `Icon Primary` (idénticos); estilo borrado | 7 iconos (estados en `tabBookings` y `bookingDetailsCustomer`, `addressDetailsSheet`, `walkTrackingPetsitter`, `appInfoCallout`). Sus condicionales de color se conservan |
+| `Mobile Text Secondary Centered` → `Mobile Text Secondary`, que pasa de blanco al 80 % a `#B3B3B3`; estilo borrado | 4 textos (descripción de `appEmptyState` y de su copia, `appPhotoPickerSheet`, "Identity Verified"); el centrado, el tamaño 14 y el interlineado 1,5 quedan en cada elemento |
+| `Mobile Text Title Large` → `Mobile Heading H5` (Poppins → Raleway); estilo borrado | 3 textos en `walkTrackingPetsitter` |
+| Etiquetas de campo: `Mobile Text Link Small` → `Mobile Text Label Secondary` | 10 en `bookingDetailsPetsitter` (Age, Gender, Size, Breed, Allergies, Medication, Spayed/Neutered, Behavioral Traits, Diet, Additional Notes) |
+| Estilo nuevo `Mobile Text Error` (13/500, Destructive) | 8 mensajes de error: formularios de lugar, mascota y reserva (`#FF4D4F` escrito a mano), contraseñas que no coinciden (2), "Code incorrect", "Incorrect or expired code" |
+| Borrados sin uso | `Web Popup Default Duplicate`, `Web Popup Dark`, `Mobile Text Lead`, `Mobile Text Body`, `Mobile Text Body Large`, `Mobile Text Caption`, `Mobile Floating Footer`, `Mobile Floating Message Bar` |
 
-### Estilos sin uso
+**No se borraron**, aunque estaban en la propuesta:
 
-Ningún elemento los tiene asignados (escaneo 2026-10-12/13). Candidatos a
-borrar; no se borraron:
+- `Web Button Primary Small` y `Mobile Map Preview`: sí se usan (1 cada uno);
+  el escaneo de usos anterior estaba incompleto.
+- `Mobile Floating Header`: lo usa la definición de `appEmptyState`. Al
+  borrarlo, Bubble marcó el error "None (Custom) is not a possible option" y
+  se deshizo.
+- `Web Popup Default`, `Mobile Dropdown Default` y `Mobile Autocomplete
+  Default`: sin uso, pero son el único estilo de su tipo con la marca; sin
+  ellos, un popup, desplegable o autocompletar nuevo nacería sin estilo.
 
-`Web Button Primary Small`, `Mobile Text Lead`, `Mobile Text Body`,
-`Mobile Text Body Large`, `Mobile Text Caption`, `Web Popup Default`,
-`Web Popup Default Duplicate`, `Web Popup Dark`, `Mobile Floating Header`,
-`Mobile Floating Footer`, `Mobile Floating Message Bar`,
-`Mobile Dropdown Default`, `Mobile Autocomplete Default`,
-`Mobile Map Preview`.
+Con esto ya no quedan duplicados conocidos.
 
-`Mobile Page Default` no se puede contar así: se aplica a la vista, no a un
-elemento.
+### Pendiente
 
-### Usos que no coinciden con el nombre
-
-| Estilo | Uso indebido | Corrección propuesta |
-|---|---|---|
-| `Mobile Text Link Small` | Etiquetas de campo (Age, Gender, Size) en `bookingDetailsPetsitter` | Pasarlas a `Mobile Text Label Secondary` |
-| `Text Body Small` | Mensajes de error (no existe estilo de error) | Crear `Mobile Text Error` con un token de error (falta en el Design System) |
-| `Mobile Text Label Strong` | Métricas y propinas, no etiquetas de formulario | Revisar: puede ser `Mobile Text Metric` |
+- `appEmptyState` (un Group) usa un estilo de FloatingGroup (`Mobile Floating
+  Header`). Asignarle `Container Default` y borrar ese estilo; revisar antes
+  que el estado vacío se vea igual.
+- `Mobile Text Label Strong` se usa para métricas y propinas: valorar
+  renombrarlo `Mobile Text Metric`.
+- El token de error: `Mobile Text Error` usa la variable incorporada
+  Destructive, cuyo valor no se puede leer desde la conexión. Comprobarlo en el
+  editor y añadirlo a `tokens.json`.
 
 ### Elementos con formato a mano
 
 Repetidos en varias pantallas sin estilo; candidatos a estilos nuevos:
 etiquetas de estado de la reserva, chips de especialidad, cajas de propina,
 tarjeta "Become a PetBoss", insignias de verificado, botones de género, campo
-del código de verificación y el texto "Incorrect or expired".
+del código de verificación. ("Incorrect or expired code" ya usa `Mobile Text Error`.)
 
 ## Límites de Bubble y de la conexión
 
