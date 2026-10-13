@@ -56,12 +56,16 @@ Fuera de los estilos globales (fase siguiente):
 Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
 `welcomeStep1`, volver desde el login, aviso de email sin verificar).
 - [x] Etapa 1: reinicio de pila entre pasos (ver changelog).
+- [x] Etapa 2: botón Next en los pasos 1 y 2 (ver changelog).
+- [ ] Probar en dispositivo el botón Next: aspecto y espacio junto a Join (no
+      debe cortarse ni salirse de la pantalla, que no hace scroll), recorrido
+      1 → 2 → 3 solo con Next, doble toque.
 - [ ] Probar en dispositivo (iOS y Android): pasos en cualquier orden sin
       historial creciente; Back de `authSignup` vuelve al paso de origen;
       atrás en un paso; animación de la transición; tocar el número "3" del
       círculo en el paso 1 (workflow vacío `cmrih`).
 - [ ] Comprobar en el editor qué vista abre la app al iniciarse.
-- [ ] Etapa 2: botones Next. Etapa 3: cierre de sesión unificado. Etapa 4:
+- [ ] Etapa 3: cierre de sesión unificado. Etapa 4:
       volver desde `authLogin`. Etapa 5: aviso de email sin verificar.
 
 ## 🔴 Seguridad

@@ -6,6 +6,22 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Onboarding pre-login: etapa 2 (botones Next)
+- Savepoint antes: el de después de la etapa 1 (`1791904628496`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 2: botones Next en welcomeStep1 y welcomeStep2"** — `1791904988355`
+- `btnOnboardingNext` ("Next", estilo `Mobile Button Secondary`) debajo de
+  "Join our community" y encima de "Already a member?":
+  - `welcomeStep1`: elemento `cnBrZ`, workflow `onboardingNext` `cnBrb` → acción
+    `cnBrd`: ir a `welcomeStep2` (stack, reinicia la pila).
+  - `welcomeStep2`: elemento `cnBre`, workflow `onboardingNext` `cnBrg` → acción
+    `cnBri`: ir a `welcomeStep3` (stack, reinicia la pila).
+- Tamaño y alineación: los valores por defecto del editor, los mismos que usa
+  el botón Join (que no tiene ninguno propio). Se reordenó "Already a member?"
+  para que quede al final en los dos pasos.
+- `welcomeStep3` sin cambios (último paso: Join y Sign in).
+- Verificado leyendo elementos, orden y workflows; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
 ### Onboarding pre-login: etapas 0 y 1
 - Savepoint antes: **"Antes de onboarding etapa 1 (reinicio de pila entre welcomeStep1-3)"** — `1791904585158`
 - Savepoint después: **"Después de onboarding etapa 1: 6 transiciones entre pasos con reinicio de pila"** — `1791904628496`
