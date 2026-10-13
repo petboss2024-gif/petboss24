@@ -6,6 +6,20 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Onboarding pre-login: etapa 3 (cierre de sesión)
+- Savepoint antes: el de después de la etapa 2 (`1791904988355`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 3: cierre de sesión siempre a welcomeStep1"** — `1791905212707`
+- "User is logged out" de `tabHome` (`cmyAz` → `cmyBH`) y de `tabBookings`
+  (`cmyBl` → `cmyBr`): destino `authLogin` → **`welcomeStep1`** (stack,
+  reinicia la pila, como antes).
+- `settingsMenu` Sign out (`cmzfy`: cerrar sesión → `cmzgc` a `welcomeStep1`,
+  reinicia la pila): sin cambios de destino; solo se escribe el tipo *stack*.
+- Ya no hay ninguna ruta de cierre de sesión que termine en `authLogin`. Las
+  dos navegaciones (ajustes y pestaña) apuntan al mismo destino; falta ver en
+  dispositivo si se nota una doble transición.
+- Verificado leyendo las 3 acciones; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
 ### Onboarding pre-login: etapa 2 (botones Next)
 - Savepoint antes: el de después de la etapa 1 (`1791904628496`; sin cambios entre medias).
 - Savepoint después: **"Después de onboarding etapa 2: botones Next en welcomeStep1 y welcomeStep2"** — `1791904988355`
