@@ -6,6 +6,20 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Onboarding pre-login: etapas 0 y 1
+- Savepoint antes: **"Antes de onboarding etapa 1 (reinicio de pila entre welcomeStep1-3)"** — `1791904585158`
+- Savepoint después: **"Después de onboarding etapa 1: 6 transiciones entre pasos con reinicio de pila"** — `1791904628496`
+- Las 6 navegaciones entre pasos (círculos del indicador) pasan a *stack* con
+  **Reset navigation stack**: `cmjIr` (1→2), `cmjLf` (1→3), `cmjIz` (2→1),
+  `cmjKp` (2→3), `cmjJv` (3→1), `cmjKT` (3→2). Antes apilaban una vista por
+  toque.
+- Efecto esperado: la pila contiene un solo paso del onboarding; Back desde
+  `authSignup` vuelve al paso de origen. En Android, atrás en un paso cierra la
+  app (no hay paso anterior en la pila).
+- Verificado leyendo las 6 acciones; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+- Vista inicial de la app: la conexión no la expone; comprobar en el editor.
+
 ### Design System: nombres de estilos por función (DS-016)
 - Savepoint antes: **"Antes de la refactorización semántica de nombres de estilos (DS-016)"** — `1791845098353`
 - Savepoint después: **"Después de la refactorización semántica de nombres de estilos (DS-016): 76 estilos renombrados"** — `1791897738738`
