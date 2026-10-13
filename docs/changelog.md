@@ -6,6 +6,23 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Onboarding pre-login: etapa 5 (aviso de email sin verificar)
+- Savepoint antes: el de después de la etapa 4 (`1791905329638`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 5: aviso de email sin verificar en welcomeStep1"** — `1791905525550`
+- `welcomeStep1`: custom state nuevo `showUnverifiedNotice` (sí/no, por defecto
+  no). Es el único modo de saber, después de cerrar la sesión, por qué se
+  cerró; no se guarda nada en la base de datos.
+- "Page is loaded" `cnBjA` (con sesión y email sin confirmar): primero
+  `cnBro` pone `showUnverifiedNotice` = sí y después cierra la sesión
+  (`cnBjC`), como antes.
+- Aviso `calloutUnverifiedEmail` (`cnBrp`, instancia del reusable
+  `appInfoCallout`): "Please verify your email to continue. Sign in again and
+  we'll send you a new code." Oculto y colapsado por defecto; visible cuando
+  `showUnverifiedNotice` es sí. Va entre "Next" y "Already a member? Sign in".
+- El aviso no desaparece solo: dura mientras el usuario siga en el paso 1.
+- Verificado leyendo workflow, estado, elemento y conditional; Bubble: los
+  mismos 6 errores preexistentes. **Sin probar en dispositivo.**
+
 ### Onboarding pre-login: etapa 4 (volver desde el login)
 - Savepoint antes: el de después de la etapa 3 (`1791905212707`; sin cambios entre medias).
 - Savepoint después: **"Después de onboarding etapa 4: enlace Back to welcome en authLogin"** — `1791905329638`

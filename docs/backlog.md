@@ -75,9 +75,13 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
       acumular pantallas; atrás tras volver no regresa al login.
 - [ ] Fuera de alcance: ir y volver entre login y registro sigue apilando
       pantallas.
-- [ ] Etapa 5: aviso de email sin verificar (ojo: si una pestaña sigue
-      cargada, su "User is logged out" podría recargar `welcomeStep1` y borrar
-      el aviso).
+- [x] Etapa 5: aviso de email sin verificar en `welcomeStep1` (ver changelog).
+- [ ] Probar en dispositivo: registrarse, cerrar la app sin verificar y
+      abrirla → se ve el paso 1 con el aviso; el texto se lee bien sobre la
+      imagen; cabe en la pantalla (no hace scroll); Sign in reenvía el código.
+      Si hay una pestaña cargada, su "User is logged out" podría recargar el
+      paso 1 y borrar el aviso: comprobar.
+- [ ] Etapa 6: validación integral en dispositivo (lista en la auditoría).
 
 ## 🔴 Seguridad
 
