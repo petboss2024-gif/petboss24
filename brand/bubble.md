@@ -7,26 +7,40 @@ de la marca se definen en [`tokens.json`](tokens.json) y las **reglas** en
 Bubble y qué falta. Las decisiones y su estado están en
 [`decisions.md`](decisions.md).
 
-Revisado contra Bubble el 2026-10-12. Savepoint antes de los cambios:
-`1791841900553`.
+Revisado contra Bubble el 2026-10-13. Savepoints: antes de los cambios de
+marca `1791841900553`; antes y después de los nombres semánticos (DS-016)
+`1791845098353` y `1791897738738`.
 
 ## Nombres de los estilos
 
-Formato `{plataforma}{Elemento}{Variante}` en lowerCamelCase (regla en
-[`docs/conventions.md`](../docs/conventions.md)):
+Desde el 2026-10-13 (DS-016) los estilos se nombran por **función**, no por
+su aspecto ni por el nombre que tenían:
+`[Plataforma] [Componente] [Variante] [Rol o tamaño]`, en Title Case con
+espacios, usando solo los segmentos que aportan información. Regla completa
+en [`docs/conventions.md`](../docs/conventions.md#estilos-de-bubble).
 
-- `mobile`: solo en la app (vistas mobile, reusables mobile y páginas
-  "Native Mobile" que la app abre: booking-payment*, petsitter-onboarding*,
-  walk-tracking-petsitter).
-- `web`: solo en el sitio web (index, webHeader, webFooter, páginas legales).
-- `shared`: lo usan los dos. **Cambiar un estilo `shared` cambia la app y la web.**
+- **Plataforma:** `Mobile` si solo lo usa la app (vistas, reusables mobile y
+  páginas "Native Mobile": booking-payment*, petsitter-onboarding*,
+  walk-tracking-petsitter); `Web` si solo lo usa el sitio web (index,
+  webHeader, webFooter, páginas legales). **Sin prefijo** si lo usan las dos:
+  `Button Primary`, `Heading H1`, `Input Default`, `Container Page`. Cambiar
+  un estilo sin prefijo cambia la app y la web.
+- **Componente:** qué es para quien diseña (`Heading`, `Text`, `Button`,
+  `Input`, `Card`, `Container`, `List`, `Sheet`, `Popup`, `App Bar`,
+  `Tab Bar Item`, `Icon`, `Divider`, `Map`…), no siempre el tipo de elemento
+  de Bubble: un Group con superficie es `Card`; un Button que hace de pestaña
+  es `Tab Segment`.
+- **Variante y rol:** jerarquía o intención (`Primary`, `Secondary`,
+  `Tertiary`, `Destructive`, `Strong`, `Accent`, `Link`, `Caption`…) y tamaño
+  solo cuando hay dos del mismo rol (`Small`, `Large`).
 
 Bubble no separa los estilos por plataforma: cualquiera se puede asignar a
-cualquier elemento. La plataforma se decidió por uso real (escaneo de los 393
-elementos de la web, 2026-10-12); los estilos que no aparecen en la web se
-marcaron `mobile`. Los ids internos no cambian, así que renombrar no rompe nada.
+cualquier elemento. La plataforma y la función se decidieron por uso real:
+escaneo de los ~2.400 elementos de la app (1.844 en vistas mobile, 169 en
+reusables) y de la web (393), 2026-10-12/13. Los elementos guardan el **id**
+del estilo, no el nombre, así que renombrar no cambia ningún elemento.
 
-
+Niveles de compatibilidad usados en las tablas de abajo:
 
 - **Exacta:** Bubble guarda el mismo valor y se comprobó leyendo la variable o el estilo.
 - **Aproximada:** se ve casi igual, pero Bubble lo guarda de otra forma; se explica la diferencia.
@@ -51,9 +65,9 @@ Variables de Bubble **fuera del Design System** (siguen en uso):
 
 | Variable | Valor | Usada en | Estado |
 |---|---|---|---|
-| `cmyip` "Blue - Text Link - 100%" | `#007AFF` | Solo la condición de presionado de `mobileButtonSecondary` | Ningún estilo la usa en su valor base desde DS-008 y DS-012; se retira cuando se cambie esa condición en el editor |
-| `cnAXF` "Gray" | `#959595` | Bordes y placeholder de campos, icono `mobileIconMuted`, color del icono `mobileIconEmptyState`, `sharedShapeDivider`, `mobileGroupSelect`, `mobileFloatingMessage` | Pendiente: decidir si es un token de borde (ver Diferencias) |
-| `cmyjB0` "Orange Gradient 100%" | `#FF8C00` | `webButtonPrimary`, `webButtonPrimaryLarge` (degradado) | Ya no la usa `sharedButtonPrimary`; queda para la web (DS-005) |
+| `cmyip` "Blue - Text Link - 100%" | `#007AFF` | Solo la condición de presionado de `Mobile Button Secondary` | Ningún estilo la usa en su valor base desde DS-008 y DS-012; se retira cuando se cambie esa condición en el editor |
+| `cnAXF` "Gray" | `#959595` | Bordes y placeholder de campos, icono `Mobile Icon Secondary`, color del icono `Mobile Icon Container Empty State`, `Divider`, `Mobile Card Option`, `Mobile Floating Message Bar` | Pendiente: decidir si es un token de borde (ver Diferencias) |
+| `cmyjB0` "Orange Gradient 100%" | `#FF8C00` | `Web Button Primary Small`, `Web Button Primary` (degradado) | Ya no la usa `Button Primary`; queda para la web (DS-005) |
 
 Nomenclatura de variables nuevas: `Color - Rol - Opacidad`, igual que las
 existentes (ver DS-002).
@@ -63,7 +77,7 @@ existentes (ver DS-002).
 | Token | Variable en Bubble | Compatibilidad |
 |---|---|---|
 | `font.text` Poppins | Fuente por defecto (`var(--font_default)`) | Sin verificar. Las dos variables creadas a mano (`AI Default Font`, `AI Secondary Font`) son Poppins, pero ningún estilo las usa |
-| `font.display` Raleway | `cnBrS` "Display - Raleway" | Exacta. La usan `sharedTextH1`, `mobileTextH2`, `sharedTextH3`, `sharedTextH4`, `mobileTextH5` y `webTextNav` (DS-009) |
+| `font.display` Raleway | `cnBrS` "Display - Raleway" | Exacta. La usan `Heading H1`, `Mobile Heading H2`, `Heading H3`, `Heading H4`, `Mobile Heading H5` y `Web Navigation Item` (DS-009) |
 
 ## Estilos reutilizables
 
@@ -71,20 +85,20 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 
 | Estilo | Token / regla | Estado en Bubble |
 |---|---|---|
-| `sharedButtonPrimary` | Botón principal | `primary` liso, texto 700 18, sin sombra, radio 14, relleno 14/24 (DS-005, DS-007). **Pendiente (editor):** presionado exacto (hoy degradado `#A84400` → `#D45500`) |
-| `mobileButtonSecondary` | Botón secundario | `surface`, texto `text`, sin sombra. **Pendiente (editor):** presionado azul → `cnBrY` (DS-008) |
-| `mobileButtonVerify` | Pieza pequeña | `surface`, texto `text`, radio 8 (DS-008, DS-011) |
-| `mobileButtonCancel`, `mobileButtonDelete` | Sin sombras | Sin sombra. Texto y fondo propios (fuera del Design System) |
-| `webButtonPrimary`, `webButtonPrimaryLarge`, `webButtonDarkLarge` | Botones web | Radio 14 (DS-011). Siguen con degradado, sombra al pasar el ratón y texto menor de 18 px sobre naranja: se tratan con la web (DS-005, DS-007) |
-| `sharedTextH1`, `mobileTextH2`, `sharedTextH3`, `sharedTextH4`, `mobileTextH5`, `webTextNav` | Títulos en Raleway | `cnBrS` Raleway; tamaños de `appTypeScale` en `tokens.json` (DS-009) |
-| `mobileTextSecondary`, `webTextFooterLink`, `mobileTextLabelTiny` | `text-secondary` | `cnBrT` (DS-003, DS-006) |
-| `mobileTextLinkSmall`, `mobileTextInfo`, `mobileIconLink` | Enlaces en naranja | `primary` (DS-012) |
-| `mobileTabItem` | Pestaña inactiva | `cnBrT` (DS-013) |
-| `mobileGroupCard`, `mobileListItemCard`, `mobileIconEmptyState` | Superficie lisa | `surface` (DS-010) |
-| `webPopupDefault`, `webPopupConflict`, `webPopupDark` | Superficie, radio 14 | `surface` en los dos primeros; radio 14 en los tres (DS-006, DS-011). `webPopupDark` aún con sombra (DS-004) |
-| `mobileListItemSelectable`, `mobileFloatingMessage` | Radio 14 | Radio 14 (DS-011) |
-| `mobileGroupStep` | Sin sombras | Sin sombra (DS-004) |
-| `sharedInputDefault`, `mobileMultilineInputDefault`, `mobileDateInputDefault`, `mobileDropdownDefault`, `mobileAutocompleteDefault` | Radio 14, foco en naranja | Cumplen. Desplegable y autocompletar aún suman sombra al enfocar (DS-004) |
+| `Button Primary` | Botón principal | `primary` liso, texto 700 18, sin sombra, radio 14, relleno 14/24 (DS-005, DS-007). **Pendiente (editor):** presionado exacto (hoy degradado `#A84400` → `#D45500`) |
+| `Mobile Button Secondary` | Botón secundario | `surface`, texto `text`, sin sombra. **Pendiente (editor):** presionado azul → `cnBrY` (DS-008) |
+| `Mobile Button Secondary Small` | Pieza pequeña | `surface`, texto `text`, radio 8 (DS-008, DS-011) |
+| `Mobile Button Tertiary`, `Mobile Button Destructive` | Sin sombras | Sin sombra. Texto y fondo propios (fuera del Design System) |
+| `Web Button Primary Small`, `Web Button Primary`, `Web Button Secondary` | Botones web | Radio 14 (DS-011). Siguen con degradado, sombra al pasar el ratón y texto menor de 18 px sobre naranja: se tratan con la web (DS-005, DS-007) |
+| `Heading H1`, `Mobile Heading H2`, `Heading H3`, `Heading H4`, `Mobile Heading H5`, `Web Navigation Item` | Títulos en Raleway | `cnBrS` Raleway; tamaños de `appTypeScale` en `tokens.json` (DS-009) |
+| `Mobile Text Secondary Centered`, `Web Footer Link`, `Mobile Text Caption` | `text-secondary` | `cnBrT` (DS-003, DS-006) |
+| `Mobile Text Link Small`, `Mobile Text Accent`, `Mobile Icon Status` | Enlaces en naranja | `primary` (DS-012) |
+| `Mobile Tab Bar Item` | Pestaña inactiva | `cnBrT` (DS-013) |
+| `Mobile Card Default`, `Mobile List Item Card`, `Mobile Icon Container Empty State` | Superficie lisa | `surface` (DS-010) |
+| `Web Popup Default`, `Web Popup Default Duplicate`, `Web Popup Dark` | Superficie, radio 14 | `surface` en los dos primeros; radio 14 en los tres (DS-006, DS-011). `Web Popup Dark` aún con sombra (DS-004) |
+| `Mobile Selectable Item Card`, `Mobile Floating Message Bar` | Radio 14 | Radio 14 (DS-011) |
+| `Mobile Progress Step` | Sin sombras | Sin sombra (DS-004) |
+| `Input Default`, `Mobile Input Multiline`, `Mobile Input Date`, `Mobile Dropdown Default`, `Mobile Autocomplete Default` | Radio 14, foco en naranja | Cumplen. Desplegable y autocompletar aún suman sombra al enfocar (DS-004) |
 
 ## Estados interactivos
 
@@ -98,7 +112,7 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 
 ## Excepciones justificadas
 
-- **Círculos** (radio 100): icono `mobileIconEmptyState`, `AppBarButton`, `mobileGroupStep`.
+- **Círculos** (radio 100): icono `Mobile Icon Container Empty State`, `AppBarButton`, `Mobile Progress Step`.
   Son avatares, botones de ícono o indicadores de paso, no chips. Se proponen
   como excepción documentada en DS-011.
 - **Estados de error** usan la variable Destructive de Bubble; el Design System
@@ -106,84 +120,170 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 
 ## Catálogo de estilos
 
-| Estilo (nombre) | Antes | Elemento | Plataforma | Uso en la web (escaneo 2026-10-12) |
-|---|---|---|---|---|
-| `mobileAppBarButton` | defaultMobile | AppBarButton | mobile | — |
-| `mobileAppBarDefault` | defaultMobile | AppBar | mobile | — |
-| `mobileAutocompleteDefault` | defaultMobile | AutocompleteDropdown | mobile | — |
-| `mobileButtonApple` | apple | Button | mobile | — |
-| `mobileButtonCancel` | mobileCancel | Button | mobile | — |
-| `mobileButtonDelete` | mobileDelete | Button | mobile | — |
-| `mobileButtonMenu` | mobileMenu | Button | mobile | — |
-| `mobileButtonSecondary` | mobileSecondary | Button | mobile | — |
-| `mobileButtonVerify` | mobileVerify | Button | mobile | — |
-| `mobileDateInputDefault` | mobile | DateInput | mobile | — |
-| `mobileDropdownDefault` | defaultMobile | Dropdown | mobile | — |
-| `mobileFloatingActions` | containerButtons | FloatingGroup | mobile | — |
-| `mobileFloatingButtons` | Mobile Buttons | FloatingGroup | mobile | — |
-| `mobileFloatingMessage` | Message | FloatingGroup | mobile | — |
-| `mobileFloatingTabs` | Tabs | FloatingGroup | mobile | — |
-| `mobileGroupCard` | mobileContenedor | Group | mobile | — |
-| `mobileGroupSelect` | mobileSelect | Group | mobile | — |
-| `mobileGroupStep` | onboardingSteps | Group | mobile | — |
-| `mobileIconEmptyState` | Empty | Icon | mobile | — |
-| `mobileIconLink` | blue | Icon | mobile | — |
-| `mobileIconMuted` | Default | Icon | mobile | — |
-| `mobileIconPrimaryPadded` | Main | Icon | mobile | — |
-| `mobileInputPlain` | noBorders | Input | mobile | — |
-| `mobileListItemCard` | mobile | ShortListItem | mobile | — |
-| `mobileListItemPlain` | mobile | SelectableListItem | mobile | — |
-| `mobileListItemSelectable` | default | SelectableListItem | mobile | — |
-| `mobileListSelectable` | mobile | SelectableList | mobile | — |
-| `mobileListShort` | mobile | ShortList | mobile | — |
-| `mobileMapDefault` | mobile | GoogleMap | mobile | — |
-| `mobileMapPreview` | defaultMobile | GoogleMap | mobile | — |
-| `mobileMultilineInputDefault` | mobile | MultiLineInput | mobile | — |
-| `mobilePageDefault` | defaultMobile | Page | mobile | — |
-| `mobileSheetDefault` | mobile | Sheet | mobile | — |
-| `mobileTabItem` | defaultMobile | TabItem | mobile | — |
-| `mobileTextBody` | Label 2 regular | Text | mobile | — |
-| `mobileTextButton` | mobileBtnText | Text | mobile | — |
-| `mobileTextChat` | Chatting 13 m | Text | mobile | — |
-| `mobileTextH2` | mobileH2 | Text | mobile | — |
-| `mobileTextH5` | mobileH5 | Text | mobile | — |
-| `mobileTextInfo` | body info | Text | mobile | — |
-| `mobileTextInputLabel` | mobileInputLabel | Text | mobile | — |
-| `mobileTextLabelLarge` | Label 2 SB | Text | mobile | — |
-| `mobileTextLabelMedium` | Label Medium | Text | mobile | — |
-| `mobileTextLabelMuted` | Profile | Text | mobile | — |
-| `mobileTextLabelTiny` | Label 10 m | Text | mobile | — |
-| `mobileTextLink` | mobileLink | Text | mobile | — |
-| `mobileTextLinkSmall` | link | Text | mobile | — |
-| `mobileTextPretitle` | mobilePretitle | Text | mobile | — |
-| `mobileTextSecondary` | mobileSH5 | Text | mobile | — |
-| `mobileTextSubtitle` | mobileSt1 | Text | mobile | — |
-| `mobileTextSubtitleLarge` | Subtitle | Text | mobile | — |
-| `mobileTextSubtitleMuted` | Subtitle 14 | Text | mobile | — |
-| `mobileTextTitle` | mobileTitle | Text | mobile | — |
-| `mobileToggleDefault` | defaultMobile | Toggle (plugin) | mobile | — |
-| `mobileWebViewDefault` | mobile | WebView | mobile | — |
-| `sharedButtonPrimary` | mobilePrimary | Button | shared | reset_pw, webHeader, webFooter |
-| `sharedGroupDefault` | defaultMobile | Group | shared | index, reset_pw, 404, webHeader |
-| `sharedGroupPage` | mobileDark | Group | shared | index, reset_pw, webFooter |
-| `sharedHtmlDefault` | defaultMobile | HTML | shared | index, privacy, terms, walk-tracking-customer |
-| `sharedIconPrimary` | Cards | Icon | shared | webFooter |
-| `sharedInputDefault` | mobile | Input | shared | reset_pw |
-| `sharedShapeDivider` | Mobile | Shape | shared | index |
-| `sharedTextH1` | mobileH1 | Text | shared | reset_pw |
-| `sharedTextH3` | mobileH3 | Text | shared | auth-email-confirmation |
-| `sharedTextH4` | mobileH4 | Text | shared | reset_pw, webFooter |
-| `sharedTextSmall` | mobileSmallBody | Text | shared | webFooter |
-| `webButtonDarkLarge` | web3 | Button | web | index |
-| `webButtonPrimary` | webPrimary | Button | web | — |
-| `webButtonPrimaryLarge` | web2 | Button | web | index |
-| `webPopupConflict` | Conflict | Popup | web | — |
-| `webPopupDark` | Black | Popup | web | — |
-| `webPopupDefault` | Basic | Popup | web | — |
-| `webRepeatingGroupDefault` | defaultMobile | RepeatingGroup | web | index |
-| `webTextFooterLink` | Footer Link | Text | web | webFooter |
-| `webTextNav` | Header Web | Text | web | index |
-| `webTextSmall` | small text web | Text | web | index, webFooter |
+76 estilos, agrupados por familia. **Antes** es el nombre del 2026-10-12
+(DS-015) y **Original**, el que tenía en Bubble antes de cualquier cambio.
+**Usos** = elementos que lo tienen asignado (vistas y reusables mobile; "+web"
+si además aparece en la web). **Confianza**: qué tan seguro es que el nombre
+describe la función (Baja = revisar).
+
+### Tipografía
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Heading H1` | `sharedTextH1` | mobileH1 | Compartido | 6+web | Alta | Raleway 34/800. Títulos de pantalla (Welcome back, Forgot Password?) |
+| `Mobile Heading H2` | `mobileTextH2` | mobileH2 | Mobile | 7 | Alta | Raleway 30/800. Títulos de sección grandes (Services, onboarding) |
+| `Heading H3` | `sharedTextH3` | mobileH3 | Compartido | 6+web | Alta | Raleway 28/700 |
+| `Heading H4` | `sharedTextH4` | mobileH4 | Compartido | 32+web | Alta | Raleway 24/700. Títulos de hoja y de bloque |
+| `Mobile Heading H5` | `mobileTextH5` | mobileH5 | Mobile | 17 | Alta | Raleway 18/600. Títulos de tarjeta y de estado vacío |
+| `Mobile Text Title Large` | `mobileTextLabelLarge` | Label 2 SB | Mobile | 2 | Media | 18/600 en Poppins. Nombres en walkTrackingPetsitter; casi igual que Heading H5 |
+| `Mobile Text Title` | `mobileTextTitle` | mobileTitle | Mobile | 116 | Alta | 16/600. Títulos de fila, de campo y de tarjeta |
+| `Mobile Text Subtitle` | `mobileTextSubtitle` | mobileSt1 | Mobile | 6 | Alta | 18/500 centrado. Subtítulo bajo el título de pantalla |
+| `Mobile Text Lead` | `mobileTextSubtitleLarge` | Subtitle | Mobile | 0 | Media | 20/500, interlineado 1,5. Sin uso |
+| `Mobile Text Body Strong` | `mobileTextPretitle` | mobilePretitle | Mobile | 62 | Alta | 600, tamaño por defecto. Texto destacado y descripciones (no es un pretítulo) |
+| `Mobile Text Body` | `mobileTextBody` | Label 2 regular | Mobile | 0 | Media | 15/400. Sin uso; etiqueta HTML h2 heredada |
+| `Mobile Text Body Large` | `mobileTextLabelMedium` | Label Medium | Mobile | 0 | Media | 16/500 color #EBEBF5 fuera de paleta. Sin uso |
+| `Text Body Small` | `sharedTextSmall` | mobileSmallBody | Compartido | 193+web | Alta | 12/500. Texto corrido pequeño; también se usa para errores (no hay estilo de error) |
+| `Mobile Text Secondary` | `mobileTextSubtitleMuted` | Subtitle 14 | Mobile | 17 | Alta | 500, blanco al 80 %. Datos secundarios (email, edad, member since) |
+| `Mobile Text Secondary Centered` | `mobileTextSecondary` | mobileSH5 | Mobile | 4 | Alta | 500 centrado, #B3B3B3. Descripciones de estado vacío. Duplicado parcial de Mobile Text Secondary |
+| `Mobile Text Label Secondary` | `mobileTextLabelMuted` | Profile | Mobile | 15 | Alta | 13/600 blanco al 50 %. Etiquetas de métricas (Distance, Response time) |
+| `Mobile Text Label Strong` | `mobileTextInputLabel` | mobileInputLabel | Mobile | 13 | Baja | 15/700. Se usa para métricas (Total Bookings, 0), propinas ($5) y un título; no para etiquetas de formulario. Revisar |
+| `Mobile Text Caption` | `mobileTextLabelTiny` | Label 10 m | Mobile | 0 | Media | 10/500, #B3B3B3. Sin uso |
+| `Mobile Text Link` | `mobileTextLink` | mobileLink | Mobile | 3 | Alta | 13/400 subrayado, naranja. Enlaces legales |
+| `Mobile Text Link Small` | `mobileTextLinkSmall` | link | Mobile | 13 | Media | 12/700 subrayado, naranja. Uso correcto en Resend Code; uso indebido como etiqueta de campo (Age, Gender, Size) en bookingDetailsPetsitter |
+| `Mobile Text Action` | `mobileTextButton` | mobileBtnText | Mobile | 10 | Alta | 700 naranja sin subrayado. Acciones de texto (Forgot password?, Sign up, Cancel) |
+| `Mobile Text Accent` | `mobileTextInfo` | body info | Mobile | 1 | Media | 14 naranja. Texto destacado en authForgotPasswordSent |
+| `Mobile Text Chat Message` | `mobileTextChat` | Chatting 13 m | Mobile | 1 | Alta | 13/500. Texto del mensaje en chatMessages |
+| `Web Text Caption` | `webTextSmall` | small text web | Web | 2 | Alta | 11 px, blanco al 80 % |
+
+### Botones
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Button Primary` | `sharedButtonPrimary` | mobilePrimary | Compartido | 35+web | Alta | Naranja, 700/18 |
+| `Mobile Button Secondary` | `mobileButtonSecondary` | mobileSecondary | Mobile | 8 | Alta | Superficie gris (View Sitters, Edit, Take Photo) |
+| `Mobile Button Secondary Small` | `mobileButtonVerify` | mobileVerify | Mobile | 2 | Alta | Superficie gris, 12/600, radio 8 (Verify) |
+| `Mobile Button Tertiary` | `mobileButtonCancel` | mobileCancel | Mobile | 6 | Alta | Fondo translúcido neutro. Cancel, Save, Choose Photo: botón neutro, no solo de cancelar |
+| `Mobile Button Destructive` | `mobileButtonDelete` | mobileDelete | Mobile | 4 | Alta | Rojo (Delete, Sign Out, Cancel Request) |
+| `Mobile Button Apple Sign In` | `mobileButtonApple` | apple | Mobile | 2 | Alta | Excepción de marca de Apple (blanco con texto oscuro) |
+| `Web Button Primary` | `webButtonPrimaryLarge` | web2 | Web | 3 | Alta | CTA naranja del index |
+| `Web Button Secondary` | `webButtonDarkLarge` | web3 | Web | 2 | Alta | CTA oscuro del index junto al principal |
+| `Web Button Primary Small` | `webButtonPrimary` | webPrimary | Web | 0 | Media | Sin uso en la web ni en la app |
+
+### Formularios
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Input Default` | `sharedInputDefault` | mobile | Compartido | 19+web | Alta | Campo con borde gris, foco naranja |
+| `Mobile Input Borderless` | `mobileInputPlain` | noBorders | Mobile | 11 | Alta | Sin borde, dentro de un grupo con borde (login, búsqueda) |
+| `Mobile Input Multiline` | `mobileMultilineInputDefault` | mobile | Mobile | 17 | Alta | Texto largo (alergias, notas) |
+| `Mobile Input Date` | `mobileDateInputDefault` | mobile | Mobile | 9 | Alta | Selector de fecha y hora |
+| `Mobile Dropdown Default` | `mobileDropdownDefault` | defaultMobile | Mobile | 0 | Alta | Sin uso |
+| `Mobile Autocomplete Default` | `mobileAutocompleteDefault` | defaultMobile | Mobile | 0 | Alta | Sin uso |
+| `Mobile Toggle Default` | `mobileToggleDefault` | defaultMobile | Mobile | 2 | Alta | Plugin Toggle Switch |
+
+### Superficies
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Container Default` | `sharedGroupDefault` | defaultMobile | Compartido | 412+web | Alta | Grupo transparente de maquetación |
+| `Container Page` | `sharedGroupPage` | mobileDark | Compartido | 37+web | Alta | Fondo de página y relleno 16; envoltorio de cada pantalla |
+| `Mobile Card Default` | `mobileGroupCard` | mobileContenedor | Mobile | 48 | Alta | Superficie, radio 14 (filas de menú, tarjetas de mascota) |
+| `Mobile Card Option` | `mobileGroupSelect` | mobileSelect | Mobile | 4 | Alta | Superficie con borde gris: opción elegible (duración del paseo) |
+| `Mobile List Default` | `mobileListShort` | mobile | Mobile | 3 | Alta | Lista corta de reservas |
+| `Mobile List Item Card` | `mobileListItemCard` | mobile | Mobile | 3 | Alta | Tarjeta de reserva en la lista |
+| `Mobile Selectable List` | `mobileListSelectable` | mobile | Mobile | 6 | Alta | Lista seleccionable (tipo de paseo, mascotas, lugares) |
+| `Mobile Selectable Item Card` | `mobileListItemSelectable` | default | Mobile | 3 | Alta | Ítem con superficie y radio 14 (mascota, postulante) |
+| `Mobile Selectable Item Plain` | `mobileListItemPlain` | mobile | Mobile | 5 | Alta | Ítem sin fondo ni relleno |
+| `Mobile Progress Step` | `mobileGroupStep` | onboardingSteps | Mobile | 9 | Alta | Círculo de paso del onboarding (welcomeStep1-3), sin sombra |
+
+### Navegación
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Web Navigation Item` | `webTextNav` | Header Web | Web | 5 | Alta | Raleway 500, naranja al pasar. Menú del index |
+| `Web Footer Link` | `webTextFooterLink` | Footer Link | Web | 12 | Alta | 12/500 #B3B3B3, naranja al pasar |
+| `Mobile Tab Segment` | `mobileButtonMenu` | mobileMenu | Mobile | 15 | Alta | Pestañas segmentadas (Pending/Booked/Past, About/Info) |
+| `Mobile App Bar` | `mobileAppBarDefault` | defaultMobile | Mobile | 32 | Alta | Barra superior |
+| `Mobile App Bar Button` | `mobileAppBarButton` | defaultMobile | Mobile | 2 | Alta | Botón circular de la barra (ajustes, campana) |
+| `Mobile Tab Bar Item` | `mobileTabItem` | defaultMobile | Mobile | 4 | Alta | Pestañas del Tab Bar |
+
+### Elementos flotantes
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Mobile Sheet Default` | `mobileSheetDefault` | mobile | Mobile | 4 | Alta | Hoja inferior |
+| `Web Popup Default` | `webPopupDefault` | Basic | Web | 0 | Alta | Sin uso |
+| `Web Popup Default Duplicate` | `webPopupConflict` | Conflict | Web | 0 | Alta | Idéntico a Web Popup Default; sin uso |
+| `Web Popup Dark` | `webPopupDark` | Black | Web | 0 | Alta | Sin uso |
+| `Mobile Floating Action Bar` | `mobileFloatingActions` | containerButtons  | Mobile | 2 | Alta | Barra inferior con botón Add (petList, addressList) |
+| `Mobile Floating Footer` | `mobileFloatingButtons` | Mobile Buttons | Mobile | 0 | Media | Relleno lateral 10. Sin uso |
+| `Mobile Floating Header` | `mobileFloatingTabs` | Tabs | Mobile | 0 | Baja | Solo fondo. Sin uso; función no confirmada |
+| `Mobile Floating Message Bar` | `mobileFloatingMessage` | Message | Mobile | 0 | Media | Esquinas superiores redondeadas. Sin uso; chatMessages no lo usa |
+
+### Iconografía
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Icon Primary` | `sharedIconPrimary` | Cards | Compartido | 60+web | Alta | Naranja sin fondo |
+| `Mobile Icon Primary Padded` | `mobileIconPrimaryPadded` | Main | Mobile | 14 | Alta | Naranja con relleno 3 (filas de menú, spinner) |
+| `Mobile Icon Status` | `mobileIconLink` | blue | Mobile | 6 | Media | Iconos de etiquetas de estado. Hoy idéntico a Icon Primary |
+| `Mobile Icon Secondary` | `mobileIconMuted` | Default | Mobile | 64 | Alta | Gris #959595 (flechas, mostrar contraseña) |
+| `Mobile Icon Container Empty State` | `mobileIconEmptyState` | Empty | Mobile | 2 | Alta | Círculo de superficie del estado vacío |
+
+### Otros
+
+| Nombre | Antes (2026-10-12) | Original | Plataforma | Usos | Confianza | Función y notas |
+|---|---|---|---|---|---|---|
+| `Divider` | `sharedShapeDivider` | Mobile | Compartido | 20+web | Alta | Línea gris |
+| `HTML Default` | `sharedHtmlDefault` | defaultMobile | Compartido | web | Alta | Sin propiedades |
+| `Web Repeating Group Default` | `webRepeatingGroupDefault` | defaultMobile | Web | 3 | Alta | Sin separadores |
+| `Mobile Page Default` | `mobilePageDefault` | defaultMobile | Mobile | vista | Alta | Fondo de página de las vistas |
+| `Mobile Web View` | `mobileWebViewDefault` | mobile | Mobile | 1 | Alta | Pago en bookingPayment |
+| `Mobile Map Default` | `mobileMapDefault` | mobile | Mobile | 2 | Alta | Mapa con borde, estilo blue_gray |
+| `Mobile Map Preview` | `mobileMapPreview` | defaultMobile | Mobile | 0 | Media | Igual que Mobile Map Default con estilo apple. Sin uso |
+
+### Duplicados y consolidación propuesta
+
+No se fusionó nada: fusionar exige reasignar elementos y eso es rediseño, no
+renombrado. Propuestas (DS-016, pendientes de aprobación):
+
+| Estilos | Situación | Propuesta |
+|---|---|---|
+| `Web Popup Default` y `Web Popup Default Duplicate` | Idénticos, ninguno se usa | Borrar `Web Popup Default Duplicate` |
+| `Mobile Icon Status` e `Icon Primary` | Idénticos desde DS-012 (los dos naranja) | Pasar los 6 iconos de estado a `Icon Primary` y borrar `Mobile Icon Status`, o darle un color de estado propio |
+| `Mobile Text Secondary` y `Mobile Text Secondary Centered` | Mismo rol; uno usa blanco al 80 % y el otro `#B3B3B3` | Un solo estilo con `#B3B3B3`; el centrado se pone en el elemento |
+| `Mobile Text Title Large` y `Mobile Heading H5` | 18/600 los dos; cambia la fuente (Poppins / Raleway) | Pasar los 2 usos a `Mobile Heading H5` y borrar |
+| `Mobile Map Preview` y `Mobile Map Default` | Iguales salvo el estilo del mapa; el primero no se usa | Borrar `Mobile Map Preview` |
+
+### Estilos sin uso
+
+Ningún elemento los tiene asignados (escaneo 2026-10-12/13). Candidatos a
+borrar; no se borraron:
+
+`Web Button Primary Small`, `Mobile Text Lead`, `Mobile Text Body`,
+`Mobile Text Body Large`, `Mobile Text Caption`, `Web Popup Default`,
+`Web Popup Default Duplicate`, `Web Popup Dark`, `Mobile Floating Header`,
+`Mobile Floating Footer`, `Mobile Floating Message Bar`,
+`Mobile Dropdown Default`, `Mobile Autocomplete Default`,
+`Mobile Map Preview`.
+
+`Mobile Page Default` no se puede contar así: se aplica a la vista, no a un
+elemento.
+
+### Usos que no coinciden con el nombre
+
+| Estilo | Uso indebido | Corrección propuesta |
+|---|---|---|
+| `Mobile Text Link Small` | Etiquetas de campo (Age, Gender, Size) en `bookingDetailsPetsitter` | Pasarlas a `Mobile Text Label Secondary` |
+| `Text Body Small` | Mensajes de error (no existe estilo de error) | Crear `Mobile Text Error` con un token de error (falta en el Design System) |
+| `Mobile Text Label Strong` | Métricas y propinas, no etiquetas de formulario | Revisar: puede ser `Mobile Text Metric` |
+
+### Elementos con formato a mano
+
+Repetidos en varias pantallas sin estilo; candidatos a estilos nuevos:
+etiquetas de estado de la reserva, chips de especialidad, cajas de propina,
+tarjeta "Become a PetBoss", insignias de verificado, botones de género, campo
+del código de verificación y el texto "Incorrect or expired".
 
 ## Límites de Bubble y de la conexión
 
@@ -193,8 +293,9 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
    Style variables. Por eso su compatibilidad figura "Sin verificar".
 2. **Las condiciones de un estilo** (presionado, foco, hover) no se pueden
    crear ni cambiar desde la conexión. Se hacen en el editor.
-3. **No hay forma de contar qué elementos usan cada estilo.** El impacto se
-   estima por el tipo de estilo.
+3. **La conexión no lista qué elementos usan cada estilo.** Los usos del
+   catálogo salen de leer cada vista, página y reusable elemento por elemento
+   (2026-10-12/13); un elemento añadido después no está contado.
 4. **No se puede ver la app en ejecución** desde esta sesión (los dominios de
    Bubble están bloqueados por la red del entorno). Ninguna verificación
    visual se ha hecho todavía.
@@ -203,6 +304,6 @@ Los que aplican la marca. Nombres según el catálogo de abajo.
 
 ## Diferencias pendientes
 
-Ver [`decisions.md`](decisions.md): pendientes de DS-004, DS-005, DS-007 y DS-008. Las acciones
+Ver [`decisions.md`](decisions.md): pendientes de DS-004, DS-005, DS-007, DS-008 y DS-016 (duplicados, estilos sin uso y usos indebidos). Las acciones
 manuales en el editor están en [`../docs/backlog.md`](../docs/backlog.md),
 sección "Marca".

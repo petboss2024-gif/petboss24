@@ -10,7 +10,8 @@ Ejemplos: `osRole`, `navStatusRequest`, `listOfPets`, `seenCustomer`.
 
 Solo se cambian **nombres visibles** (Bubble mantiene la clave interna, así que
 workflows y datos no se rompen). Las **páginas web** usan kebab-case porque su
-nombre es la URL (ver "Páginas web y vistas móviles").
+nombre es la URL (ver "Páginas web y vistas móviles"). Los **estilos** usan
+Title Case con espacios (ver "Estilos de Bubble").
 
 ## Estado del renombrado
 
@@ -187,22 +188,45 @@ que sube desde abajo), `Card`, `Banner`, `Callout`, `Overlay`, `Header`,
 Las referencias por ID (WebViews, "Go to view", "Go to page", pestañas) se
 actualizan solas. Las URL escritas como texto se actualizaron a mano (ver `backlog.md`).
 
-## Estilos de Bubble (2026-10-12)
+## Estilos de Bubble
 
-`{plataforma}{Elemento}{Variante}` en lowerCamelCase. Ejemplos:
-`sharedButtonPrimary`, `mobileTextH5`, `webTextNav`, `mobileGroupCard`.
+Desde el 2026-10-13 (DS-016; sustituye la regla `{plataforma}{Elemento}{Variante}`
+de DS-015).
 
-- **Plataforma:** `mobile` (solo app, incluidas las páginas Native Mobile),
-  `web` (solo sitio web) o `shared` (las dos). Un estilo `shared` cambia la app
-  y la web a la vez.
-- **Elemento:** el tipo de Bubble (`Button`, `Text`, `Icon`, `Group`, `Input`,
-  `Popup`, `Sheet`, `List`, `ListItem`, `Floating`…).
-- **Variante:** el rol (`Primary`, `Secondary`, `H1`, `Card`, `Default`…), no
-  el color ni el tamaño cuando se pueda evitar.
-- Un estilo que empieza en una plataforma y se usa en la otra se renombra a
-  `shared`. Los ids no cambian al renombrar.
+**Formato:** `[Plataforma] [Componente] [Variante] [Rol o tamaño]`, en Title
+Case con espacios, solo con los segmentos que aportan información.
+Ejemplos: `Button Primary`, `Mobile Heading H5`, `Web Navigation Item`,
+`Mobile Card Default`, `Mobile Button Destructive`.
 
-Catálogo completo (nombre nuevo, nombre anterior, plataforma y uso):
+1. **Nombrar por función, no por aspecto ni por historia.** Antes de nombrar,
+   mirar dónde se usa el estilo. `Mobile Tab Segment` (no "botón oscuro"),
+   `Mobile Button Tertiary` (no "cancelar", porque también guarda y elige foto).
+2. **Plataforma:** `Mobile` si solo lo usa la app (incluidas las páginas
+   Native Mobile), `Web` si solo lo usa el sitio. Sin prefijo si lo usan las
+   dos. Un estilo de una plataforma que pasa a usarse en la otra pierde el
+   prefijo.
+3. **Componente:** el nombre de diseño (`Heading`, `Text`, `Button`, `Input`,
+   `Dropdown`, `Autocomplete`, `Toggle`, `Container`, `Card`, `List`,
+   `List Item`, `Selectable List`, `Selectable Item`, `Sheet`, `Popup`,
+   `Floating …`, `App Bar`, `Tab Bar Item`, `Tab Segment`, `Icon`,
+   `Divider`, `Map`, `Web View`, `Page`, `Progress Step`).
+4. **Variante y rol:** `Primary`, `Secondary`, `Tertiary`, `Destructive`,
+   `Default`, `Strong`, `Accent`, `Link`, `Caption`, `Label`, `Title`… El
+   tamaño (`Small`, `Large`) solo si hay dos del mismo rol. Los títulos usan el
+   nivel (`H1`–`H5`).
+5. Nada de colores en el nombre (`Blue`, `Orange`) ni de pantallas (`Login`,
+   `Profile`), salvo excepciones de marca de terceros (`Mobile Button Apple Sign In`).
+6. Un estilo sin uso no se marca en el nombre: se anota en el catálogo como
+   candidato a borrar.
+7. Renombrar es solo cambiar el nombre: no se tocan colores, tamaños ni
+   condiciones en el mismo paso. Los elementos guardan el id del estilo, así
+   que renombrar no cambia ningún elemento.
+
+Familias del catálogo: Tipografía, Botones, Formularios, Superficies,
+Navegación, Elementos flotantes, Iconografía y Otros.
+
+Catálogo completo (nombre, nombre anterior, plataforma, usos, función,
+duplicados y estilos sin uso):
 [`brand/bubble.md`](../brand/bubble.md#catálogo-de-estilos).
 
 ## Colores y tipografía

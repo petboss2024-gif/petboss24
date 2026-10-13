@@ -9,18 +9,32 @@ Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
       contrast y Text = `#FFFFFF`, Background = `#161616`, Surface = `#2C2C2C`
       y que la fuente por defecto es Poppins. Anotar el resultado en
       `brand/bubble.md` (hoy figuran "Sin verificar").
-- [ ] `sharedButtonPrimary` → condición "is pressed": los dos colores del degradado a
+- [ ] `Button Primary` → condición "is pressed": los dos colores del degradado a
       `Orange - Pressed - 100%` (DS-005).
-- [ ] `mobileDropdownDefault` y `mobileAutocompleteDefault` → condición "is focused": desactivar la
-      sombra. `webPopupDark`: quitar la sombra (DS-004).
-- [ ] `mobileButtonSecondary` → condición "is pressed": fondo a
+- [ ] `Mobile Dropdown Default` y `Mobile Autocomplete Default` → condición "is focused": desactivar la
+      sombra. `Web Popup Dark`: quitar la sombra (DS-004).
+- [ ] `Mobile Button Secondary` → condición "is pressed": fondo a
       `Gray - Surface Pressed - 100%` (hoy azul; DS-008).
 
 - [ ] Revisar en dispositivo que ningún botón principal corte la etiqueta con
       el texto nuevo de 700 18 px (DS-005).
 
+Nombres de estilos (DS-016, propuestas pendientes de aprobación):
+- [ ] Borrar `Web Popup Default Duplicate` (idéntico a `Web Popup Default`).
+- [ ] Unificar `Mobile Icon Status` → `Icon Primary`, `Mobile Text Secondary`
+      → `Mobile Text Secondary Centered` (con `#B3B3B3`) y
+      `Mobile Text Title Large` → `Mobile Heading H5`, reasignando sus elementos.
+- [ ] Borrar los 14 estilos sin uso (lista en `brand/bubble.md`).
+- [ ] Etiquetas Age/Gender/Size de `bookingDetailsPetsitter`: de
+      `Mobile Text Link Small` a `Mobile Text Label Secondary`.
+- [ ] Definir un token de error y crear `Mobile Text Error` (hoy los errores
+      usan `Text Body Small`).
+- [ ] Revisar el nombre de `Mobile Text Label Strong` (métricas y propinas).
+- [ ] Crear estilos para lo que hoy tiene formato a mano: etiquetas de estado,
+      chips de especialidad, insignia de verificado, cajas de propina.
+
 Fuera de los estilos globales (fase siguiente):
-- [ ] Botones de la web (`webButtonPrimary`, `webButtonPrimaryLarge`): naranja
+- [ ] Botones de la web (`Web Button Primary Small`, `Web Button Primary`): naranja
       liso y texto blanco en negrita de 18 px o más (DS-005, DS-007).
 - [ ] Pestaña activa del Tab Bar en naranja (`primary`) en las 4 pestañas (DS-013).
 - [ ] 🔴 `walk-tracking-customer`: la clave de Google Maps está escrita en el
