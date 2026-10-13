@@ -4,6 +4,21 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-13
+
+### Design System: nombres de estilos por función (DS-016)
+- Savepoint antes: **"Antes de la refactorización semántica de nombres de estilos (DS-016)"** — `1791845098353`
+- Savepoint después: **"Después de la refactorización semántica de nombres de estilos (DS-016): 76 estilos renombrados"** — `1791897738738`
+- 76 estilos renombrados al formato `[Plataforma] [Componente] [Variante] [Rol]`
+  (por ejemplo `sharedButtonPrimary` → `Button Primary`, `mobileButtonMenu` →
+  `Mobile Tab Segment`). Tabla completa en `brand/bubble.md`.
+- En grupos: tipografía (24), botones (9), formularios (7), superficies (10),
+  navegación y flotantes (14), iconos y otros (12).
+- Solo nombres: ningún color, tamaño ni condición cambió; nada se fusionó ni
+  se borró.
+- Verificación: los 76 nombres leídos de vuelta coinciden con el catálogo;
+  Bubble sigue con los mismos 6 errores (preexistentes, ajenos a los estilos).
+
 ## 2026-10-12
 
 ### Design System: DS-005 y DS-007
