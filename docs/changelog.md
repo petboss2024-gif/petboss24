@@ -6,6 +6,20 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-13
 
+### Onboarding pre-login: etapa 4 (volver desde el login)
+- Savepoint antes: el de después de la etapa 3 (`1791905212707`; sin cambios entre medias).
+- Savepoint después: **"Después de onboarding etapa 4: enlace Back to welcome en authLogin"** — `1791905329638`
+- `authLogin`: texto `txtBackToWelcome` (`cnBrj`, "Back to welcome", estilo
+  `Mobile Text Action`, ancho y alto al contenido, alto mínimo 44 px) arriba
+  de "Welcome back", alineado a la izquierda. Los tres grupos existentes se
+  reordenaron detrás sin otros cambios.
+- Workflow `loginBackToWelcome` (`cnBrl`) → `cnBrn`: ir a `welcomeStep1`
+  (stack, reinicia la pila). Vuelve siempre al paso 1, venga de donde venga, y
+  no deja el login en la pila.
+- Login, registro y recuperación de contraseña sin cambios.
+- Verificado leyendo elemento, orden y workflow; Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
 ### Onboarding pre-login: etapa 3 (cierre de sesión)
 - Savepoint antes: el de después de la etapa 2 (`1791904988355`; sin cambios entre medias).
 - Savepoint después: **"Después de onboarding etapa 3: cierre de sesión siempre a welcomeStep1"** — `1791905212707`

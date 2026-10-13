@@ -69,8 +69,15 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
       atrás en un paso; animación de la transición; tocar el número "3" del
       círculo en el paso 1 (workflow vacío `cmrih`).
 - [ ] Comprobar en el editor qué vista abre la app al iniciarse.
-- [ ] Etapa 4:
-      volver desde `authLogin`. Etapa 5: aviso de email sin verificar.
+- [x] Etapa 4: enlace "Back to welcome" en `authLogin` (ver changelog).
+- [ ] Probar en dispositivo: aspecto y posición del enlace (zona segura
+      superior); paso → Sign in → Back to welcome → Sign in varias veces sin
+      acumular pantallas; atrás tras volver no regresa al login.
+- [ ] Fuera de alcance: ir y volver entre login y registro sigue apilando
+      pantallas.
+- [ ] Etapa 5: aviso de email sin verificar (ojo: si una pestaña sigue
+      cargada, su "User is logged out" podría recargar `welcomeStep1` y borrar
+      el aviso).
 
 ## 🔴 Seguridad
 
