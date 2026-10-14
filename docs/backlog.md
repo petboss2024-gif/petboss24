@@ -17,6 +17,12 @@ Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
       (DS-007), nombres de estilos por función y colores al presionar.
 - [ ] Inconsistencia: `appTypeScale.h5` usa Raleway 600, pero el sistema solo
       incluye Raleway 700 y 800. Elegir 700 o agregar el peso 600.
+- [ ] **Una sola escala de títulos para todo** (app, landing y marketing): mismas
+      fuentes, pesos y niveles; solo cambia el tamaño según el medio. Hoy hay dos
+      escalas que no encajan (`typeScale` de marketing y `appTypeScale` de la
+      app: 28 px es 800 en una y 700 en la otra). Propuesta para discutir:
+      Display 96/800 (solo marketing grande), H1 34/800, H2 28/800, H3 24/700,
+      H4 20/700, H5 18/700. Implica H2 de la app 30→28 y H5 600→700.
 
 ## 🟠 Marca: ajustar Bubble al Design System (ver `brand/bubble.md` y `brand/decisions.md`)
 
