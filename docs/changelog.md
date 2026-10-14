@@ -6,6 +6,19 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-14
 
+### Seguridad — Fase 1 del plan de tracking
+- Savepoint antes: **"Antes de Fase 1 seguridad (privacy rules + webhook)"** — `1792008694212`
+- Savepoint después: **"Después de Fase 1 seguridad: open-requests verificado, autobinding dgRequest vacío, call Retrieve Checkout Session (sin inicializar)"** — `1792009047530`
+- `dgRequest` › regla *Open requests for petsitters*: solo petsitters con
+  verificación **Enabled**.
+- `dgRequest` › reglas *Customer* y *Applied or assigned petsitter*:
+  autobinding vacío (no hay inputs que lo usen; las ediciones van por workflows).
+- API Connector › Stripe: llamada nueva **Retrieve Checkout Session**
+  (`cnBse`), **sin inicializar**: la clave de Stripe de test está caducada
+  (`401 api_key_expired`). Webhook sin cambios todavía.
+- Bubble: los mismos 6 errores preexistentes + aviso de Google. **Sin probar
+  con cuentas reales.** Detalle en `docs/security-phase1.md`.
+
 ### Google Login preparado (sin credenciales)
 - Savepoint antes: **"Antes de preparar Google Login (authLogin + backend auth-google-complete)"** — `1792005527109`
 - Savepoint después: **"Después de preparar Google Login (falta Client ID/secret en el plugin Google)"** — `1792005662824`

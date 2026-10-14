@@ -96,6 +96,13 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
 
 ## 🔴 Seguridad
 
+- [ ] **Renovar la clave secreta de Stripe de test** en API Connector › Stripe
+      (caducada, `api_key_expired`). Bloquea Checkout en test y el punto
+      siguiente (ver `security-phase1.md`).
+- [x] Open requests solo para petsitters verificados (2026-10-14).
+- [x] Autobinding de `dgRequest` eliminado (2026-10-14).
+- [ ] Pruebas de autorización de Fase 1 (10 casos en `security-phase1.md`).
+- [ ] `create-transaction`: calcular importe/fee en servidor, no desde el cliente.
 - [ ] **Verificar el webhook `checkout_session_completed`** contra Stripe
       (Retrieve Checkout Session por ID) antes de confirmar la reserva. Revisar
       lo mismo en `webhook_account_enabled` / `webhook_account_restricted`.
