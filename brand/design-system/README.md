@@ -4,7 +4,9 @@ Pet-Sitters First, Pets Always. The single source for everything visual at Petbo
 
 ## Voice
 
-- **Boss attitude:** confident, minimalist, professional, with light humor that never overdoes it.
+- **Audience:** pet owners looking for pet services, and people who offer them (walks, daycare, bathing, grooming).
+- **Personality:** energetic, close to the community, elegant.
+- **Voice (Boss attitude):** confident, minimalist, professional, with light humor that never overdoes it.
 - Public name **Petboss 24** (only the P is capital). Handle `@petboss24`. File prefix `PB24`.
 - Marketing in English, for the SF Bay Area. Contact: text or WhatsApp, (650) 773-2089.
 

@@ -22,7 +22,10 @@ Claude: si difiere, se corrige a partir de estos archivos.
 ## Voz
 
 - **Slogan:** Pet-Sitters First, Pets Always.
-- **Actitud Boss:** segura, minimalista, profesional, con humor ligero sin exagerar.
+- **Público:** dueños que buscan servicios para sus mascotas, y personas que los
+  ofrecen (paseos, daycare, baño, peluquería).
+- **Personalidad:** enérgica, cercana a la comunidad, elegante.
+- **Voz, Actitud Boss:** segura, minimalista, profesional, con humor ligero sin exagerar.
 - Nombre público **Petboss 24**: solo la P en mayúscula. Nunca "PetBoss 24".
 - Instagram `@petboss24`. Prefijo de archivos `PB24`.
 - Textos de la app y del marketing en inglés, para el SF Bay Area (San Mateo,
