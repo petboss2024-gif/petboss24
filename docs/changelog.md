@@ -4,6 +4,18 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-14
+
+### Autenticación: guarda en `auth-send-verification-code`
+- Savepoint antes: **"Antes de la guarda emailConfirmation en auth-send-verification-code"** — `1792005196038`
+- Savepoint después: **"Después de la guarda emailConfirmation en auth-send-verification-code"** — `1792005229955`
+- Backend `cnBiY`: la condición pasa de "tokenExpiresAt vacío o con más de
+  1 min" a "(tokenExpiresAt vacío o con más de 1 min) **y**
+  emailConfirmation is not yes". Ninguna ruta (login, signup, perfil, reset,
+  reenvío) puede enviar un código a un usuario ya verificado.
+- Sin cambios en login, signup ni en el sheet. Bubble: los mismos 6 errores
+  preexistentes. **Sin probar en dispositivo.**
+
 ## 2026-10-13
 
 ### Design System: consolidación de estilos (DS-016)
