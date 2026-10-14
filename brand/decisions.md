@@ -9,7 +9,8 @@ identidad visual. Estados: **Propuesto** (espera aprobación), **Aprobado**,
 decisión tiene todavía verificación visual en la app (ver límites en
 [`bubble.md`](bubble.md)).
 
-Los estilos se citan con su nombre actual (DS-016). El nombre que tenían en
+Los estilos se citan con su nombre actual (DS-016); los que se borraron en la
+consolidación del 2026-10-13 conservan el nombre que tenían. El nombre que tenían en
 cada fecha está en el catálogo de [`bubble.md`](bubble.md#catálogo-de-estilos).
 
 ---
@@ -201,17 +202,22 @@ cada fecha está en el catálogo de [`bubble.md`](bubble.md#catálogo-de-estilos
 - **Efecto:** los elementos guardan el id del estilo, así que ninguno cambia.
   76 de 76 nombres leídos de vuelta y comparados con el catálogo; el
   comprobador de Bubble da los mismos 6 errores de antes, ajenos a los estilos.
-- **Propuesto, falta aprobar:** borrar `Web Popup Default Duplicate`
-  (idéntico a `Web Popup Default`); unificar `Mobile Icon Status` con
-  `Icon Primary`, `Mobile Text Secondary` con `Mobile Text Secondary Centered`
-  y `Mobile Text Title Large` con `Mobile Heading H5`; borrar los 14 estilos
-  sin uso; corregir los usos indebidos (`Mobile Text Link Small` como
-  etiqueta, `Text Body Small` como error) y definir un token de error.
+- **Consolidación (aprobada y ejecutada 2026-10-13):** `Mobile Icon Status` →
+  `Icon Primary`; `Mobile Text Secondary Centered` → `Mobile Text Secondary`
+  (que pasa a `#B3B3B3`); `Mobile Text Title Large` → `Mobile Heading H5`;
+  etiquetas de campo de `bookingDetailsPetsitter` → `Mobile Text Label
+  Secondary`; estilo nuevo `Mobile Text Error` (variable Destructive) en 8
+  mensajes de error; 8 estilos sin uso borrados. Se conservan `Web Button
+  Primary Small` y `Mobile Map Preview` (sí se usan), `Mobile Floating Header`
+  (lo usa `appEmptyState`) y `Web Popup Default`, `Mobile Dropdown Default`,
+  `Mobile Autocomplete Default` (únicos de su tipo). Detalle en `bubble.md`.
+  Savepoints `1791914436049` → `1791915463317`.
 - **Confianza baja:** `Mobile Text Label Strong` (se usa para métricas y
   propinas) y `Mobile Floating Header` (sin uso, función no confirmada).
 - **Savepoints:** antes `1791845098353`, después `1791897738738`.
 - **Archivos:** `docs/conventions.md`, `brand/bubble.md`, `brand/decisions.md`,
   `docs/backlog.md`, `docs/empty-states.md`.
 - **Estado:** Aprobado · Implementado en Bubble · Documentado · Verificado
-  (nombres leídos de vuelta; sin verificación visual, que no hace falta para
-  un renombrado). Consolidación: Propuesto.
+  (nombres y asignaciones leídos de vuelta; Bubble con los mismos 6 errores
+  preexistentes). La consolidación sí cambia el aspecto (gris secundario,
+  Raleway en 3 nombres, etiquetas y errores): **sin verificación visual**.

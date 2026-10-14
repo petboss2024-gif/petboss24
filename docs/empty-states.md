@@ -51,7 +51,7 @@ título, descripción, botón.
 | Raíz | Padding 24 arriba/abajo, 16 a los lados. Sin fondo |
 | `icnEmptyState` | Estilo *Empty*: círculo `#363636` (fuera de la paleta; DS-010) con icono gris `cnAXF`. 64×64 fijo (glifo de 24 px). 8 px extra debajo |
 | `txtEmptyStateTitle` | `Mobile Heading H5` (18 px, 600, blanco), centrado, interlineado 1.3, ancho completo |
-| `txtEmptyStateDescription` | `Mobile Text Secondary Centered` (gris, 14 px, interlineado 1.5, centrado, máx. 280 px. Se oculta si está vacía |
+| `txtEmptyStateDescription` | `Mobile Text Secondary` (gris `#B3B3B3`, 14 px, interlineado 1.5, centrado, máx. 280 px. Se oculta si está vacía |
 | `btnEmptyStateAction` | `Button Primary` (naranja liso desde 2026-10-12), ancho al contenido, 8 px extra encima. Solo si `actionLabel` tiene texto |
 
 Ritmo vertical: icono → 16 → título → 8 → descripción → 16 → botón.
