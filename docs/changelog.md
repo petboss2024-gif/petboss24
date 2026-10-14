@@ -6,6 +6,19 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-14
 
+### Google Login preparado (sin credenciales)
+- Savepoint antes: **"Antes de preparar Google Login (authLogin + backend auth-google-complete)"** — `1792005527109`
+- Savepoint después: **"Después de preparar Google Login (falta Client ID/secret en el plugin Google)"** — `1792005662824`
+- `authLogin`: botón "Continue with Google" visible con el estilo de Google
+  (oscuro), estados `googleLoading` / `googleError`, mensaje de error, Apple
+  oculto. Workflows `loginWithGoogle` y `loginWithGoogleError`.
+- Backend nuevo `auth-google-complete`: con `Current User's Google` marca la
+  cuenta como de Google, confirma el email si coincide, pone Customer solo si
+  no tiene rol y crea el perfil si no existe.
+- Detalle y pasos de Google Cloud en `docs/google-login.md`.
+- Bubble: los 6 errores preexistentes + el aviso "fill your app id and secret
+  for Google". **Sin probar**: faltan las credenciales.
+
 ### Autenticación: guarda en `auth-send-verification-code`
 - Savepoint antes: **"Antes de la guarda emailConfirmation en auth-send-verification-code"** — `1792005196038`
 - Savepoint después: **"Después de la guarda emailConfirmation en auth-send-verification-code"** — `1792005229955`
