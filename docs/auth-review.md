@@ -101,7 +101,7 @@ Savepoint: "Antes de arreglar resetPassword y settingsPrivacySecurity"
 
 | Workflow | Qué hace |
 |---|---|
-| `sendVerificationCode` | Solo si no hay código o el actual tiene más de 1 minuto (**cooldown 60 s**). Genera 6 dígitos, expira en **15 min**, intentos = 0, envía el email ("This code expires in 15 minutes"). |
+| `sendVerificationCode` (`auth-send-verification-code`) | Solo si el email **no** está confirmado (guarda añadida 2026-10-14) y no hay código o el actual tiene más de 1 minuto (**cooldown 60 s**). Genera 6 dígitos, expira en **15 min**, intentos = 0, envía el email ("This code expires in 15 minutes"). |
 | `verifyEmailCode` | Compara `pendingVerificationCode` con `tokenConfirmation`. **Falla** si no coincide, no hay token, expiró o hay ≥ 5 intentos → intentos + 1 y borra el pendiente. **Éxito** → `emailConfirmation = yes`, borra token/pendiente/expiración, intentos = 0. |
 
 Campos nuevos en User: `tokenExpiresAt`, `verificationAttempts`,
@@ -157,3 +157,19 @@ solo se puede leer desde el email.
 - Datos: en test los 3 usuarios tienen `emailConfirmation = yes`. En Live el
   signup antiguo siempre lo ponía en yes, así que nadie debería quedar fuera;
   confirmar en *Data → App data (Live)* antes de desplegar.
+
+## Auditoría 2026-10-14
+
+- El login **no** pide código a usuarios verificados: los pasos de verificación
+  de `authLogin` (`cnBix`, `cnBjE`, `cnBiy`, `cnBiz`) solo corren con
+  `emailConfirmation is not yes`. Sirven para terminar un registro abandonado
+  (el signup crea la cuenta antes del código). Igual en Live.
+- Aplicado: guarda `emailConfirmation is not yes` en el backend de envío.
+- Pendiente de decidir o probar:
+  - Por qué un usuario "existente" ve el código: su `emailConfirmation` está en
+    no/vacío (revisar en Live) o el valor aún no se cargó tras "Log the user
+    in" (probar con un usuario verificado).
+  - Criterio único de "no verificado": login, `welcomeStep1` y
+    `authResetPassword` usan "is not yes" (incluye vacío); el botón Verify de
+    `accountProfileEdit` usa "is no".
+  - Textos del sheet y del email distintos para registro y para login.
