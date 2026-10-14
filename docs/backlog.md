@@ -2,6 +2,22 @@
 
 Prioridad: 🔴 urgente · 🟠 importante · 🟡 cuando haya tiempo.
 
+## 🔴 Marca: decisión pendiente antes de seguir (2026-10-14)
+
+- [ ] **Definir cuál es el original de la marca** y dejarlo igual en todos lados.
+      El dueño acordó el 2026-10-10 que manda el Design System publicado en
+      Claude (https://claude.ai/artifact/2cpP8NRdwzYvdapgNRG7a5). Después,
+      DS-001 (`brand/decisions.md`) dejó escrito que manda GitHub (`brand/`).
+      El dueño lo confirmará con su compañero. **No cambiar la regla ni
+      sincronizar hasta que se decida.**
+- [ ] Cuando se decida, sincronizar las cuatro copias (Design System en Claude,
+      PDF y LEEME en Drive, documento `PB24 Design System.md` del proyecto
+      PB24, y `brand/`). Hoy les falta a las tres primeras lo decidido en
+      DS-001 a DS-016: escala de títulos de la app (H1–H5), contraste 2,94:1
+      (DS-007), nombres de estilos por función y colores al presionar.
+- [ ] Inconsistencia: `appTypeScale.h5` usa Raleway 600, pero el sistema solo
+      incluye Raleway 700 y 800. Elegir 700 o agregar el peso 600.
+
 ## 🟠 Marca: ajustar Bubble al Design System (ver `brand/bubble.md` y `brand/decisions.md`)
 
 Acciones manuales en el editor de Bubble (la conexión no puede hacerlas):
