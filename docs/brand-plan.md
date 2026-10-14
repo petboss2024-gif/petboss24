@@ -26,7 +26,9 @@ documento del proyecto, PDF/LEEME en Drive y `brand/`.
 2. ✅ Crear el Design System. Aprobado como versión maestra el 2026-10-10.
 3. ✅ Instrucciones del proyecto PB24 en Claude y documento `PB24 Design System.md`.
 4. ✅ Copiar la marca a GitHub: carpeta `brand/` (PR #5, fusionado el 2026-10-12).
-5. ⏳ Aplicar la marca en Bubble (ver abajo).
+5. ⏳ Aplicar la marca en Bubble: avanzado por otra sesión (DS-001 a DS-016, ver
+   `brand/decisions.md` y `brand/bubble.md`); quedan acciones manuales en el
+   backlog. **En espera:** decidir cuál es el original de la marca (ver backlog).
 6. ⏳ Auditar Figma. La parte de Drive ya está hecha.
 
 ## Decisiones tomadas
