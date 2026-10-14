@@ -83,6 +83,17 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
       paso 1 y borrar el aviso: comprobar.
 - [ ] Etapa 6: validación integral en dispositivo (lista en la auditoría).
 
+## 🟠 Google Login (2026-10-14, ver `google-login.md`)
+
+- [ ] Google Cloud: pantalla de consentimiento, cliente *Web application*,
+      redirect URIs copiadas de Bubble.
+- [ ] Bubble → Plugins → Google: Client ID y Client Secret.
+- [ ] Reemplazar el icono por el logo "G" oficial de Google.
+- [ ] Probar en dispositivo los casos A-D (sobre todo el email igual a una
+      cuenta con contraseña).
+- [ ] Decidir *Sign in with Apple* antes de publicar en iOS (guía 4.8).
+- [ ] No desplegar a Live hasta que funcione con credenciales reales.
+
 ## 🔴 Seguridad
 
 - [ ] **Verificar el webhook `checkout_session_completed`** contra Stripe
