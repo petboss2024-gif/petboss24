@@ -6,6 +6,13 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-14
 
+### Seguridad — webhook de pago verificado con Stripe
+- Savepoint antes: `1792009923616` · después: `1792009984623`
+- Claves de Stripe de test renovadas por el usuario; `Retrieve Checkout Session` inicializada.
+- `checkout_session_completed`: paso 1 consulta la sesión a Stripe, paso 2
+  termina si no está `complete`/`paid`; la transacción se actualiza con datos
+  de Stripe. Mismos errores preexistentes en Bubble. **Sin probar con un pago real.**
+
 ### Seguridad — Fase 1 del plan de tracking
 - Savepoint antes: **"Antes de Fase 1 seguridad (privacy rules + webhook)"** — `1792008694212`
 - Savepoint después: **"Después de Fase 1 seguridad: open-requests verificado, autobinding dgRequest vacío, call Retrieve Checkout Session (sin inicializar)"** — `1792009047530`

@@ -11,7 +11,7 @@ Cambios en **Main (test)**. Nada se desplegó a Live.
 |---|---|---|---|
 | 1 | Restringir la lectura de reservas pendientes | ✅ Aplicado | La regla `Open requests for petsitters` exige además `Current User's osStatusVerificationPetsitter is Enabled` (valor interno `aproved`). |
 | 2 | Quitar el autobinding de estados y campos sensibles | ✅ Aplicado | Autobinding vacío en las reglas `Customer` y `Applied or assigned petsitter` de `dgRequest`. Antes permitían autoguardar status, sub-statuses, listOfPetsitters, petsitterConfirmed, duration, customer, etc. |
-| 3 | Validar el webhook de pago | ⛔ Bloqueado | Llamada `Stripe › Retrieve Checkout Session` creada (`cmVrD` / `cnBse`) pero **no se pudo inicializar**: Stripe responde `401 api_key_expired` con la clave de test guardada en la colección. Ver "Acción manual". |
+| 3 | Validar el webhook de pago | ✅ Aplicado | El webhook pregunta a Stripe por la sesión y se detiene si no está `complete` + `paid`. Ver "Webhook verificado". |
 | 4 | `create-request-date` comprueba el customer | 🟢 Riesgo bajo, sin cambios | El backend `cmiCF` **no está expuesto** como API pública: solo se llama desde workflows propios. No es una vía de ataque externa. |
 | 5 | Acceso a sesiones de tracking y puntos GPS | ✅ Ya correcto | `trackingNew` y `updateLocation`: lectura solo para Creator (petsitter), `customer` y Admin; sin autobinding. Se añadirá `assignedPetsitter` en Fase 2. |
 | 6 | Validar escrituras en backend (ids de otras sesiones) | ⏭ Fase 3 | Hoy las escrituras de tracking son workflows de cliente ("Make changes"). Se mueven a backend (`walk-start/ping/end`) en Fase 3 con la comprobación de dueño. |
@@ -20,7 +20,7 @@ Cambios en **Main (test)**. Nada se desplegó a Live.
 `check_app_issues` después de los cambios: los 6 errores preexistentes + el
 aviso esperado de Google ("fill your app id and secret"). Ninguno nuevo.
 
-## Hallazgo: clave de Stripe de test caducada
+## Hallazgo: clave de Stripe de test caducada (resuelto)
 
 Al inicializar `Retrieve Checkout Session` Stripe devolvió:
 
@@ -38,24 +38,36 @@ account…) fallan hoy. La última sesión de Checkout en test es de mayo 2026.
    de Checkout Sessions y lo que usen las demás llamadas).
 2. Bubble → Plugins → API Connector → colección **Stripe** → pegar la clave de
    **development** (no tocar la de Live sin revisarla antes).
-3. Avisarme: inicializo `Retrieve Checkout Session` con una sesión de test
-   pagada (`cs_test_a1wT0Kz…X4`, `status=complete`, `payment_status=paid`) y
-   completo el punto 3.
+3. ~~Avisarme~~ Hecho 2026-10-14: el usuario cambió las claves y la llamada
+   se inicializó con la sesión `cs_test_a1wT0Kz…X4` de PB24 (encontrada, así
+   que la clave es de la cuenta correcta).
 
-## Punto 3 pendiente: diseño del webhook verificado
+## Webhook verificado
 
-Backend `cmpFt` (expuesto, sin autenticación). Al desbloquear:
+- Savepoint antes: **"Antes de verificar webhook checkout_session_completed con Retrieve Checkout Session"** — `1792009923616`
+- Savepoint después: **"Después de verificar webhook checkout_session_completed (Retrieve + Terminate si no pagado)"** — `1792009984623`
 
-1. Paso nuevo al principio: `Retrieve Checkout Session` con
-   `session_id = Request Data's object.id`.
-2. Condición en **todos** los pasos siguientes (`cmpGW`, `cmpGE`, `cmpGL`,
-   `cnBiS`, `cnBkv`, `cmwXW`):
-   `Result of step 1's status is "complete" and payment_status is "paid"`.
-3. Usar los datos de **Stripe** (paso 1), no los del payload, para
-   `payment_intent` y estado.
-4. Siguiente iteración: comparar `amount_total` con el importe calculado en
-   servidor de la transacción.
-5. Idempotencia: no repetir si la reserva ya está `Booked`.
+Backend `checkout_session_completed` (`cmpFt`, expuesto sin autenticación;
+endpoint de Stripe test `we_1S94XN…` → `version-test/api/1.1/wf/checkout_session_completed`):
+
+| Paso | Acción | Cambio |
+|---|---|---|
+| 1 | `Stripe - Retrieve Checkout Session` (`cnBsq`) | **Nuevo.** `session_id = Request Data's object id`. Un id inventado → Stripe responde 404 → el workflow se detiene. |
+| 2 | Terminate this workflow (`cnBsr`) | **Nuevo.** Solo cuando `status is not complete` **o** `payment_status is not paid` (datos de Stripe, no del payload). |
+| 3 | Make changes to transaction (`cmpGW`) | Busca la transacción por el **id devuelto por Stripe** y guarda `payment_status` / `payment_intent` **de Stripe**. |
+| 4-8 | chat-create, dgRequest → Booked, address, pets, notification | Sin cambios; ya solo corren con pago confirmado. |
+
+Pendiente (siguiente iteración):
+- Comparar `amount_total` de Stripe con el importe calculado en servidor
+  (depende de arreglar `create-transaction`).
+- Idempotencia: Stripe reintenta webhooks; hoy un reintento repetiría chat y
+  notificación.
+- **Live**: la misma lógica necesita la clave de Live válida en la colección y
+  un endpoint de Live; no se ha tocado Live.
+
+Prueba manual: hacer una reserva de test y pagar con la tarjeta `4242 4242 4242 4242`.
+La reserva debe pasar a Booked/Upcoming. Una llamada a mano al endpoint con un
+`object.id` falso no debe cambiar nada (ver Logs → Server logs).
 
 ## Pruebas de autorización (pendientes, manuales)
 

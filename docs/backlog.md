@@ -96,16 +96,16 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
 
 ## 🔴 Seguridad
 
-- [ ] **Renovar la clave secreta de Stripe de test** en API Connector › Stripe
-      (caducada, `api_key_expired`). Bloquea Checkout en test y el punto
-      siguiente (ver `security-phase1.md`).
+- [x] Renovar la clave secreta de Stripe de test (2026-10-14).
+- [x] Webhook `checkout_session_completed` verificado contra Stripe (2026-10-14).
+- [ ] Probar un pago de test de punta a punta (tarjeta 4242) tras el cambio del webhook.
+- [ ] Webhook: comparar `amount_total` e idempotencia ante reintentos.
 - [x] Open requests solo para petsitters verificados (2026-10-14).
 - [x] Autobinding de `dgRequest` eliminado (2026-10-14).
 - [ ] Pruebas de autorización de Fase 1 (10 casos en `security-phase1.md`).
 - [ ] `create-transaction`: calcular importe/fee en servidor, no desde el cliente.
-- [ ] **Verificar el webhook `checkout_session_completed`** contra Stripe
-      (Retrieve Checkout Session por ID) antes de confirmar la reserva. Revisar
-      lo mismo en `webhook_account_enabled` / `webhook_account_restricted`.
+- [ ] Revisar `webhook_account_enabled` / `webhook_account_restricted`
+      (misma verificación contra Stripe).
 - [ ] **Probar las privacy rules** con un customer y un petsitter de prueba
       (checklist en `privacy-rules.md`).
 - [ ] Rellenar `address.authorizedPetsitters` en reservas ya pagadas, si hay
