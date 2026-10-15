@@ -85,9 +85,12 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
 
 ## 🟠 Google Login (2026-10-14, ver `google-login.md`)
 
-- [ ] Google Cloud: pantalla de consentimiento, cliente *Web application*,
-      redirect URIs copiadas de Bubble.
-- [ ] Bubble → Plugins → Google: Client ID y Client Secret.
+- [x] Google Cloud: cliente *Web application* "Google Login" con redirect URIs
+      `https://petboss24.com/api/1.1/oauth_redirect` y
+      `https://petboss24.com/version-test/api/1.1/oauth_redirect` (2026-10-15).
+- [x] Bubble → Plugins → Google: Client ID y Client Secret (2026-10-15; el
+      aviso "fill your app id and secret" ya no aparece).
+- [ ] Pruebas 1-15 de `google-login.md` con credenciales reales.
 - [ ] Reemplazar el icono por el logo "G" oficial de Google.
 - [ ] Probar en dispositivo los casos A-D (sobre todo el email igual a una
       cuenta con contraseña).

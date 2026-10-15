@@ -4,6 +4,14 @@ Todos los cambios se hicieron en **Main (test)**. Nada se desplegó a Live desde
 estas sesiones. Para revertir, usar el savepoint indicado (Version control en el
 editor, o `restore_savepoint` con el timestamp).
 
+## 2026-10-15
+
+### Google Login: credenciales configuradas
+- Hecho por el usuario: cliente OAuth *Web application* en Google Cloud
+  (redirect URIs de Live y version-test) y Client ID/secret en Plugins → Google.
+- Bubble: desaparece el aviso "fill your app id and secret"; quedan los 6
+  errores preexistentes. **Sin probar todavía con un login real.**
+
 ## 2026-10-14
 
 ### Seguridad — webhook de pago verificado con Stripe
