@@ -74,3 +74,71 @@ desde este entorno no se pueden ejecutar.
 2. **Cuenta existente con contraseña y mismo email** → se **bloquea**: cerrar
    sesión y pedir que entre con contraseña. No se vincula solo por email.
    Vincular Google desde Ajustes queda como mejora futura.
+
+## Implementación (2026-10-15)
+
+Savepoints: antes `1792085576162` · Login/backend `1792085680814` · después `1792085774217`.
+
+### Backend `auth-google-complete` (`cnBsJ`)
+- Condición del evento: `Current User's Google is not empty` **y `osRole is empty`**.
+  Solo inicializa usuarios recién creados por Google. Cuentas existentes
+  (vinculadas o no) no se tocan.
+- Perfil: nombre = `given_name` de Google, *defaulting to* la parte del email
+  antes de `@`.
+
+### Login (`authLogin`, `loginWithGoogle` `cnBsP`)
+1. `googleLoading` = sí; `googleError`, `googleBlocked` = no.
+2. Signup/login with Google.
+3. **Nuevo** `cnBsu`: `googleBlocked` = sesión **y** `osRole` no vacío **y**
+   `googleAccount` ≠ sí (cuenta existente no creada por Google).
+4. **Nuevo** `cnBsv`: Log out si `googleBlocked`.
+5. Backend (si hay sesión) → `googleLoading` = no → `googleError` si no hay
+   sesión **y no** bloqueado → navegación por rol (sin cambios).
+- `txtGoogleError` (`cnBsb`): nuevo condicional con `googleBlocked` → "This
+  email already has an account with a password. Please log in with your email
+  and password."
+- Identidad nueva desde Login → alta (decisión 1).
+
+### Sign Up (`authSignup`)
+- `Container buttons` (`cmjNq`) y "or" (`cmizJ`) visibles; Apple (`cmjLx`)
+  oculto. Orden: Sign up → or → Continue with Google → "You already have an
+  account? Log in".
+- `btnSignupGoogle` (`cmjLs`): mismo estilo que el de Login (`#131314`, borde
+  `#8E918F`, radio 14, texto `#E3E3E3`), 50 % y "Connecting to Google…" al cargar.
+- `txtGoogleError` (`cnBsw`, estilo error): error genérico o "You already have
+  an account with this email. Please log in with your email and password."
+- Estados de la vista: `googleLoading`, `googleError`, `googleBlocked`.
+- Workflow `signupWithGoogle` (`cnBsy`): mismos pasos que Login (`cnBtA`…`cnBtI`).
+  `signupWithGoogleError` (`cnBtJ`).
+- Existente ya vinculado a Google → entra con su rol (sin duplicar).
+
+`check_app_issues`: solo los 6 errores preexistentes.
+
+### Pruebas — **todas pendientes** (no ejecutables desde este entorno)
+
+| # | Prueba | Resultado |
+|---|---|---|
+| L1 | Login: usuario Google existente | Pendiente |
+| L2 | Login: cancelar ventana | Pendiente |
+| L3 | Login: error del proveedor | Pendiente |
+| L4 | Login: identidad nueva → alta Customer + perfil | Pendiente |
+| L5 | Login: email con cuenta de contraseña → bloqueado, sin sesión | Pendiente |
+| S1 | Sign Up: usuario nuevo → tabHome, perfil con nombre | Pendiente |
+| S2 | Sign Up: cancelar | Pendiente |
+| S3 | Sign Up: usuario Google existente → entra sin duplicar | Pendiente |
+| S4 | Sign Up: email con cuenta de contraseña → bloqueado | Pendiente |
+| S5 | Reintento tras cancelar/error (botón vuelve a funcionar) | Pendiente |
+| C1 | Login y Sign Up tradicionales siguen igual | Pendiente |
+| C2 | Recuperar contraseña, logout y volver a entrar | Pendiente |
+| C3 | App data: sin usuarios/perfiles duplicados | Pendiente |
+| C4 | App nativa (TestFlight): vuelta desde Google a la app | Pendiente |
+
+### Riesgos pendientes
+- Si en la app nativa los datos de `Current User` llegan tarde tras volver de
+  Google, `googleBlocked` podría evaluarse con datos vacíos. Verificar en C4.
+- Comportamiento exacto de Bubble con email ya registrado (enlaza o error):
+  ambos casos acaban sin sesión y con mensaje, pero hay que confirmarlo (L5/S4).
+- Usuario solo-Google que usa "Forgot password" crea una contraseña: aceptable,
+  documentado.
+- Vincular Google desde Ajustes: mejora futura.
+- Sign in with Apple antes de publicar en iOS (guía 4.8).

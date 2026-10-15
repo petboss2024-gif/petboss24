@@ -90,7 +90,9 @@ Plan aprobado por etapas (Next en pasos 1-2, cierre de sesión siempre a
       `https://petboss24.com/version-test/api/1.1/oauth_redirect` (2026-10-15).
 - [x] Bubble → Plugins → Google: Client ID y Client Secret (2026-10-15; el
       aviso "fill your app id and secret" ya no aparece).
-- [ ] Pruebas 1-15 de `google-login.md` con credenciales reales.
+- [x] Google en Sign Up + bloqueo de cuentas con contraseña (2026-10-15).
+- [ ] Pruebas L1-L5, S1-S5, C1-C4 de `google-auth-audit.md`.
+- [ ] Vincular Google desde Ajustes (cuentas con contraseña).
 - [ ] Reemplazar el icono por el logo "G" oficial de Google.
 - [ ] Probar en dispositivo los casos A-D (sobre todo el email igual a una
       cuenta con contraseña).

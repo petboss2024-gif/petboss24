@@ -6,6 +6,14 @@ editor, o `restore_savepoint` con el timestamp).
 
 ## 2026-10-15
 
+### Google Authentication en Login y Sign Up
+- Savepoints: antes `1792085576162`, después `1792085774217`.
+- Backend `auth-google-complete` solo inicializa usuarios nuevos de Google.
+- Login y Sign Up bloquean (cierran sesión + mensaje) cuentas existentes con
+  contraseña: no se vincula solo por email.
+- Sign Up: botón Continue with Google visible con workflow `signupWithGoogle`.
+- Detalle y pruebas pendientes en `docs/google-auth-audit.md`. **Sin probar.**
+
 ### Google Login: credenciales configuradas
 - Hecho por el usuario: cliente OAuth *Web application* en Google Cloud
   (redirect URIs de Live y version-test) y Client ID/secret en Plugins → Google.
