@@ -67,3 +67,10 @@ Sign Up (`authSignup`):
 
 Pruebas: todas requieren navegador/dispositivo y cuentas de Google de prueba;
 desde este entorno no se pueden ejecutar.
+
+## Decisiones del usuario (2026-10-15)
+
+1. **Identidad nueva desde Login** → se trata como alta (Customer + perfil) y entra.
+2. **Cuenta existente con contraseña y mismo email** → se **bloquea**: cerrar
+   sesión y pedir que entre con contraseña. No se vincula solo por email.
+   Vincular Google desde Ajustes queda como mejora futura.
